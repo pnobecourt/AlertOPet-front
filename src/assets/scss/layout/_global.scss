@@ -36,6 +36,7 @@
     .bell {
         margin-right:1rem;
     }
+
 }
 
 body{
@@ -98,10 +99,4 @@ article {
     color:$darkPink;
     line-height:2rem;
     padding-top:3rem;
-}
-
-.dog {
-    @extend .choiceAnimal__select;
-    background-color:$white;
-    margin-top:0rem;
 }

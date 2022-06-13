@@ -241,13 +241,19 @@
         à la protection juridique des bases de données.
       </p>
     </section>
+    <div class="top"></div>
   </div>
-  <div class="top"></div>
+  
 </template>
-
 <script>
-export default {};
+
+export default {
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+
 </style>
