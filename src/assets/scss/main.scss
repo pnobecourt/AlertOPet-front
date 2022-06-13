@@ -1,0 +1,19 @@
+// base
+@import "./assets/scss/base/reset.scss";
+@import "./assets/scss/base/typographie";
+
+@import "./assets/scss/abstracts/mixins";
+@import "./assets/scss/abstracts/variables";
+@import "./assets/scss/layout/global";
+
+// components
+@import "./assets/scss/components/carousel";
+@import "./assets/scss/components/switch";
+@import "./assets/scss/components/input";
+@import "./assets/scss/components/button";
+@import "./assets/scss/components/textaera";
+@import "./assets/scss/components/card";
+@import "./assets/scss/components/bell";
+@import "./assets/scss/components/navButton";
+@import "./assets/scss/components/checkbox";
+@import "./assets/scss/components/select";

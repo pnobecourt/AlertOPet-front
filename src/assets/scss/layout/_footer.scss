@@ -1,0 +1,20 @@
+//=====================================================
+// footer
+footer {
+    display:flex;
+    justify-content:space-around;
+    border-top: 1px solid $ultraGrey;
+    align-items:center;
+    background-color:$white;
+    height:5rem;
+    width:100%;
+}
+
+.social img{
+    width:2rem;
+}
+
+.contact a{
+    text-decoration:none;
+    font-size:.8rem;
+}

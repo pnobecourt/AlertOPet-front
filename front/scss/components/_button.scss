@@ -1,0 +1,26 @@
+//=====================================================
+// button
+
+.btn {
+    width:100%;
+    height:3rem;
+    border-radius:2rem;
+}
+
+.yellowButton {
+    @extend .btn;
+    background-color:$orange;
+    border:$orange;
+}
+
+.blueButton {
+    @extend .btn;
+    background-color:$blue;
+    border:$blue;
+    color:$white;
+    margin-top:1.5rem;
+}
+
+#picturAnimal button{
+    margin-bottom:1rem;
+} 
