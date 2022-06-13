@@ -83,7 +83,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/abstracts/mixins";
-@import "../assets/scss/abstracts/variables";
-@import "../assets/scss/pages/a-propos";
+
 </style>

@@ -228,6 +228,7 @@
         </article>
       </div>
     </section>
+    <div class="top"></div>
   </div>
   <!-- Fin container -->
 </template>
@@ -241,7 +242,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/abstracts/mixins";
-@import "../assets/scss/abstracts/variables";
-@import "../assets/scss/pages/category";
+
 </style>

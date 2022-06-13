@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Footer -->
-    <footer class="top">
+    <footer>
       <div class="social">
         <a href="" target="_blank" title="Facebook"
           ><img src="../assets/images/Facebook.svg" alt="Facebook"
@@ -34,7 +34,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/abstracts/mixins";
-@import "../assets/scss/abstracts/variables";
-@import "../assets/scss/layout/footer";
+
 </style>

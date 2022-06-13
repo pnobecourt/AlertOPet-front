@@ -173,6 +173,15 @@
   dependencies:
     "detect-libc" "^1.0.3"
 
+"@parcel/transformer-sass@^2.5.0":
+  "integrity" "sha512-tio+LcQvP2RUt2SqBPpxGvEJGeYyLjT87xKPuvYRmQ38h/FjG2j7WgvcHgii02YkZNyajCmMIoGwVYgovm5+bw=="
+  "resolved" "https://registry.npmjs.org/@parcel/transformer-sass/-/transformer-sass-2.5.0.tgz"
+  "version" "2.5.0"
+  dependencies:
+    "@parcel/plugin" "2.5.0"
+    "@parcel/source-map" "^2.0.0"
+    "sass" "^1.38.0"
+
 "@parcel/transformer-vue@2.5.0":
   "integrity" "sha512-cj+66r7Rv/gjv9AoeeuI7CiS7RHJZ7aDzzg+oyLHF5M+t6r2mHQdM7pWCIna5P98Apu0PPFitruz8QVnr820BA=="
   "resolved" "https://registry.npmjs.org/@parcel/transformer-vue/-/transformer-vue-2.5.0.tgz"
@@ -726,7 +735,7 @@
   "resolved" "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz"
   "version" "5.2.1"
 
-"sass@^1.52.3":
+"sass@^1.38.0", "sass@^1.52.3":
   "integrity" "sha512-LNNPJ9lafx+j1ArtA7GyEJm9eawXN8KlA1+5dF6IZyoONg1Tyo/g+muOsENWJH/2Q1FHbbV4UwliU0cXMa/VIA=="
   "resolved" "https://registry.npmjs.org/sass/-/sass-1.52.3.tgz"
   "version" "1.52.3"

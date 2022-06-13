@@ -88,6 +88,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/abstracts/mixins";
-@import "../assets/scss/abstracts/variables";
+
 </style>

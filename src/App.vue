@@ -1,7 +1,7 @@
 <template>
 <div>
   <Header></Header>
-  <AddAnimal></AddAnimal>
+  <Subscribe></Subscribe>
   <Footer></Footer>
 </div>
 </template>

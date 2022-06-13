@@ -302,6 +302,7 @@
         </div>
       </article>
     </section>
+    <div class="top"></div>
   </div>
   <!-- Fin container -->
 </template>
@@ -315,6 +316,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/abstracts/mixins";
-@import "../assets/scss/abstracts/variables";
+
 </style>
