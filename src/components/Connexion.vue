@@ -7,9 +7,10 @@
         perdu ou trouver <br />un animal ?<br />
         Signalez-le
       </h1>
+
     </section>
 
-    <section class="boxSmall">
+    <section class="box">
       <!-- connexion -->
       <form method="POST" id="connexion">
         <label for="email">Votre adresse</label>

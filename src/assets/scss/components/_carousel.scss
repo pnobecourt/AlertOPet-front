@@ -61,15 +61,17 @@
  height:400px;
  justify-self:center;
     }
+    .box{
+        margin:0 auto;
+        width:500px;
+    }
 }
 
 @include big {
     .caroussel__image{
-        width:100%;
+    width:100%;
     height:550px;
     }
-    .box{
-        width:700px;
-        margin:0 auto;
-    }
+
+   
 }

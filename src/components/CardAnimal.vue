@@ -5,12 +5,12 @@
       <h1 class="title__page">Choupette</h1>
     </section>
 
-    <section class="boxForm">
+    <section class="box">
       <!-- Card -->
       <article>
         <!-- card__picture -->
         <div class="cardAnimal">
-          <img class="dog" src="../assets/images/dog.jpg" alt="dog" />
+          <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />
 
           <!-- card__lost -->
           <div class="cardAnimal__lost">

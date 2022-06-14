@@ -5,14 +5,15 @@
       <h1 class="title__page">Ajouter un animal</h1>
     </section>
 
-    <section>
+    <section class="box">
       <!-- picture of animal -->
-
-      <img class="dog" src="../assets/images/dog.jpg" alt="dog" />
+      <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />
       <form method="POST" id="pictureAnimal">
         <button class="blueButton">Ajouter une photo</button>
         <button class="yellowButton">Déclencher une alerte</button>
       </form>
+    </section>
+    <section>
 
       <!-- create animal -->
       <form method="POST" id="animal">
@@ -40,7 +41,8 @@
         <label for="info">Informations complémentaires</label>
         <textarea id="info" name="info" rows="5" cols="33"> </textarea>
 
-        <button class="blueButton">Enregistrer</button>
+        <button class="blueButton bottom">Enregistrer</button>
+
       </form>
     </section>
     <br />

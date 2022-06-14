@@ -5,7 +5,7 @@
       <h1 class="title__page">Liste des animaux</h1>
     </section>
 
-    <section>
+    <section class="center">
       <div class="choiceAnimal">
         <select name="type" id="type" class="choiceAnimal__select">
           <option value="">Sélectionnez un type d'animal</option>
@@ -27,11 +27,12 @@
       </div>
 
       <div class="boxOfCards">
+    
         <!-- Card -->
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <img class="dog" src="../assets/images/dog.jpg" alt="dog" />
+            <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />
 
             <!-- card__lost -->
             <div class="cardAnimal__lost">
@@ -77,11 +78,11 @@
             <button class="blueButton">Contacter le propriétaire</button>
           </div>
         </article>
-
+                <!-- Card -->
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <img class="dog" src="../assets/images/dog.jpg" alt="dog" />
+            <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?dog" alt="Animal" />
 
             <!-- card__lost -->
             <div class="cardAnimal__lost">
@@ -122,15 +123,16 @@
               cupiditate voluptates, officiis tempore odio aperiam error nostrum
               consequuntur. Rerum modi aut voluptatem odit!
             </div>
+
             <!-- Contacter le propriétaire -->
             <button class="blueButton">Contacter le propriétaire</button>
           </div>
         </article>
-
+                <!-- Card -->
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <img class="dog" src="../assets/images/dog.jpg" alt="dog" />
+            <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?animal" alt="animal" />
 
             <!-- card__lost -->
             <div class="cardAnimal__lost">
@@ -176,11 +178,14 @@
             <button class="blueButton">Contacter le propriétaire</button>
           </div>
         </article>
-
+      
+      </div><!-- end boxOfcards -->
+<div class="boxOfCards">
+                  <!-- Card -->
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <img class="dog" src="../assets/images/dog.jpg" alt="dog" />
+            <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?dog" alt="Animal" />
 
             <!-- card__lost -->
             <div class="cardAnimal__lost">
@@ -226,7 +231,8 @@
             <button class="blueButton">Contacter le propriétaire</button>
           </div>
         </article>
-      </div>
+  </div><!-- end boxOfcards -->
+      
     </section>
     <div class="top"></div>
   </div>

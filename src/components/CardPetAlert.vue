@@ -5,12 +5,12 @@
       <h1 class="title__page">PERDU / TROUVÉ Choupette</h1>
     </section>
 
-    <section>
+    <section class="box">
       <!-- Card -->
       <article>
         <!-- card__picture -->
         <div class="cardAnimal">
-          <img class="dog" src="../assets/images/dog.jpg" alt="dog" />
+          <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?dog" alt="dog" />
 
           <!-- card__lost -->
           <div class="cardAnimal__lost">

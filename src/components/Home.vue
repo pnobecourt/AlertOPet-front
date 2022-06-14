@@ -70,115 +70,8 @@
     </section>
     <section>
 
-      <!-- Card -->
       <div class="boxOfCards">
-        <article class="card">
-          <!-- card__picture -->
-          <div class="cardAnimal">
-            <img
-              class="cardAnimal__image"
-              src="https://source.unsplash.com/random/900×700/?dog"
-              alt="Animal"
-            />
-
-            <!-- card__lost -->
-            <div class="cardAnimal__lost">
-              <div class="cardAnimal__lost__status">
-                <p>
-                  <span class="cardAnimal__lost__lostAnimalStatusPink"
-                    >Perdu</span
-                  >
-                  <span class="cardAnimal__lost__lostAnimalStatusBlue"
-                    >Trouvé</span
-                  >
-                </p>
-              </div>
-
-              <div class="cardAnimal__lost__share">
-                <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-
-            <div class="cardAnimal__describe">
-              <p>Type :</p>
-              <p>Lieu :</p>
-              <p>Nom :</p>
-              <p>Race :</p>
-              <p>Taille :</p>
-              <p>Poids :</p>
-              <p>Couleur :</p>
-              <p>Âge :</p>
-            </div>
-
-            <div class="cardAnimal__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
-              sequi dolorem iure dolor modi quidem minima eaque officiis laborum
-              repellat quia similique, atque, quis voluptates, asperiores saepe
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
-              laudantium beatae accusantium, repellendus perferendis minus
-              cupiditate voluptates, officiis tempore odio aperiam error nostrum
-              consequuntur. Rerum modi aut voluptatem odit!
-            </div>
-
-            <!-- Contacter le propriétaire -->
-            <button class="blueButton">Contacter le propriétaire</button>
-          </div>
-        </article>
-
-        <article class="card">
-          <!-- card__picture -->
-          <div class="cardAnimal">
-            <img
-              class="cardAnimal__image"
-              src="https://source.unsplash.com/random/900×700/?animal"
-              alt="Animal"
-            />
-
-            <!-- card__lost -->
-            <div class="cardAnimal__lost">
-              <div class="cardAnimal__lost__status">
-                <p>
-                  <span class="cardAnimal__lost__lostAnimalStatusPink"
-                    >Perdu</span
-                  >
-                  <span class="cardAnimal__lost__lostAnimalStatusBlue"
-                    >Trouvé</span
-                  >
-                </p>
-              </div>
-
-              <div class="cardAnimal__lost__share">
-                <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-
-            <div class="cardAnimal__describe">
-              <p>Type :</p>
-              <p>Lieu :</p>
-              <p>Nom :</p>
-              <p>Race :</p>
-              <p>Taille :</p>
-              <p>Poids :</p>
-              <p>Couleur :</p>
-              <p>Âge :</p>
-            </div>
-
-            <div class="cardAnimal__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
-              sequi dolorem iure dolor modi quidem minima eaque officiis laborum
-              repellat quia similique, atque, quis voluptates, asperiores saepe
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
-              laudantium beatae accusantium, repellendus perferendis minus
-              cupiditate voluptates, officiis tempore odio aperiam error nostrum
-              consequuntur. Rerum modi aut voluptatem odit!
-            </div>
-            <!-- Contacter le propriétaire -->
-            <button class="blueButton">Contacter le propriétaire</button>
-          </div>
-        </article>
-
+        <!-- Card -->
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
@@ -232,61 +125,173 @@
             <button class="blueButton">Contacter le propriétaire</button>
           </div>
         </article>
+        <!-- Card -->
+        <article class="card">
+          <!-- card__picture -->
+          <div class="cardAnimal">
+            <img
+              class="cardAnimal__image"
+              src="https://source.unsplash.com/random/900×700/?dog"
+              alt="Animal"
+            />
+
+            <!-- card__lost -->
+            <div class="cardAnimal__lost">
+              <div class="cardAnimal__lost__status">
+                <p>
+                  <span class="cardAnimal__lost__lostAnimalStatusPink"
+                    >Perdu</span
+                  >
+                  <span class="cardAnimal__lost__lostAnimalStatusBlue"
+                    >Trouvé</span
+                  >
+                </p>
+              </div>
+
+              <div class="cardAnimal__lost__share">
+                <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+
+            <div class="cardAnimal__describe">
+              <p>Type :</p>
+              <p>Lieu :</p>
+              <p>Nom :</p>
+              <p>Race :</p>
+              <p>Taille :</p>
+              <p>Poids :</p>
+              <p>Couleur :</p>
+              <p>Âge :</p>
+            </div>
+
+            <div class="cardAnimal__description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
+              sequi dolorem iure dolor modi quidem minima eaque officiis laborum
+              repellat quia similique, atque, quis voluptates, asperiores saepe
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
+              laudantium beatae accusantium, repellendus perferendis minus
+              cupiditate voluptates, officiis tempore odio aperiam error nostrum
+              consequuntur. Rerum modi aut voluptatem odit!
+            </div>
+
+            <!-- Contacter le propriétaire -->
+            <button class="blueButton">Contacter le propriétaire</button>
+          </div>
+        </article>
+        <!-- Card -->
+        <article class="card">
+          <!-- card__picture -->
+          <div class="cardAnimal">
+            <img
+              class="cardAnimal__image"
+              src="https://source.unsplash.com/random/900×700/?animal"
+              alt="animal"
+            />
+
+            <!-- card__lost -->
+            <div class="cardAnimal__lost">
+              <div class="cardAnimal__lost__status">
+                <p>
+                  <span class="cardAnimal__lost__lostAnimalStatusPink"
+                    >Perdu</span
+                  >
+                  <span class="cardAnimal__lost__lostAnimalStatusBlue"
+                    >Trouvé</span
+                  >
+                </p>
+              </div>
+
+              <div class="cardAnimal__lost__share">
+                <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+
+            <div class="cardAnimal__describe">
+              <p>Type :</p>
+              <p>Lieu :</p>
+              <p>Nom :</p>
+              <p>Race :</p>
+              <p>Taille :</p>
+              <p>Poids :</p>
+              <p>Couleur :</p>
+              <p>Âge :</p>
+            </div>
+
+            <div class="cardAnimal__description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
+              sequi dolorem iure dolor modi quidem minima eaque officiis laborum
+              repellat quia similique, atque, quis voluptates, asperiores saepe
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
+              laudantium beatae accusantium, repellendus perferendis minus
+              cupiditate voluptates, officiis tempore odio aperiam error nostrum
+              consequuntur. Rerum modi aut voluptatem odit!
+            </div>
+
+            <!-- Contacter le propriétaire -->
+            <button class="blueButton">Contacter le propriétaire</button>
+          </div>
+        </article>
       </div>
+      <!-- end boxOfcards -->
+      <div class="boxOfCards">
+        <!-- Card -->
+        <article class="card">
+          <!-- card__picture -->
+          <div class="cardAnimal">
+            <img
+              class="cardAnimal__image"
+              src="https://source.unsplash.com/random/900×700/?dog"
+              alt="Animal"
+            />
 
-      <article class="card">
-        <!-- card__picture -->
-        <div class="cardAnimal">
-          <img
-            class="cardAnimal__image"
-            src="https://source.unsplash.com/random/900×700/?dog"
-            alt="Animal"
-          />
+            <!-- card__lost -->
+            <div class="cardAnimal__lost">
+              <div class="cardAnimal__lost__status">
+                <p>
+                  <span class="cardAnimal__lost__lostAnimalStatusPink"
+                    >Perdu</span
+                  >
+                  <span class="cardAnimal__lost__lostAnimalStatusBlue"
+                    >Trouvé</span
+                  >
+                </p>
+              </div>
 
-          <!-- card__lost -->
-          <div class="cardAnimal__lost">
-            <div class="cardAnimal__lost__status">
-              <p>
-                <span class="cardAnimal__lost__lostAnimalStatusPink"
-                  >Perdu</span
-                >
-                <span class="cardAnimal__lost__lostAnimalStatusBlue"
-                  >Trouvé</span
-                >
-              </p>
+              <div class="cardAnimal__lost__share">
+                <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
             </div>
 
-            <div class="cardAnimal__lost__share">
-              <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
-              <i class="fa-solid fa-share-nodes"></i>
+            <div class="cardAnimal__describe">
+              <p>Type :</p>
+              <p>Lieu :</p>
+              <p>Nom :</p>
+              <p>Race :</p>
+              <p>Taille :</p>
+              <p>Poids :</p>
+              <p>Couleur :</p>
+              <p>Âge :</p>
             </div>
-          </div>
 
-          <div class="cardAnimal__describe">
-            <p>Type :</p>
-            <p>Lieu :</p>
-            <p>Nom :</p>
-            <p>Race :</p>
-            <p>Taille :</p>
-            <p>Poids :</p>
-            <p>Couleur :</p>
-            <p>Âge :</p>
-          </div>
+            <div class="cardAnimal__description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
+              sequi dolorem iure dolor modi quidem minima eaque officiis laborum
+              repellat quia similique, atque, quis voluptates, asperiores saepe
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
+              laudantium beatae accusantium, repellendus perferendis minus
+              cupiditate voluptates, officiis tempore odio aperiam error nostrum
+              consequuntur. Rerum modi aut voluptatem odit!
+            </div>
 
-          <div class="cardAnimal__description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
-            sequi dolorem iure dolor modi quidem minima eaque officiis laborum
-            repellat quia similique, atque, quis voluptates, asperiores saepe
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
-            laudantium beatae accusantium, repellendus perferendis minus
-            cupiditate voluptates, officiis tempore odio aperiam error nostrum
-            consequuntur. Rerum modi aut voluptatem odit!
+            <!-- Contacter le propriétaire -->
+            <button class="blueButton">Contacter le propriétaire</button>
           </div>
-
-          <!-- Contacter le propriétaire -->
-          <button class="blueButton">Contacter le propriétaire</button>
-        </div>
-      </article>
+        </article>
+      </div>
+      <!-- end boxOfcards -->
     </section>
     <div class="top"></div>
   </div>

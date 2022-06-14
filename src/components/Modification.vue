@@ -4,7 +4,7 @@
       <h1 class="title__page">Modifier vos<br />informations</h1>
     </section>
 
-    <section class="boxSmall">
+    <section class="box">
       <!-- connexion -->
       <form method="POST" id="modifyProfil">
         <label for="name">Votre nom</label>

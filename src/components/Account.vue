@@ -6,6 +6,7 @@
     </section>
 
     <!-- label animal -->
+    <div class="box">
     <section class="listAnimal">
       <div class="animal">
         <div class="animal__animalName">Le nom de l'animal</div>
@@ -59,6 +60,7 @@
         </div>
       </form>
     </section>
+    
 
     <!-- options -->
     <section>
@@ -75,6 +77,8 @@
         <button class="yellowButton">Supprimer mon compte</button>
       </form>
     </section>
+  </div>
+  
   </div>
   <!-- Fin container -->
 </template>
