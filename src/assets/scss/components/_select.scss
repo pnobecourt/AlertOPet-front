@@ -1,0 +1,13 @@
+//=====================================================
+// select
+
+.choiceAnimal__select {
+    display:block;
+    border: 1px solid $mediumGrey;
+    border-radius:.3rem;
+    margin:0 auto 1rem;
+    width:95%;
+    -webkit-box-shadow: 0px 9px 12px -7px $shadow; 
+    box-shadow: 0px 9px 12px -7px $shadow;
+}
+
