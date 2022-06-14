@@ -67,9 +67,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/scss/abstracts/variables";
 @import "../assets/scss/abstracts/mixins";
 
-
+header {
+  padding: 1rem;
+  background-color:$white;
+  justify-content:center;
+}
 .navigation {
 
   max-width:960px;
@@ -80,7 +85,6 @@ export default {
     justify-content: space-between;
     border-bottom: 1px solid #f8f8f8;
     transition: 1s;
-    padding: 1rem;
   }
 
   &__nav {
@@ -100,16 +104,19 @@ export default {
   }
 }
 
-@include small {
+
+@include medium {
   .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    justify-self:center;
 
 
     &__header {
       display: flex;
       flex-wrap: nowrap;
+      width:50%;
     }
 
     &__nav ul {
@@ -119,6 +126,7 @@ export default {
     &__nav {
       text-align: center;
       display: block;
+      width:50%;
     }
 
     &__nav li {

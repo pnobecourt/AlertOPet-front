@@ -31,26 +31,21 @@
     }
 }
 
-@include big {
-
-    .bell {
-        margin-right:1rem;
-    }
-
-}
-
 body{
 background-color:$white;
 font-family:$body;
 font-size:1rem;
-//background-image:url('./assets/images/empreintes.svg');
+background-image:url('./assets/images/empreintes.svg');
 min-height: 100vh;
 line-height:1.5rem;
 
-@include medium {
+@include big {
     background-size:cover;
 }
 
+.bell {
+    margin-right:1rem;
+}
 }
 
 .container {

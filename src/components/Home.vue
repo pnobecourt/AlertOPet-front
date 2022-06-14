@@ -3,45 +3,47 @@
     <section class="title">
       <h1 class="title__page">Disparitions</h1>
     </section>
+    <section class="box">
     <!-- Carousel -->
     <div class="customer-quotes__nav carousel">
       <div class="customer-quotes__item carousel__item" data-slide-number="0">
-                <span class="carousel__contact-button">
-        <a href="" title="Contacter le propriétaire">Contacter le propriétaire</a>
+           <span class="carousel__contact-button">
+          <a href="" title="Contacter le propriétaire"
+            >Contacter le propriétaire</a
+          >
         </span>
         <img
           class="carousel__image"
           src="https://source.unsplash.com/random/900×700/?cat"
-          alt="dog"
+          alt="Animal"
         />
-
-      </div>
+         </div>
       <div class="customer-quotes__item carousel__item" data-slide-number="1">
-                <span class="carousel__contact-button">
-        <a href="" title="Contacter le propriétaire">Contacter le propriétaire</a>
+        <span class="carousel__contact-button">
+          <a href="" title="Contacter le propriétaire"
+            >Contacter le propriétaire</a
+          >
         </span>
         <img
           class="carousel__image"
           src="https://source.unsplash.com/random/900×700/?animal"
-         alt="dog"
+          alt="Animal"
         />
-
       </div>
       <div class="customer-quotes__item carousel__item" data-slide-number="2">
         <span class="carousel__contact-button">
-        <a href="" title="Contacter le propriétaire">Contacter le propriétaire</a>
+          <a href="" title="Contacter le propriétaire"
+            >Contacter le propriétaire</a
+          >
         </span>
         <img
           class="carousel__image"
-            src="https://source.unsplash.com/random/900×700/?dog"
-          alt="dog"
+          src="https://source.unsplash.com/random/900×700/?dog"
+          alt="Animal"
         />
-       
       </div>
     </div>
-    <div class="customer-quotes__nav carousel__nav">
-
-    </div>
+    <div class="customer-quotes__nav carousel__nav"></div>
 
     <!-- Recherche -->
     <section>
@@ -64,13 +66,20 @@
 
         <button class="blueButton">Rechercher</button>
       </div>
+    </section>
+    </section>
+    <section>
 
       <!-- Card -->
       <div class="boxOfCards">
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?dog" alt="Animal" />
+            <img
+              class="cardAnimal__image"
+              src="https://source.unsplash.com/random/900×700/?dog"
+              alt="Animal"
+            />
 
             <!-- card__lost -->
             <div class="cardAnimal__lost">
@@ -120,7 +129,11 @@
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?animal" alt="Animal" />
+            <img
+              class="cardAnimal__image"
+              src="https://source.unsplash.com/random/900×700/?animal"
+              alt="Animal"
+            />
 
             <!-- card__lost -->
             <div class="cardAnimal__lost">
@@ -169,7 +182,11 @@
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />
+            <img
+              class="cardAnimal__image"
+              src="https://source.unsplash.com/random/900×700/?cat"
+              alt="Animal"
+            />
 
             <!-- card__lost -->
             <div class="cardAnimal__lost">
@@ -220,7 +237,11 @@
       <article class="card">
         <!-- card__picture -->
         <div class="cardAnimal">
-          <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?dog" alt="Animal" />
+          <img
+            class="cardAnimal__image"
+            src="https://source.unsplash.com/random/900×700/?dog"
+            alt="Animal"
+          />
 
           <!-- card__lost -->
           <div class="cardAnimal__lost">
