@@ -1,7 +1,7 @@
 <template>
 <div>
   <Header></Header>
-  <Category></Category>
+  <Subscribe></Subscribe>
   <Footer></Footer>
 </div>
 </template>

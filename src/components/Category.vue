@@ -178,10 +178,7 @@
             <button class="blueButton">Contacter le propriétaire</button>
           </div>
         </article>
-      
-      </div><!-- end boxOfcards -->
-<div class="boxOfCards">
-                  <!-- Card -->
+        <!-- Card -->
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
