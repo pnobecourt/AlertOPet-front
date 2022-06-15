@@ -24,8 +24,6 @@ header {
         justify-content: space-between;
         padding: 1rem;
         width: 100%;
-        -webkit-box-shadow: 0px 9px 12px -7px $shadow; 
-        box-shadow: 0px 9px 12px -7px $shadow;
     }
 
     &__nav ul {
@@ -64,8 +62,6 @@ header {
             width: 100%;
             padding-right: 2rem;
             box-shadow:none;
-            -webkit-box-shadow: 0px 9px 12px -7px $shadow; 
-            box-shadow: 0px 9px 12px -7px $shadow;
         }
 
         &__header {
