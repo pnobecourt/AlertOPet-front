@@ -9,7 +9,7 @@
       </h1>
     </section>
 
-    <section class="boxSmall">
+    <section class="box">
       <!-- connexion -->
       <form method="POST" id="connexion">
         <label for="name">Votre nom</label>

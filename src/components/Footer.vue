@@ -1,7 +1,6 @@
 <template>
-  <div>
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
       <div class="social">
         <a href="" target="_blank" title="Facebook"
           ><img src="../assets/images/Facebook.svg" alt="Facebook"
@@ -22,7 +21,6 @@
         <a href="" title="Contact">Mentions légales</a>
       </div>
     </footer>
-  </div>
 </template>
 
 <script>

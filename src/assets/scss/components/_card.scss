@@ -22,6 +22,7 @@
 .animalCard {
 
     @extend .animal;
+    margin-top:1rem;
 
     &__animalAlertDelete{
         background-color:$red;
@@ -73,6 +74,8 @@
     }
 
     &__lostAnimalStatusBlue {
+        font-family:Luckiest Guy;
+        font-size:1.5rem;
         color:$blueGreen;
     }
 
@@ -80,7 +83,6 @@
         width:100%;
     }
 
-    &__lostAnimalStatusBlue,
     &__lostAnimalStatusPink {
         font-family:Luckiest Guy;
         font-size:1.5rem;
@@ -88,8 +90,24 @@
     }
 }
 
+.cardAnimal__image {
+    @extend .carousel__image;
+    background-color:$white;
+    border:none;
+    object-position: center center;
+}
+
 .describe {
     margin-bottom:2rem;
+}
+
+#animal {
+    max-width:$container;
+    margin:0 auto;
+}
+
+#pictureAnimal {
+    text-align:center;
 }
 
 

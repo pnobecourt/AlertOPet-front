@@ -2,9 +2,12 @@
 // button
 
 .btn {
+    display:block;
     width:100%;
     height:3rem;
     border-radius:2rem;
+    max-width:500px;
+    margin:0 auto;
 }
 
 .yellowButton {
@@ -19,6 +22,26 @@
     border:$blue;
     color:$white;
     margin-top:1.5rem;
+}
+
+.carousel__contact-button{
+    margin-right:2.5%;
+    background-color:$blue;
+    color:$white;
+    font-size:.8rem;
+    width:100%;
+    margin-top:0;
+    border-top-right-radius:.3rem;
+    border-top-left-radius:.3rem;
+    height:2rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    & a{
+        color:$white;
+        text-decoration:none;
+    }
 }
 
 #picturAnimal button{

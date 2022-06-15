@@ -4,3 +4,9 @@
 .yellowButton {
     margin-top:1rem;
 }
+.container {
+    display:flex;
+    max-width:$container;
+    flex-direction:column;
+    margin:0 auto;
+}

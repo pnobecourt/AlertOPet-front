@@ -5,7 +5,7 @@
       <h1 class="title__page">À propos</h1>
     </section>
 
-    <section class="box">
+    <section>
       <div class="profil">
         <div class="profil__box">
           <div class="profil__card">

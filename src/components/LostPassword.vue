@@ -4,7 +4,7 @@
       <h1 class="title__page">Mot de passe perdu</h1>
     </section>
 
-    <section class="boxSmall">
+    <section class="box">
       <!-- connexion -->
       <form method="POST" id="lostPassword">
         <label for="email">Votre adresse Email</label>

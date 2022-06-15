@@ -1,20 +1,25 @@
 //=====================================================
 // général
 
-
 @include medium {
     .boxOfCards{
         justify-content:center;
         display:flex;
         flex-wrap:wrap;
+
+    }
+    .choiceAnimal {
+        max-width:500px;
+        margin:3rem auto;
     }
 
     .card {
-        width: 285px;
+        width: 385px;
         margin:10px;
     }
 
 }
+
 
 @include small {
     .choiceAnimal,
@@ -22,19 +27,20 @@
     .blueButton,
     .yellowButton{
         max-width:500px;
-        margin:3rem auto;
+        margin:1rem auto;
         display:block;
     }
 
+    @include big {
+        .card {
+            width:30%;
+        }
+    }
+
+
+
     .top404 {
         margin-top:5rem;
-    }
-}
-
-@include big {
-
-    .bell {
-        margin-right:1rem;
     }
 }
 
@@ -42,21 +48,27 @@ body{
 background-color:$white;
 font-family:$body;
 font-size:1rem;
-//background-image:url('./assets/images/empreintes.svg');
+background-image:url('./assets/images/empreintes.svg');
 min-height: 100vh;
 line-height:1.5rem;
 
-@include medium {
+@include big {
     background-size:cover;
 }
 
+.bell {
+    margin-right:1rem;
+}
 }
 
 .container {
+    display:flex;
     padding-left:1rem;
     padding-right:1rem;
-    max-width:960px;
     min-height: 82vh;
+    justify-content:center;
+    flex-wrap:wrap;
+    max-width:$container;
 }
 
 a {
@@ -100,8 +112,4 @@ article {
     padding-top:3rem;
 }
 
-.dog {
-    @extend .choiceAnimal__select;
-    background-color:$white;
-    margin-top:0rem;
-}
+

@@ -5,10 +5,10 @@
       <h1 class="title__page">Déclencher une alerte pour un animal</h1>
     </section>
 
-    <section class="top">
+    <section class="box">
       <!-- picture of animal -->
 
-      <img class="dog" src="../assets/images/dog.jpg" alt="dog" />
+      <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?dog" alt="Animal" />
       <form method="POST" id="pictureAnimal">
         <div class="choiceLost">
           <div class="choiceLost__box">
@@ -37,6 +37,7 @@
 
         <button type="submit" class="blueButton">Ajouter une photo</button>
       </form>
+</section>
 
       <!-- create animal -->
       <form method="POST" id="animal">
@@ -73,10 +74,10 @@
 
         <label for="info">Votre message / Description</label>
         <textarea id="info" name="info" rows="5" cols="33"> </textarea>
-
-        <button class="blueButton">Enregistrer</button>
+<div class="box">
+        <button class="blueButton bottom">Enregistrer</button>
+        </div>
       </form>
-    </section>
     <br />
   </div>
   <!-- Fin container -->
