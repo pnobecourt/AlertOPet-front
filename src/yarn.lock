@@ -723,6 +723,11 @@
     "picocolors" "^1.0.0"
     "source-map-js" "^1.0.2"
 
+"propper@^1.0.4":
+  "integrity" "sha512-ZD102FjI36dmVf7i2NaDMEIsZrcd2eHBj2rtAHsxZPBMBEhYSOj9NyAhRP9wXjAiDKzYOpchq3iru50PquR5aQ=="
+  "resolved" "https://registry.npmjs.org/propper/-/propper-1.0.4.tgz"
+  "version" "1.0.4"
+
 "readdirp@~3.6.0":
   "integrity" "sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA=="
   "resolved" "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz"
