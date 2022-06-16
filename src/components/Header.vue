@@ -6,7 +6,7 @@
     <div class="nav-header">      
       <div class="nav-logo">
         <a href="#">
-          <img src="../assets/images/Logo.svg" width="100px" alt="logo">
+          <img src="../assets/images/alertOpet.png" width="120px" alt="logo">
         </a>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <a href="#">Alertes en cours</a>
       <a href="#">Signaler un animal</a>
       <a href="#">A propos</a>
-      <button class="loginBtn">Connexion</button>
+      <button class="loginBtn" ><span v-if="userConnected">Connexion</span></button>
     </div>
  
   </div>
@@ -49,7 +49,7 @@
 export default {
   data() {
     return {
-      isUserConnected: false,
+      userConnected: true,
     };
   },
 
