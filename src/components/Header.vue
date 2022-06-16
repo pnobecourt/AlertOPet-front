@@ -6,18 +6,18 @@
     <div class="nav-header">      
       <div class="nav-logo">
         <a href="#">
-          <img src="../assets/images/alertOpet.png" width="120px" alt="logo">
+          <img src="../assets/images/alertOpet.png" alt="logo">
         </a>
       </div>
     </div>
  <!--bell-->
     <div class="navigation__bell">
 
-        <div class="navigation__bell__img">
-          <img src="../assets/images/bell.svg" height="22px" width="22px" alt="Il y a 1 nouvelle(s) recherche(s)"/>
+        <div class="navigation__bell__img" v-if="userConnected">
+          <img src="../assets/images/bell.svg" alt="Il y a 1 nouvelle(s) recherche(s)"/>
         </div>
 
-        <div class="navigation__bell__alert">1</div>
+        <div class="navigation__bell__alert" v-if="userConnected">1</div>
 
     </div>
 
@@ -38,7 +38,7 @@
       <a href="#">Alertes en cours</a>
       <a href="#">Signaler un animal</a>
       <a href="#">A propos</a>
-      <button class="loginBtn" ><span v-if="userConnected">Connexion</span></button>
+      <button class="loginBtn"><span v-if="userConnected"><i class="fa-solid fa-power-off"></i> Déconnexion</span><span v-else>Connexion</span></button>
     </div>
  
   </div>
@@ -49,12 +49,8 @@
 export default {
   data() {
     return {
-      userConnected: true,
+      userConnected: false,
     };
-  },
-
-  mounted() {
-
   },
 };
 </script>
