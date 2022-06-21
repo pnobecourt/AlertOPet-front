@@ -1,7 +1,7 @@
 <template>
 <div>
   <Header></Header>
-  <Home></Home>
+  <Connexion></Connexion>
   <Footer></Footer>
 </div>
 </template>

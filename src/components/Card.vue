@@ -3,7 +3,7 @@
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />
+            <!--<img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />-->
 
             <!-- card__lost -->
             <div class="cardAnimal__lost">
@@ -25,9 +25,10 @@
             </div>
 
             <div class="cardAnimal__describe">
-              <p>Type : {{ animalData.species }}</p>
-              <p>Lieu : {{ animalData.title }}</p>
-              <p>Nom : {{ animalData.name }}</p>
+              <p>ID : {{ animalData.id }}</p>
+              <p>Type : {{ animalData.type }}</p>
+              <p>Lieu : </p>
+              <p>Nom : {{ animalData.title.rendered }}</p>
               <p>Race : {{ animalData.breed }}</p>
               <p>Taille : {{ animalData.size }}</p>
               <p>Poids : {{ animalData.weight }}</p>
@@ -36,13 +37,7 @@
             </div>
 
             <div class="cardAnimal__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
-              sequi dolorem iure dolor modi quidem minima eaque officiis laborum
-              repellat quia similique, atque, quis voluptates, asperiores saepe
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
-              laudantium beatae accusantium, repellendus perferendis minus
-              cupiditate voluptates, officiis tempore odio aperiam error nostrum
-              consequuntur. Rerum modi aut voluptatem odit!
+              {{ animalData.description }}
             </div>
 
             <!-- Contacter le propriétaire -->

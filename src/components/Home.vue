@@ -97,7 +97,6 @@ import Card from "./Card.vue";
 export default {
   data() {
     return {
-
       cardList: []
     };
   },
@@ -187,10 +186,10 @@ export default {
 
 methods : {
   loadCard(){
-    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/pets').then
+    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/pets?_embed').then
     ((response) => {
-        console.log(response);
-        this.cardList = response.data;
+        console.log(response.data);
+      this.cardList = response.data;
     }).catch((error) =>{
         console.error(error );
     })

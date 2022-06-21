@@ -12,15 +12,15 @@
 
     <section class="box">
       <!-- connexion -->
-      <form method="POST" id="connexion">
+      <form @submit.prevent="onFormSubmit">
         <label for="email">Votre adresse</label>
-        <input id="email" name="email" placeholder="Votre adresse mail" />
+        <input v-model="email" id="email" placeholder="Votre adresse mail" />
 
         <label for="password">Votre mot de passe</label>
         <input
+        v-model="password"
           id="password"
           type="password"
-          name="password"
           placeholder="Votre mot de passe"
         />
 
@@ -29,7 +29,7 @@
             >Mot de passe perdu</a
           >
         </p>
-
+<div v-if="errorMessages" class="alert error">{{ errorMessages }} </div>
         <button class="blueButton">Connexion</button>
       </form>
 
@@ -47,8 +47,34 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      errorMessages: "",
+      password: "",
+      email: "",
+
+    };
   },
+  methods: {
+    onFormSubmit() {
+      const error = [];
+
+      if (this.password.length <= 6) {
+        error.push("Le mot de passe est invalide.");
+      }
+
+      if (!this.email) {
+        error.push('Indiquez votre adresse email.');
+      } else if (!this.validEmail(this.email)) {
+        error.push('L\'email n\'est pas valide.');
+      }
+
+      this.errorMessages = error.join(', ');
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+  }
 };
 </script>
 
