@@ -51,12 +51,17 @@
       <!-- Recherche -->
       <section>
         <div class="choiceAnimal">
-          <select name="type" id="type" class="choiceAnimal__select">
-            <option value="">Sélectionnez un type d'animal</option>
-            <option value="0">Chien</option>
-            <option value="1">Chat</option>
-            <option value="2">Poule</option>
-            <option value="3">Canard</option>
+          <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="specieList">
+
+            <option value="" selected>Sélectionnez un type d'animal</option>
+
+            <option
+              v-for="specie in specieList" 
+              :key="specie.id" 
+              :value="specie.id">
+              {{ specie.name }}
+            </option>
+
           </select>
 
           <select name="type" id="selectCountry" class="choiceAnimal__select">
@@ -72,7 +77,6 @@
       </section>
     </section>
 
-<button @click="loadCard()">liste des animaux</button>
     <!-- list of Cards -->
     <section>
     <!-- Cards -->
@@ -93,108 +97,53 @@
 <script>
 import axios from "axios";
 import Card from "./Card.vue";
+import carousel from "../assets/js/carousel.js";
+import speciesService from '../services/specieService.js';
 
 export default {
   data() {
     return {
-      cardList: []
+      cardList: [],
+      specieList: [],
     };
   },
   components: {
     Card,
   },
   mounted() {
-      const carousel = {
-      currentSlideNumber: 0,
-      autoScrollDuration: 5000,
-      init: function () {
-        if (document.querySelector(".carousel") === null) {
-          return;
-        }
-        carousel.generateNavButtons();
-
-        const navButtonList = document.querySelectorAll(
-          ".carousel__nav__button"
-        );
-
-        for (const button of navButtonList) {
-          button.addEventListener("click", carousel.onNavButtonClick);
-        }
-        carousel.autoScroll();
-      },
-      generateNavButtons: function () {
-        const slideCount = document.querySelectorAll(".carousel__item").length;
-        for (let slideIndex = 0; slideIndex < slideCount; slideIndex++) {
-
-          const newButton = document.createElement("div");
-          newButton.classList.add("carousel__nav__button");
-          newButton.classList.add("carousel__nav__bar");
-
-          if (slideIndex === 0) {
-            newButton.classList.add("active");
-          }
-
-          newButton.setAttribute("data-target-slide", slideIndex);
-          const navContainer = document.querySelector(".carousel__nav");
-
-          navContainer.appendChild(newButton);
-        }
-      },
-      onNavButtonClick: function (event) {
-
-        const targetButton = event.currentTarget;
-        const targetSlide = targetButton.dataset.targetSlide;
-        carousel.scrollToSlide(targetSlide);
-        carousel.currentSlideNumber = targetSlide;
-      },
-      autoScroll: function () {
-
-        setInterval(function () {
-
-          const slideCount =
-            document.querySelectorAll(".carousel__item").length - 1;
-
-          if (carousel.currentSlideNumber >= slideCount) {
-            carousel.currentSlideNumber = 0;
-          } else {
-            carousel.currentSlideNumber++;
-          }
-          
-          carousel.scrollToSlide(carousel.currentSlideNumber);
-        }, carousel.autoScrollDuration);
-      },
-      scrollToSlide: function (targetSlideNumber) {
-        const carouselContainer = document.querySelector(".carousel");
-        const containerWidth = carouselContainer.offsetWidth;
-        carouselContainer.scrollTo(containerWidth * targetSlideNumber, 0);
-        const navButtonList = document.querySelectorAll(
-          ".carousel__nav__button"
-        );
-        for (const button of navButtonList) {
-          button.classList.remove("active");
-        }
-        const currentSlideButton = document.querySelector(
-          '.carousel__nav__button[data-target-slide="' +
-            targetSlideNumber +
-            '"]'
-        );
-        currentSlideButton.classList.add("active");
-      },
-    };
-    document.addEventListener("DOMContentLoaded", carousel.init);
+    this.loadCard();
+    this.loadSpecies();
   },
 
 methods : {
+
   loadCard(){
-    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/pets?_embed').then
+    axios.get('http://devback.alertopet.com/wp-json/wp/v2/alert?embed').then
     ((response) => {
         console.log(response.data);
       this.cardList = response.data;
     }).catch((error) =>{
         console.error(error );
     })
-  }
-}
+  },
+
+  loadSpecies() {
+            // getAllRecipeTypes() renvoie une promesse
+            axios.get('http://devback.alertopet.com/wp-json/wp/v2/species').then
+            ((response) => {
+              console.log(response.data);
+                this.specieList = response.data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        },
+
+onSpeciesFilterChange() {
+            // on relance la récupération des données
+            this.loadPets(1);
+        }
+},
 };
 </script>
 
