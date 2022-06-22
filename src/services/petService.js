@@ -14,7 +14,7 @@ export default {
     // on récupère une liste de recette
     getPet(page, selectedSpeciesList) {
         // toutes les requêtes vont tenir compte du nombre de résultats par page
-        let queryString = '?per_page=' + petsPerPage + '&page=' + page;
+        let queryString = '?per_page=' + petsPerPage;
         // gestion du filtre recipeType :
         // nomdelataxo[terms]=iddeterms
         // nomdelataxo[operator]=RELATION (OR ou AND, exlusif ou non)

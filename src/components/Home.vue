@@ -51,23 +51,21 @@
       <!-- Recherche -->
       <section>
         <div class="choiceAnimal">
-          <select 
-            name="type" id="type" 
+          <select
+            name="pet" id="type" 
             class="choiceAnimal__select" 
-            multiple @change="onSpeciesFilterChange()" 
             v-model="specieList">
-
-            <option value="0">Sélectionnez un type d'animal</option>
+            <option value="" selected>Sélectionnez un type d'animal</option>
             <option
               v-for="specie in specieList" 
-              :key="specie.id" 
+              :key="specie.name" 
               :value="specie.id">
               {{ specie.name }}
             </option>
-
           </select>
-          <select name="type" id="selectCountry" class="choiceAnimal__select">
-            <option value="0">Sélectionnez un lieu</option>
+
+          <select name="city" id="selectCountry" class="choiceAnimal__select">
+            <option value="">Sélectionnez un lieu</option>
             <option value="1">Lille</option>
             <option value="2">Roubaix</option>
             <option value="3">Tourcoing</option>
@@ -201,57 +199,57 @@ export default {
 
     // cette méthode permet de charger des recettes depuis l'API
     loadPets(page) {
-        // on met à jour le numéro de la page courante
-        // this.currentPage = page;
-        const baseUrl = 'http://devback.alertopet.com/wp-json/wp/v2/alert';
-        
-        // getRecipes() sur recipeService renvoie la promesse d'axios
-        petService.getPet(page, this.selectedSpeciesList)
-        .then((response) => {
-            this.petList = response.data;
-            // on utilise la même syntaxe qu'un array associatif php pour récupérer dans un objet une valeur dont la clé doit être protégée entre "", ici x-wp-totalpages de l'objet response.header
-            // on doit bien convertir en int pour que le v-for qui génère les liens de pagination se comporte comme un for
-            this.pagesCount = parseInt(response.headers["x-wp-totalpages"]);
-            console.log(response); // on trouve plusieurs infos en plus de la donnée => notamment headers
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+      // on met à jour le numéro de la page courante
+      // this.currentPage = page;
+      const baseUrl = 'http://devback.alertopet.com/wp-json/wp/v2/alert';
+      
+      // getRecipes() sur recipeService renvoie la promesse d'axios
+      petService.getPet(page, this.selectedSpeciesList)
+      .then((response) => {
+          this.petList = response.data;
+          // on utilise la même syntaxe qu'un array associatif php pour récupérer dans un objet une valeur dont la clé doit être protégée entre "", ici x-wp-totalpages de l'objet response.header
+          // on doit bien convertir en int pour que le v-for qui génère les liens de pagination se comporte comme un for
+          this.pagesCount = parseInt(response.headers["x-wp-totalpages"]);
+          console.log(response); // on trouve plusieurs infos en plus de la donnée => notamment headers
+      })
+      .catch((error) => {
+          console.error(error);
+      });
     },
 
     loadSpecies() {
-            // getAllRecipeTypes() renvoie une promesse
-            speciesService.getAllSpecies()
-            .then((response) => {
-                this.specieList = response.data;
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        },
-        onSpeciesFilterChange() {
-            // on relance la récupération des données
-            this.loadPets(1);
-        },
+      // getAllRecipeTypes() renvoie une promesse
+      speciesService.getAllSpecies()
+      .then((response) => {
+          this.specieList = response.data;
+      })
+      .catch((error) => {
+          console.error(error);
+      });
+    },
+        // onSpeciesFilterChange() {
+        //     // on relance la récupération des données
+        //     this.loadPets(1);
+        // },
         // au clic sur une recette
-        onPetClick(petId) {
-            // on déclenche la navigation vers la route /recipe/{id}
-            // en passant recipeId
-            this.$router.push({ 
-                name: 'pet',
-                params: {
-                    petId: petId
-                }
-            });
-        }
+    onPetClick(petId) {
+      // on déclenche la navigation vers la route /recipe/{id}
+      // en passant recipeId
+      this.$router.push({ 
+          name: 'pet',
+          params: {
+              petId: petId
+          }
+      });
+    }
   },
 
   mounted() {
-        // on charge les données depuis l'API
-        // on précise qu'on veut la page 1
-        this.loadPets(1);
-        this.loadSpecies();
-    }
+    // on charge les données depuis l'API
+    // on précise qu'on veut la page 1
+    this.loadPets(1);
+    this.loadSpecies();
+  }
 };
 
 </script>
