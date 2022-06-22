@@ -51,20 +51,27 @@
       <!-- Recherche -->
       <section>
         <div class="choiceAnimal">
-          <select name="type" id="type" class="choiceAnimal__select">
-            <option value="">Sélectionnez un type d'animal</option>
-            <option value="0">Chien</option>
-            <option value="1">Chat</option>
-            <option value="2">Poule</option>
-            <option value="3">Canard</option>
-          </select>
+          <select 
+            name="type" id="type" 
+            class="choiceAnimal__select" 
+            multiple @change="onSpeciesFilterChange()" 
+            v-model="specieList">
 
+            <option value="0">Sélectionnez un type d'animal</option>
+            <option
+              v-for="specie in specieList" 
+              :key="specie.id" 
+              :value="specie.id">
+              {{ specie.name }}
+            </option>
+
+          </select>
           <select name="type" id="selectCountry" class="choiceAnimal__select">
-            <option value="">Sélectionnez un lieu</option>
-            <option value="0">Lille</option>
-            <option value="1">Roubaix</option>
-            <option value="2">Tourcoing</option>
-            <option value="3">Paris</option>
+            <option value="0">Sélectionnez un lieu</option>
+            <option value="1">Lille</option>
+            <option value="2">Roubaix</option>
+            <option value="3">Tourcoing</option>
+            <option value="4">Paris</option>
           </select>
 
           <button class="blueButton">Rechercher</button>
@@ -72,13 +79,20 @@
       </section>
     </section>
 
-<button @click="loadCard()">liste des animaux</button>
-    <!-- list of Cards -->
+<button @click="loadPets()">liste des animaux</button>
+    <!-- list of Cards --> 
     <section>
-    <!-- Cards -->
+        
       <div class="boxOfCards">
 
-        <Card v-for="animal in cardList" :key="animal.id" :animalData="animal"></Card>
+        <!-- Card -->
+
+          <Card v-for="animal in petList" :key="animal.id" :animalData="animal"></Card>
+
+          <!-- @click="onPetClick(currentPet.id)"
+          v-for="currentPet in petList" 
+          :key="currentPet.id"
+          :recipeData="currentPet"> -->
 
 
       </div>
@@ -91,20 +105,27 @@
 </template>
 
 <script>
+
 import axios from "axios";
 import Card from "./Card.vue";
+import petService from '../services/petService.js';
+import speciesService from '../services/specieService.js';
 
 export default {
   data() {
     return {
-      cardList: []
+      petList: [],
+      specieList: []
     };
   },
   components: {
-    Card,
+      Card,
   },
+
+  //! Carousel =======================================================
+
   mounted() {
-      const carousel = {
+            const carousel = {
       currentSlideNumber: 0,
       autoScrollDuration: 5000,
       init: function () {
@@ -112,11 +133,9 @@ export default {
           return;
         }
         carousel.generateNavButtons();
-
         const navButtonList = document.querySelectorAll(
           ".carousel__nav__button"
         );
-
         for (const button of navButtonList) {
           button.addEventListener("click", carousel.onNavButtonClick);
         }
@@ -125,35 +144,27 @@ export default {
       generateNavButtons: function () {
         const slideCount = document.querySelectorAll(".carousel__item").length;
         for (let slideIndex = 0; slideIndex < slideCount; slideIndex++) {
-
           const newButton = document.createElement("div");
           newButton.classList.add("carousel__nav__button");
           newButton.classList.add("carousel__nav__bar");
-
           if (slideIndex === 0) {
             newButton.classList.add("active");
           }
-
           newButton.setAttribute("data-target-slide", slideIndex);
           const navContainer = document.querySelector(".carousel__nav");
-
           navContainer.appendChild(newButton);
         }
       },
       onNavButtonClick: function (event) {
-
         const targetButton = event.currentTarget;
         const targetSlide = targetButton.dataset.targetSlide;
         carousel.scrollToSlide(targetSlide);
         carousel.currentSlideNumber = targetSlide;
       },
       autoScroll: function () {
-
         setInterval(function () {
-
           const slideCount =
             document.querySelectorAll(".carousel__item").length - 1;
-
           if (carousel.currentSlideNumber >= slideCount) {
             carousel.currentSlideNumber = 0;
           } else {
@@ -184,19 +195,67 @@ export default {
     document.addEventListener("DOMContentLoaded", carousel.init);
   },
 
-methods : {
-  loadCard(){
-    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/pets?_embed').then
-    ((response) => {
-        console.log(response.data);
-      this.cardList = response.data;
-    }).catch((error) =>{
-        console.error(error );
-    })
-  }
-}
+//! End of Carousel =======================================================
+
+  methods : {
+
+    // cette méthode permet de charger des recettes depuis l'API
+    loadPets(page) {
+        // on met à jour le numéro de la page courante
+        // this.currentPage = page;
+        const baseUrl = 'http://devback.alertopet.com/wp-json/wp/v2/alert';
+        
+        // getRecipes() sur recipeService renvoie la promesse d'axios
+        petService.getPet(page, this.selectedSpeciesList)
+        .then((response) => {
+            this.petList = response.data;
+            // on utilise la même syntaxe qu'un array associatif php pour récupérer dans un objet une valeur dont la clé doit être protégée entre "", ici x-wp-totalpages de l'objet response.header
+            // on doit bien convertir en int pour que le v-for qui génère les liens de pagination se comporte comme un for
+            this.pagesCount = parseInt(response.headers["x-wp-totalpages"]);
+            console.log(response); // on trouve plusieurs infos en plus de la donnée => notamment headers
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    },
+
+    loadSpecies() {
+            // getAllRecipeTypes() renvoie une promesse
+            speciesService.getAllSpecies()
+            .then((response) => {
+                this.specieList = response.data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        },
+        onSpeciesFilterChange() {
+            // on relance la récupération des données
+            this.loadPets(1);
+        },
+        // au clic sur une recette
+        onPetClick(petId) {
+            // on déclenche la navigation vers la route /recipe/{id}
+            // en passant recipeId
+            this.$router.push({ 
+                name: 'pet',
+                params: {
+                    petId: petId
+                }
+            });
+        }
+  },
+
+  mounted() {
+        // on charge les données depuis l'API
+        // on précise qu'on veut la page 1
+        this.loadPets(1);
+        this.loadSpecies();
+    }
 };
+
 </script>
 
 <style lang="scss" scoped>
+
 </style>

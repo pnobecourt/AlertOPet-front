@@ -18,12 +18,10 @@
 
       <p>
         Le site
-        <a
-          href="https://alertopet.com/"
+        <RouterLink to="/"
           target="_blank"
           rel="noreferrer noopener"
-          >alertOpet.com</a
-        >
+          >alertOpet.com</RouterLink>
         est la propriété exclusive de alertOpet, qui l’édite.
       </p>
 
@@ -43,7 +41,7 @@
       <p>
         Est désigné ci-après : <strong>Utilisateur</strong>, tout internaute se
         connectant et utilisant le site susnommé :
-        <a href="https://alertopet.com/">alertOpet.com.</a>
+        <RouterLink to="/">alertOpet.com.</RouterLink>
       </p>
 
       <p>

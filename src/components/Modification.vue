@@ -6,18 +6,19 @@
 
     <section class="box">
       <!-- connexion -->
-      <form method="POST" id="modifyProfil">
+      <form @submit.prevent="onFormSubmit" id="modifyProfil">
         <label for="name">Votre nom</label>
-        <input id="name" name="name" placeholder="Votre nom" />
+        <input id="name" v-model="name" name="name" placeholder="Votre nom" />
 
         <label for="email">Votre adresse email</label>
-        <input id="email" name="email" placeholder="Votre adresse email" />
+        <input id="email" v-model="email" name="email" placeholder="Votre adresse email" />
 
         <label for="password">Votre mot de passe</label>
         <input
           id="password"
           type="password"
           name="password"
+          v-model="password"
           placeholder="Votre mot de passe"
         />
 
@@ -26,6 +27,7 @@
           id="confirmPassword"
           type="confirmPassword"
           name="confirmPassword"
+          v-model="confirmPassword"
           placeholder="Confirmer votre mot de passe"
         />
 
@@ -34,14 +36,46 @@
     </section>
   </div>
 </template>
-
 <script>
 export default {
   data() {
-    return {};
+    return {
+      errorMessages: "",
+      password: "",
+      email: "",
+      confirmPassword: "",
+      name: "",
+    };
   },
+  methods: {
+    onFormSubmit() {
+      const error = [];
+
+      if (this.password.length <= 6) {
+        error.push("Le mot de passe est invalide.");
+      }
+
+      if (this.password != this.confirmPassword) {
+        error.push("Les mots de passe ne sont pas les mêmes.");
+      }
+
+
+      if (!this.email) {
+        error.push('Indiquez votre adresse email.');
+      } else if (!this.validEmail(this.email)) {
+        error.push('L\'email n\'est pas valide.');
+      }
+
+      this.errorMessages = error.join(', ');
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+  }
 };
 </script>
+
 
 <style lang="scss" scoped>
 </style>
