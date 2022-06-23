@@ -25,9 +25,8 @@
         />
 
         <p class="lostPassword">
-          <a href="" title="mot de passe perdu" rel="noopener noreferrer"
-            >Mot de passe perdu</a
-          >
+          <RouterLink to="/mot-de-passe-perdu" rel="noopener noreferrer"
+            >Mot de passe perdu</RouterLink>
         </p>
 <div v-if="errorMessages" class="alert error">{{ errorMessages }} </div>
         <button class="blueButton">Connexion</button>
@@ -45,11 +44,14 @@
 </template>
 
 <script>
+import userService from '../services/userServices';
+
 export default {
   data() {
     return {
       errorMessages: "",
       password: "",
+      username: "",
       email: "",
 
     };
@@ -69,11 +71,36 @@ export default {
       }
 
       this.errorMessages = error.join(', ');
+
+// si pas de message d'erreur
+      if (!this.errorMessages) {
+          // on s'authentifie avec l'API
+          userService.connectUser({
+              username: this.email,
+              password: this.password
+          })
+          .then((response) => {
+              // si on s'est bien connecté, on navigue vers la home
+              this.$router.push('/mon-compte');
+          })
+          .catch((error) => {
+            this.$router.push('/connection');
+            this.errorMessages = 
+              // sinon on affiche l'erreur
+              console.log(error);    
+          })
+      }
+
+
+
     },
     validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
+
+    
+
   }
 };
 </script>
