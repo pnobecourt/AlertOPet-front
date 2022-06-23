@@ -26,9 +26,8 @@
       <!-- Recherche -->
       <section>
         <div class="choiceAnimal">
+          <label for="type">Sélectionnez un type d'animal :</label>
           <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="specieList">
-
-            <option value="" selected>Sélectionnez un type d'animal</option>
 
             <option
               v-for="specie in specieList" 
@@ -39,12 +38,17 @@
 
           </select>
 
-          <select name="type" id="selectCountry" class="choiceAnimal__select">
-            <option value="">Sélectionnez un lieu</option>
-            <option value="0">Lille</option>
-            <option value="1">Roubaix</option>
-            <option value="2">Tourcoing</option>
-            <option value="3">Paris</option>
+
+        <label for="selectCountry">Sélectionnez un lieu :</label>
+          <select name="type" id="selectCountry" class="choiceAnimal__select" v-model="cardList">
+
+            <option
+              v-for="city in cardList" 
+              :key="city.id" 
+              :value="city.id">
+              {{ city.meta["localization"] }}
+            </option>
+
           </select>
 
           <button class="blueButton">Rechercher</button>
@@ -80,6 +84,7 @@ export default {
     return {
       cardList: [],
       specieList: [],
+      specieList : "choice",
     };
   },
   components: {
@@ -103,9 +108,8 @@ methods : {
   },
   
   contactOwner(email) {
-    console.log(email);
-       // var link = 'mailto:' + email;
-       // window.location.href = link;
+       var link = 'mailto:' + email;
+       window.location.href = link;
       },
 
   loadSpecies() {

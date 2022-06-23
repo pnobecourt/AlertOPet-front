@@ -68,8 +68,6 @@ export default {
       }
 
   },
-
-
   props: ["animalData"]
 }
 </script>
