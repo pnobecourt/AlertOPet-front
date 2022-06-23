@@ -9,43 +9,18 @@
     <!-- Carousel -->
     <section class="box">
       <div class="customer-quotes__nav carousel">
-        <div class="customer-quotes__item carousel__item" data-slide-number="0">
-          <span class="carousel__contact-button">
-            <a href="" title="Contacter le propriétaire"
-              >Contacter le propriétaire</a
-            >
+
+        <div v-for="(animal, index) in cardList.slice(0, 3)" :key="animal.id" :animalData="animal" class="customer-quotes__item carousel__item" :data-slide-number= index>
+
+          <span class="carousel__contact-button" @click="contactOwner(animal.meta['contactMail'])">
+           Contacter le propriétaire de {{ animal.meta["petName"] }}
           </span>
-          <img
-            class="carousel__image"
-            src="https://source.unsplash.com/random/900×700/?cat"
-            alt="Animal"
-          />
-        </div>
-        <div class="customer-quotes__item carousel__item" data-slide-number="1">
-          <span class="carousel__contact-button">
-            <a href="" title="Contacter le propriétaire"
-              >Contacter le propriétaire</a
-            >
-          </span>
-          <img
-            class="carousel__image"
-            src="https://source.unsplash.com/random/900×700/?animal"
-            alt="Animal"
-          />
-        </div>
-        <div class="customer-quotes__item carousel__item" data-slide-number="2">
-          <span class="carousel__contact-button">
-            <a href="" title="Contacter le propriétaire"
-              >Contacter le propriétaire</a
-            >
-          </span>
-          <img
-            class="carousel__image"
-            src="https://source.unsplash.com/random/900×700/?dog"
-            alt="Animal"
-          />
-        </div>
+
+          <img class="carousel__image" :src= animal.petPicture alt="Animal"/>
+          </div>
+
       </div>
+
       <div class="customer-quotes__nav carousel__nav"></div>
 
       <!-- Recherche -->
@@ -126,6 +101,12 @@ methods : {
         console.error(error );
     })
   },
+  
+  contactOwner(email) {
+    console.log(email);
+       // var link = 'mailto:' + email;
+       // window.location.href = link;
+      },
 
   loadSpecies() {
             // getAllRecipeTypes() renvoie une promesse

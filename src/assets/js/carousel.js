@@ -2,9 +2,11 @@ const carousel = {
     currentSlideNumber: 0,
     autoScrollDuration: 5000,
     init: function () {
+
       if (document.querySelector(".carousel") === null) {
         return;
       }
+
       carousel.generateNavButtons();
 
       const navButtonList = document.querySelectorAll(
@@ -16,9 +18,9 @@ const carousel = {
       }
       carousel.autoScroll();
     },
+
     generateNavButtons: function () {
-      const slideCount = document.querySelectorAll(".carousel__item").length;
-      for (let slideIndex = 0; slideIndex < slideCount; slideIndex++) {
+      for (let slideIndex = 0; slideIndex < 3; slideIndex++) {
 
         const newButton = document.createElement("div");
         newButton.classList.add("carousel__nav__button");
@@ -58,6 +60,7 @@ const carousel = {
       }, carousel.autoScrollDuration);
     },
     scrollToSlide: function (targetSlideNumber) {
+
       const carouselContainer = document.querySelector(".carousel");
       const containerWidth = carouselContainer.offsetWidth;
       carouselContainer.scrollTo(containerWidth * targetSlideNumber, 0);
@@ -73,6 +76,6 @@ const carousel = {
           '"]'
       );
       currentSlideButton.classList.add("active");
-    },
+},
   };
   document.addEventListener("DOMContentLoaded", carousel.init);

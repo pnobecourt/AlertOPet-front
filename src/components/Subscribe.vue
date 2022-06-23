@@ -36,9 +36,9 @@
 
         <div class="checkbox">
           <input type="checkbox" id="policy" name="policy" />
-          <label for="policy"
-            >J'accepte la
-            <a href="" target="_blank">politique de confidentialité</a>
+          <label for="policy">J'accepte la
+            <RouterLink to="/mentions-legales" rel="noopener noreferrer"
+            >Politique de confidentialité</RouterLink>
           </label>
         </div>
 

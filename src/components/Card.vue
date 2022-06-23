@@ -3,7 +3,7 @@
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
-            <!--<img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />-->
+            <img class="cardAnimal__image" :src= animalData.petPicture  alt="Animal" />
 
             <!-- card__lost -->
 
@@ -24,8 +24,7 @@
                 <i class="fa-solid fa-share-nodes"></i>
               </div>
             </div>
-
-            <div class="cardAnimal__describe">
+            <div class="cardAnimal__describe" @click="onPetClick(animalData.id)">
               <p>ID : {{ animalData.id }}</p>
               <p>Type : {{ animalData.type }}</p>
               <p>Lieu : {{ animalData.meta["localization"] }}</p>
@@ -41,17 +40,36 @@
             </div>
 
             <!-- Contacter le propriétaire -->
-            <button class="blueButton" >Contacter le propriétaire</button>
+            <button class="blueButton" @click="contactOwner(animalData.meta['contactMail'])">Contacter le propriétaire</button>
           </div>
         </article>
 </template>
 <script>
+import petService from '../services/petService.js';
 export default {
   data() {
     return {
 
     };
   },
+  methods : {
+      onPetClick(petId){
+        console.log(petId);
+            this.$router.push({ 
+                name: 'alerte',
+                params: {
+                    alerteID: petId
+                }
+            });
+      },
+      contactOwner(email) {
+        var link = 'mailto:' + email;
+        window.location.href = link;
+      }
+
+  },
+
+
   props: ["animalData"]
 }
 </script>

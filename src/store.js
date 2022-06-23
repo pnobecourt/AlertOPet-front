@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import userService from './services/userServices';
+import userService from './services/userServices.js';
 
 // Create a new store instance.
 const store = createStore({

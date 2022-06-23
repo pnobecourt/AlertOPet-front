@@ -9,7 +9,7 @@
 <script>
     import Header from './components/Header.vue';
     import Footer from './components/Footer.vue';
-    import userService from './services/userServices';
+    import userService from './services/userServices.js';
     
   export default {
       components: {

@@ -10,6 +10,17 @@
     margin:0 auto;
 }
 
+.createButton {
+    @extend .btn;
+    display:flex;
+    background-color:$orange;
+    border:$orange;
+    text-decoration:none;
+    justify-content:center;
+    color:$darkness;
+    align-items:center;
+}
+
 .yellowButton {
     @extend .btn;
     background-color:$orange;

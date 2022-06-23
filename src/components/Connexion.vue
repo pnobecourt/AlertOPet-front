@@ -29,22 +29,22 @@
             >Mot de passe perdu</RouterLink>
         </p>
 <div v-if="errorMessages" class="alert error">{{ errorMessages }} </div>
-        <button class="blueButton">Connexion</button>
+
+        <button type="submit" class="blueButton">Connexion</button>
       </form>
 
       <hr />
 
       <!-- create accompte -->
-      <form method="POST" id="createAccount">
-        <button class="yellowButton">Créer un compte</button>
-      </form>
+<RouterLink to="/creation-compte" rel="noopener noreferrer"
+             class="createButton" >Créer un compte</RouterLink>
     </section>
   </div>
   <!-- End container -->
 </template>
 
 <script>
-import userService from '../services/userServices';
+import userService from '../services/userServices.js';
 
 export default {
   data() {
