@@ -34,7 +34,7 @@ const routes = [
     { path: '/alerte/:alertId', component: CardPetAlert, name: "alerte"},
     { path: '/a-propos', component: About, name: "a-propos"},
     { path: '/mentions-legales', component: Policy, name: "mentions-legales"},
-    { path: '/page-introuvable', component: NotFound, name: "page-introuvable"},
+    { path: '/:pathMatch(.*)*', component: NotFound , name: "page-introuvable"},
 ]
 
 // on instancie VueRouter avec la fonction createRouter
