@@ -25,8 +25,14 @@ header{
   }
 }
 
-  .nav-logo{
+  .nav-logo img{
     margin-left:1rem;
+    width:120px;
+  }
+
+  .navigation__bell__img img {
+    width:22px;
+    height:22px;
   }
 
 
@@ -140,6 +146,7 @@ header{
     .navbar #nav-check:checked ~ .nav-links {
       height: 100vh;
       overflow-y: auto;
+      z-index: 10;
     }
     .navbar .nav-links .loginBtn {
       padding: 10px 40px ;
@@ -215,9 +222,10 @@ header{
   }
 
   .loginBtn {
-    @extend .btn;
-    max-width:200px;
+    max-width:250px;
     border:0;
+    border-radius:.5rem;
     background-color:$blue;
     color:$white !important;
+    font-size:.7rem;
   }
