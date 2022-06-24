@@ -8,7 +8,8 @@
     <section class="box">
       <img src="../assets/images/404.svg" alt="erreur 404" class="top404" />
 
-      <button class="blueButton top">Retourner à l'accueil</button>
+      <RouterLink to="/" rel="noopener noreferrer"
+             class="backButtonBlue top" >Retour à l'accueil</RouterLink>
     </section>
   </div>
 </template>

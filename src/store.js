@@ -7,8 +7,8 @@ const store = createStore({
     state () {
       return {
         isUserConnected: false,
-        firstname: "",
-        lastname: ""
+        id: "",
+        email: "",
       }
     },
     mutations: {
@@ -20,11 +20,11 @@ const store = createStore({
         // mutation pour le prénom
         // le premier paramètre reçu est le state
         // le second est le "payload" => des données qu'on peut passer au commit()
-        updateUserFirstname (state, firstname) {
-          state.firstname = firstname;
+        updateUserId (state, id) {
+          state.id = id;
         },
-        updateUserLastname (state, lastname) {
-          state.lastname = lastname;
+        updateUserEmail (state, email) {
+          state.email = email;
         }
     }
 })

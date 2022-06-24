@@ -1,6 +1,6 @@
 <template>
   <!-- container -->
-  <div class="container">
+  <div class="container" v-if="isUserConnected">
     <section class="title">
       <h1 class="title__page">Mon compte</h1>
     </section>
@@ -65,13 +65,13 @@
     <!-- options -->
     <section>
       <form method="POST" id="account">
-        <button class="blueButton">Voir mes animaux</button>
-        <button class="blueButton">Ajouter un animal</button>
-        <button class="blueButton">Modifier mon profil</button>
+        <RouterLink to="/animal/tous-les-animaux" rel="noopener noreferrer" class="backButtonBlue" >Voir mes animaux</RouterLink>
+        <RouterLink to="/animal" rel="noopener noreferrer" class="backButtonBlue" >Ajouter un animal</RouterLink>
+        <RouterLink to="/mon-compte/modification/1" rel="noopener noreferrer" class="backButtonBlue" >Modifier mon profil</RouterLink>
       </form>
 
       <hr />
-
+      
       <!-- create accompte -->
       <form method="POST" id="createAccount">
         <button class="yellowButton">Supprimer mon compte</button>
@@ -84,10 +84,14 @@
 </template>
 
 <script>
+import userService from '../services/userServices.js';
+
 export default {
   data() {
     return {};
   },
+  props: ["isUserConnected"]
+  
 };
 </script>
 

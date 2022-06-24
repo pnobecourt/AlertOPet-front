@@ -36,7 +36,8 @@
     <!-- Navbar items -->
     <div class="nav-links">
       <RouterLink to="/" @click="closeNav()">Accueil </RouterLink>
-      <RouterLink to="/creation-compte" @click="closeNav()">Créer un compte </RouterLink>
+      <RouterLink to="/creation-compte" @click="closeNav()" v-if="!isUserConnected">Créer un compte </RouterLink>
+      <RouterLink to="/mon-compte" @click="closeNav()" v-if="isUserConnected">Mon compte </RouterLink>
       <RouterLink to="/category" @click="closeNav()">Alertes en cours </RouterLink>
       <RouterLink to="/creation-alerte" @click="closeNav()">Signaler un animal </RouterLink>
       <RouterLink to="/a-propos" @click="closeNav()">A propos</RouterLink>
@@ -72,10 +73,13 @@ export default {
   
   // on utilisera cette méthode comme un propriété
         // en fait un getter
-        fullname() {
-            const firstname = this.$store.state.firstname;
-            const lastname = this.$store.state.lastname;
-            return firstname + " " + lastname;
+        getUserId() {
+            const userId = this.$store.state.id;
+            return userId;
+        },
+        getUserEmail() {
+            const userEmail = this.$store.state.email;
+            return userEmail;
         }
 
   },
