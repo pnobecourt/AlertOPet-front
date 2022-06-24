@@ -1,9 +1,12 @@
-<template>
+<template v-if="animalData.alert_status == 'En cours'">
         <!-- Card -->
         <article class="card">
           <!-- card__picture -->
           <div class="cardAnimal">
+
+            <div @click="onPetClick(animalData.id)">
             <img class="cardAnimal__image" :src= animalData.petPicture  alt="Animal" />
+            </div>
 
             <!-- card__lost -->
 
@@ -11,10 +14,13 @@
               <div class="cardAnimal__lost__status">
                 <p>
                   <span class="cardAnimal__lost__lostAnimalStatusPink"
-                    >Perdu</span
+                    v-if="animalData.alert_type == 'Perdu'">Perdu</span
                   >
-                  <span class="cardAnimal__lost__lostAnimalStatusBlue"
-                    >Trouvé</span
+                  <span class="cardAnimal__lost__lostAnimalStatusBlue"                    
+                    v-if="animalData.alert_type == 'Trouvé'">Trouvé</span
+                  >
+                  <span class="cardAnimal__lost__lostAnimalStatusBlue"                    
+                    v-if="animalData.alert_type == 'Kidnapé'">Kidnapé</span
                   >
                 </p>
               </div>
@@ -36,7 +42,7 @@
               <p>Âge : {{ animalData.meta["petAge"] }}</p>
             </div>
 
-            <div class="cardAnimal__description" v-html="animalData.content.rendered">
+            <div class="cardAnimal__description" v-html="animalData.content.rendered" @click="onPetClick(animalData.id)">
             </div>
 
             <!-- Contacter le propriétaire -->
@@ -53,19 +59,21 @@ export default {
     };
   },
   methods : {
-      onPetClick(petId){
-        console.log(petId);
-            this.$router.push({ 
-                name: 'alerte',
-                params: {
-                    alerteID: petId
-                }
-            });
-      },
       contactOwner(email) {
         var link = 'mailto:' + email;
         window.location.href = link;
-      }
+      },
+      // au clic sur une recette
+        onPetClick(petId) {
+            // on déclenche la navigation vers la route /recipe/{id}
+            // en passant recipeId
+            this.$router.push({ 
+                name: 'alerte',
+                params: {
+                    alertId: petId
+                }
+            });
+        }
 
   },
   props: ["animalData"]
