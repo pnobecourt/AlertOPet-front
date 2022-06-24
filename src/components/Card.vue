@@ -45,8 +45,9 @@
             <div class="cardAnimal__description" v-html="animalData.content.rendered" @click="onPetClick(animalData.id)">
             </div>
 
-            <!-- Contacter le propriétaire -->
-            <button class="blueButton" @click="contactOwner(animalData.meta['contactMail'])">Contacter le propriétaire</button>
+      <!-- Contacter le propriétaire -->
+      <button v-if="animalData.meta['contactMail']" class="blueButton" @click="contactOwner(animalData.meta['contactMail'])"><i class="fa-solid fa-envelope"></i>Contacter le propriétaire</button>
+      <button v-if="animalData.meta['contactPhone']" class="blueButton" @click="phoneToOwner(animalData.meta['contactPhone'])"><i class="fa-solid fa-phone"></i>Téléphoner au propriétaire</button>
           </div>
         </article>
 </template>
@@ -61,6 +62,12 @@ export default {
   methods : {
       contactOwner(email) {
         var link = 'mailto:' + email;
+                console.log(link);
+        window.location.href = link;
+      },
+      phoneToOwner(number) {
+        var link = 'tel:' + number;
+                console.log(link);
         window.location.href = link;
       },
       // au clic sur une recette

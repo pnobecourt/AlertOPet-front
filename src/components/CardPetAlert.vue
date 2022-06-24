@@ -1,8 +1,18 @@
 <template>
   <!-- container -->
-  <div class="container">
+  <div class="container" v-if="isContentLoaded">
+    
     <section class="title">
-      <h1 class="title__page">PERDU / TROUVÉ Choupette</h1>
+
+                  <h1 class="title__page"
+                    v-if="cardList.alert_type == 'Perdu'">Perdu {{ cardList.meta["petName"] }}</h1
+                  >
+                  <h1 class="title__page"                    
+                    v-if="cardList.alert_type == 'Trouvé'">Trouvé </h1
+                  >
+                  <h1 class="title__page"                    
+                    v-if="cardList.alert_type == 'Kidnapé'">Kidnapé {{ cardList.meta["petName"] }}</h1
+                  >
     </section>
 
     <section class="box">
@@ -10,20 +20,25 @@
       <article>
         <!-- card__picture -->
         <div class="cardAnimal">
-          <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?dog" alt="dog" />
+
+            <img class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
+
 
           <!-- card__lost -->
           <div class="cardAnimal__lost">
-            <div class="cardAnimal__lost__status">
-              <p>
-                <span class="cardAnimal__lost__lostAnimalStatusPink"
-                  >Perdu</span
-                >
-                <span class="cardAnimal__lost__lostAnimalStatusBlue"
-                  >Trouvé</span
-                >
-              </p>
-            </div>
+              <div class="cardAnimal__lost__status">
+                <p>
+                  <span class="cardAnimal__lost__lostAnimalStatusPink"
+                    v-if="cardList.alert_type == 'Perdu'">Perdu</span
+                  >
+                  <span class="cardAnimal__lost__lostAnimalStatusBlue"                    
+                    v-if="cardList.alert_type == 'Trouvé'">Trouvé</span
+                  >
+                  <span class="cardAnimal__lost__lostAnimalStatusBlue"                    
+                    v-if="cardList.alert_type == 'Kidnapé'">Kidnapé</span
+                  >
+                </p>
+              </div>
 
             <div class="cardAnimal__lost__share">
               <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
@@ -31,42 +46,73 @@
             </div>
           </div>
 
-          <div class="cardAnimal__describe">
-            <p>Type :</p>
-            <p>Lieu :</p>
-            <p>Nom :</p>
-            <p>Race :</p>
-            <p>Taille :</p>
-            <p>Poids :</p>
-            <p>Couleur :</p>
-            <p>Âge :</p>
-          </div>
+            <div class="cardAnimal__describe" @click="onPetClick(animalData.id)">
+              <p>ID : {{ cardList.id }}</p>
+              <p>Type : {{ cardList.type }}</p>
+              <p>Lieu : {{ cardList.meta["localization"] }}</p>
+              <p>Nom : {{ cardList.meta["petName"] }}</p>
+              <p>Race : {{ cardList.meta["petBreed"]}}</p>
+              <p>Taille : {{ cardList.meta["petSize"] }}</p>
+              <p>Poids : {{ cardList.meta["petWeight"] }}</p>
+              <p>Couleur : {{ cardList.meta["petColor"] }}</p>
+              <p>Âge : {{ cardList.meta["petAge"] }}</p>
+            </div>
 
-          <div class="cardAnimal__description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
-            sequi dolorem iure dolor modi quidem minima eaque officiis laborum
-            repellat quia similique, atque, quis voluptates, asperiores saepe
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
-            laudantium beatae accusantium, repellendus perferendis minus
-            cupiditate voluptates, officiis tempore odio aperiam error nostrum
-            consequuntur. Rerum modi aut voluptatem odit!
-          </div>
+ <div class="cardAnimal__description" v-html="cardList.content.rendered">
+            </div>
         </div>
       </article>
 
       <!-- Contacter le propriétaire -->
-      <button class="blueButton bottom">Contacter le propriétaire</button>
+      <button v-if="cardList.meta['contactMail']" class="blueButton" @click="contactOwner(cardList.meta['contactMail'])"><i class="fa-solid fa-envelope"></i>Contacter le propriétaire</button>
+      <button v-if="cardList.meta['contactPhone']" class="blueButton" @click="phoneToOwner(cardList.meta['contactPhone'])"><i class="fa-solid fa-phone"></i>Téléphoner au propriétaire</button>
     </section>
   </div>
   <!-- Fin container -->
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+
   data() {
-    return {};
+    return {
+      cardList: [],
+      isContentLoaded: false
+    };
   },
-};
+
+  methods : {
+      contactOwner(email) {
+        var link = 'mailto:' + email;
+                console.log(link);
+        window.location.href = link;
+      },
+      phoneToOwner(number) {
+        var link = 'tel:' + number;
+                console.log(link);
+        window.location.href = link;
+      }
+  },
+
+  mounted() {
+
+    const singlePet = "http://devback.alertopet.com/wp-json/wp/v2/alert/" + this.$route.params.alertId;
+    console.log(singlePet);
+
+    axios.get(singlePet)
+    .then ((response) => {
+        console.log(response.data);
+      this.cardList = response.data;
+      this.isContentLoaded = true;
+    }).catch((error) =>{
+        console.error(error );
+    })
+
+}
+}
+
 </script>
 
 <style lang="scss" scoped>

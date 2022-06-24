@@ -21,6 +21,10 @@
     align-items:center;
 }
 
+.fa-solid {
+    margin-right:.5rem;
+}
+
 .yellowButton {
     @extend .btn;
     background-color:$orange;
