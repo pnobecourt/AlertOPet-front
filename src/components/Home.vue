@@ -84,7 +84,6 @@ export default {
     return {
       cardList: [],
       specieList: [],
-      specieList : "choice",
     };
   },
   components: {
@@ -124,7 +123,7 @@ methods : {
             });
         },
 
-onSpeciesFilterChange() {
+  onSpeciesFilterChange() {
             // on relance la récupération des données
             this.loadPets(1);
         }

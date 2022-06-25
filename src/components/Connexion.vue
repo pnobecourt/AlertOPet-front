@@ -14,7 +14,7 @@
       <!-- connexion -->
       <form @submit.prevent="onFormSubmit">
         <label for="email">Votre adresse</label>
-        <input v-model="email" id="email" placeholder="Votre adresse mail" />
+        <input v-model="username" id="email" placeholder="Votre adresse mail" />
 
         <label for="password">Votre mot de passe</label>
         <input
@@ -30,7 +30,7 @@
         </p>
 <div v-if="errorMessages" class="alert error">{{ errorMessages }} </div>
 
-        <button type="submit" class="blueButton">Connexion</button>
+        <button role="submit" class="blueButton">Connexion</button>
       </form>
 
       <hr />
@@ -48,48 +48,48 @@ import userService from '../services/userServices.js';
 
 export default {
   data() {
+
     return {
       errorMessages: "",
       password: "",
       username: "",
-      email: "",
-
     };
+
   },
+
   methods: {
     onFormSubmit() {
+      
       const error = [];
 
       if (this.password.length <= 6) {
         error.push("Le mot de passe est invalide.");
       }
 
-      if (!this.email) {
+      if (!this.username) {
         error.push('Indiquez votre adresse email.');
-      } else if (!this.validEmail(this.email)) {
+      } else if (!this.validEmail(this.username)) {
         error.push('L\'email n\'est pas valide.');
       }
 
       this.errorMessages = error.join(', ');
 
 // si pas de message d'erreur
-      if (!this.errorMessages) {
-          // on s'authentifie avec l'API
-          userService.connectUser({
-              username: this.email,
-              password: this.password
-          })
-          .then((response) => {
-              // si on s'est bien connecté, on navigue vers la home
-              this.$router.push('/mon-compte');
-          })
-          .catch((error) => {
-            this.$router.push('/connection');
-            this.errorMessages = 
-              // sinon on affiche l'erreur
-              console.log(error);    
-          })
-      }
+            if (!this.errorMessages) {
+                // on s'authentifie avec l'API
+                userService.connectUser({
+                    username: this.username,
+                    password: this.password
+                })
+                .then((response) => {
+                    // si on s'est bien connecté, on navigue vers la home
+                    this.$router.push('/mon-compte');
+                })
+                .catch((error) => {
+                    // sinon on affiche l'erreur
+                    console.log(error);    
+                });
+            }
 
 
 

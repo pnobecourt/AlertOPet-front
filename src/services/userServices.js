@@ -30,16 +30,17 @@ export default {
             localStorage.setItem('token', response.data.data.token);
 
             // on trouve aussi le nom et le prénom de l'utilisateur dans response.data.data
-            localStorage.setItem('firstname', response.data.data.firstName);
-            localStorage.setItem('lastname', response.data.data.lastName);
+            localStorage.setItem('id', response.data.data.id);
+            localStorage.setItem('email', response.data.data.email);
 
             // on commit la mutation updateUserStatus
             store.commit('updateUserStatus');
 
-            // on commit la mutation updateUserFirstname en passant le prénom réçu depuis l'API
-            store.commit('updateUserFirstname', response.data.data.firstName);
+            // on commit la mutation updateUserId en passant le prénom réçu depuis l'API
+            store.commit('updateUserId', response.data.data.id);
             // idem pour lastName
-            store.commit('updateUserLastname', response.data.data.lastName);
+            store.commit('updateUserEmail', response.data.data.email);
+
         })
         .catch((error) => {
             console.log(error);
@@ -72,8 +73,8 @@ export default {
 
         // supprimer le token et les données utilisateur du localStorage
         localStorage.removeItem('token');
-        localStorage.removeItem('firstname');
-        localStorage.removeItem('lastname');
+        localStorage.removeItem('id');
+        localStorage.removeItem('email');
         // on accède au store défini sur index.js avec app.use(store) avec un import du fichier store.js
         // on déclenche la mutation updateUserStatus
         store.commit('updateUserStatus');

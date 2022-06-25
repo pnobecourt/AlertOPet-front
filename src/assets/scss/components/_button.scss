@@ -21,6 +21,22 @@
     align-items:center;
 }
 
+.backButtonBlue {
+    @extend .btn;
+    display:flex;
+    background-color:$blue;
+    border:$blue;
+    text-decoration:none;
+    justify-content:center;
+    color:$white;
+    align-items:center;
+    margin-top:1rem;
+
+    &:hover {
+        color:$white;
+    }
+}
+
 .fa-solid {
     margin-right:.5rem;
 }

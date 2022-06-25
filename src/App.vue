@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header :isUserConnected="isUserLoggedIn"></Header>
-    <RouterView></RouterView>
+    <RouterView :isUserConnected="isUserLoggedIn"></RouterView>
     <Footer></Footer>
   </div>
 </template>
