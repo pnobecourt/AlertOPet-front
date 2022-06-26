@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="isUserConnected">
     <section class="title">
       <h1 class="title__page">Modifier vos<br />informations</h1>
     </section>
@@ -37,6 +37,10 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+import userService from '../services/userServices.js';
+
+
 export default {
   data() {
     return {
@@ -46,6 +50,9 @@ export default {
       confirmPassword: "",
       name: "",
     };
+  },
+  components: {
+    userService,
   },
   methods: {
     onFormSubmit() {
@@ -72,7 +79,8 @@ export default {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
-  }
+  },
+    props: ["isUserConnected"],
 };
 </script>
 

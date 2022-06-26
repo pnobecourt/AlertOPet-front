@@ -84,7 +84,7 @@ export default {
 methods : {
 
   loadCard(){
-    axios.get('http://devback.alertopet.com/wp-json/wp/v2/alert?embed').then
+    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert?embed').then
     ((response) => {
         console.log(response.data);
       this.cardList = response.data;
@@ -100,7 +100,7 @@ methods : {
 
   loadSpecies() {
             // getAllRecipeTypes() renvoie une promesse
-            axios.get('http://devback.alertopet.com/wp-json/wp/v2/species').then
+            axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then
             ((response) => {
               console.log(response.data);
                 this.specieList = response.data;

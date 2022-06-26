@@ -15,6 +15,7 @@
       components: {
         Header,
         Footer,
+        userService,
       },
       // lorsque le composant est ajouté au DOM, mounted() est automatiquement exécutée
         mounted() {

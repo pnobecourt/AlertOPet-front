@@ -16,7 +16,7 @@
            Contacter le propriétaire de {{ animal.meta["petName"] }}
           </span>
 
-          <img class="carousel__image" :src= animal.petPicture alt="Animal"/>
+          <img class="carousel__image" :src= animal.petPicture alt="Animal" @click="onPetClick(animal.id)"/>
           </div>
 
       </div>
@@ -88,6 +88,8 @@ export default {
   },
   components: {
     Card,
+    carousel,
+    speciesService,
   },
   mounted() {
     this.loadCard();
@@ -96,8 +98,19 @@ export default {
 
 methods : {
 
+// au clic sur une recette
+        onPetClick(petId) {
+            // on déclenche la navigation vers la route /recipe/{id}
+            // en passant recipeId
+            this.$router.push({ 
+                name: 'alerte',
+                params: {
+                    alertId: petId
+                }
+            });
+        },
   loadCard(){
-    axios.get('http://devback.alertopet.com/wp-json/wp/v2/alert?embed').then
+    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert?embed').then
     ((response) => {
         console.log(response.data);
       this.cardList = response.data;
@@ -113,7 +126,7 @@ methods : {
 
   loadSpecies() {
             // getAllRecipeTypes() renvoie une promesse
-            axios.get('http://devback.alertopet.com/wp-json/wp/v2/species').then
+            axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then
             ((response) => {
               console.log(response.data);
                 this.specieList = response.data;

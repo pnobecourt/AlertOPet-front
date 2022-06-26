@@ -87,7 +87,7 @@ export default {
                 })
                 .catch((error) => {
                     // sinon on affiche l'erreur
-                    console.log(error);    
+                    this.$router.push('/connection');   
                 });
             }
 
