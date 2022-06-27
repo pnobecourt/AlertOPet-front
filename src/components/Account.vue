@@ -8,7 +8,7 @@
 
     <!-- label animal -->
     <div class="box">
-    <section class="listAnimal">
+    <section class="listAnimal" v-if="cardList">
       <div class="animal">
         <div class="animal__animalName">Le nom de l'animal </div>
 
@@ -32,7 +32,7 @@
     <!-- options -->
     <section>
       <form method="POST" id="account">
-        <RouterLink to="/animal/tous-les-animaux" rel="noopener noreferrer" class="backButtonBlue" >Voir mes animaux</RouterLink>
+        <RouterLink to="/animal/tous-les-animaux" rel="noopener noreferrer" class="backButtonBlue"  v-if="cardList">Voir mes animaux</RouterLink>
         <RouterLink to="/animal" rel="noopener noreferrer" class="backButtonBlue" >Ajouter un animal</RouterLink>
         <button class="blueButton" @click="onModifyClick">Modifier mon profil</button>
       </form>

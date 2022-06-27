@@ -25,9 +25,6 @@
           v-model.trim="password"
           placeholder="Votre mot de passe"
         />
-
-
-
         <label for="confirmPassword">Confirmer votre mot de passe<span class="required">*</span></label>
         <input
           id="confirmPassword"
@@ -43,8 +40,10 @@
             >Politique de confidentialité</RouterLink>
           </label>
         </div>
+              <!-- show errors -->
     <div v-if="errorMessages" class="allerror" v-html="errorMessages">
     </div>
+    
         <button class="blueButton">Créer un compte</button>
       </form>
     </section>

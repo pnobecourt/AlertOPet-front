@@ -43,10 +43,10 @@ export default {
     },
 
 
-    createPet(recipeData) {
+    createPet(animalData) {
 
         return axios.post(
-            baseUrl + endpoint,
+            baseUrl + "/aop/v1/pet",
             animalData, // on passe directement l'objet recu en paramètre et qui contient les valeurs saisies dans le formulaire
             {
                 headers: {
