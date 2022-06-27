@@ -13,9 +13,9 @@
     "propper": "^1.0.4",
     "sass": "^1.52.3",
     "vue": "^3.2.37",
-    "vue-html2pdf": "^1.8.0",
     "vue-proper": "^0.11.1",
     "vue-router": "^4.0.16",
+    "vue3-html2pdf": "^1.1.2",
     "vuex": "^4.0.2"
   }
 }

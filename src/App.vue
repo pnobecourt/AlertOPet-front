@@ -10,12 +10,14 @@
     import Header from './components/Header.vue';
     import Footer from './components/Footer.vue';
     import userService from './services/userServices.js';
+    import VueHtml2pdf from 'vue3-html2pdf';
     
   export default {
       components: {
         Header,
         Footer,
         userService,
+        VueHtml2pdf,
       },
       // lorsque le composant est ajouté au DOM, mounted() est automatiquement exécutée
         mounted() {

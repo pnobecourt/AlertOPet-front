@@ -2,78 +2,99 @@
 
   <!-- container -->
 <div class="container" v-if="isContentLoaded">
-    
-    <section class="title">
+    <vue3-html2pdf
+        :show-layout="false"
+        :float-layout="true"
+        :enable-download="true"
+        :preview-modal="true"
+        :paginate-elements-by-height="1400"
+        filename="Mon toutou"
+        :pdf-quality="2"
+        :manual-pagination="false"
+        pdf-format="a4"
+        pdf-orientation="portrait"
+        pdf-content-width="800px"
 
-                  <h1 class="title__page"
-                    v-if="cardList.alert_type == 'Perdu'">ALerte : Perdu {{ cardList.meta.petSpecies }} nommé {{ cardList.meta.petName }}</h1
-                  >
-                  <h1 class="title__page"                    
-                    v-if="cardList.alert_type == 'Trouvé'">ALerte : Trouvé {{ cardList.meta.petSpecies }} <span v-if="cardList.meta.petName">nommé {{ cardList.meta.petName }}</span></h1
-                  >
-                  <h1 class="title__page"                    
-                    v-if="cardList.alert_type == 'Kidnapé'">ALerte : Kidnapé {{ cardList.meta.petSpecies }} nommé {{ cardList.meta.petName }}</h1
-                  >
-    </section>
+        @progress="onProgress($event)"
+        @hasStartedGeneration="hasStartedGeneration()"
+        @hasGenerated="hasGenerated($event)"
+        ref="html2Pdf"
+    >
+    <section ref="pdf-content">
+      <section class="title pdf-item">
 
-    <section class="box">
-      <!-- Card -->
-      <article>
-        <!-- card__picture -->
-        <div class="cardAnimal">
+                    <h1 class="title__page"
+                      v-if="cardList.alert_type == 'Perdu'">ALerte : Perdu {{ cardList.meta.petSpecies }} nommé {{ cardList.meta.petName }}</h1
+                    >
+                    <h1 class="title__page"                    
+                      v-if="cardList.alert_type == 'Trouvé'">ALerte : Trouvé {{ cardList.meta.petSpecies }} <span v-if="cardList.meta.petName">nommé {{ cardList.meta.petName }}</span></h1
+                    >
+                    <h1 class="title__page"                    
+                      v-if="cardList.alert_type == 'Kidnapé'">ALerte : Kidnapé {{ cardList.meta.petSpecies }} nommé {{ cardList.meta.petName }}</h1
+                    >
+      </section>
 
-            <img class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
+      <section class="box pdf-item">
+        <!-- Card -->
+        <article>
+          <!-- card__picture -->
+          <div class="cardAnimal">
+
+              <img class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
 
 
-          <!-- card__lost -->
-          <div class="cardAnimal__lost">
-              <div class="cardAnimal__lost__status">
-                <p>
-                  <span class="cardAnimal__lost__lostAnimalStatusPink"
-                    v-if="cardList.alert_type == 'Perdu'">Perdu</span
-                  >
-                  <span class="cardAnimal__lost__lostAnimalStatusBlue"                    
-                    v-if="cardList.alert_type == 'Trouvé'">Trouvé</span
-                  >
-                  <span class="cardAnimal__lost__lostAnimalStatusBlue"                    
-                    v-if="cardList.alert_type == 'Kidnapé'">Kidnapé</span
-                  >
-                </p>
+            <!-- card__lost -->
+            <div class="cardAnimal__lost">
+                <div class="cardAnimal__lost__status">
+                  <p>
+                    <span class="cardAnimal__lost__lostAnimalStatusPink"
+                      v-if="cardList.alert_type == 'Perdu'">Perdu</span
+                    >
+                    <span class="cardAnimal__lost__lostAnimalStatusBlue"                    
+                      v-if="cardList.alert_type == 'Trouvé'">Trouvé</span
+                    >
+                    <span class="cardAnimal__lost__lostAnimalStatusBlue"                    
+                      v-if="cardList.alert_type == 'Kidnapé'">Kidnapé</span
+                    >
+                  </p>
+                </div>
+
+              <div class="cardAnimal__lost__share">
+                <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+
+              <div class="cardAnimal__describe" @click="onPetClick(cardList.id)">
+                <p>ID : {{ cardList.id }}</p>
+                <p>Type : {{ cardList.type }}</p>
+                <p>Lieu : {{ cardList.meta.localization }}</p>
+                <p>Nom : {{ cardList.meta.petName }}</p>
+                <p>Race : {{ cardList.meta.petBreed}}</p>
+                <p>Taille : {{ cardList.meta.petSize }}</p>
+                <p>Poids : {{ cardList.meta.petWeight }}</p>
+                <p>Couleur : {{ cardList.meta.petColor }}</p>
+                <p>Âge : {{ cardList.meta.petAge }}</p>
               </div>
 
-            <div class="cardAnimal__lost__share">
-              <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
-              <i class="fa-solid fa-share-nodes"></i>
-            </div>
+              <div class="cardAnimal__description" v-html="cardList.content.rendered">
+              </div>
           </div>
-
-            <div class="cardAnimal__describe" @click="onPetClick(cardList.id)">
-              <p>ID : {{ cardList.id }}</p>
-              <p>Type : {{ cardList.type }}</p>
-              <p>Lieu : {{ cardList.meta.localization }}</p>
-              <p>Nom : {{ cardList.meta.petName }}</p>
-              <p>Race : {{ cardList.meta.petBreed}}</p>
-              <p>Taille : {{ cardList.meta.petSize }}</p>
-              <p>Poids : {{ cardList.meta.petWeight }}</p>
-              <p>Couleur : {{ cardList.meta.petColor }}</p>
-              <p>Âge : {{ cardList.meta.petAge }}</p>
-            </div>
-
- <div class="cardAnimal__description" v-html="cardList.content.rendered">
-            </div>
-        </div>
-      </article>
-
+        </article>
+        </section>
+      </section>
+      </vue3-html2pdf>
+      <button @click="generatePDF()">Obtenir votre PDF</button>
       <!-- Contacter le propriétaire -->
       <button v-if="cardList.meta.contactMail" class="blueButton" @click="contactOwner(cardList.meta.contactMail)"><i class="fa-solid fa-envelope"></i>Contacter le propriétaire</button>
-      <button v-if="cardList.meta.contactPhone" class="blueButton" @click="phoneToOwner(cardList.meta.contactPhone)"><i class="fa-solid fa-phone"></i>Téléphoner au propriétaire</button>
-    </section>
+      <button v-if="cardList.meta.contactPhone" class="blueButton" @click="phoneToOwner(cardList.meta.contactPhone)"><i class="fa-solid fa-phone"></i>Téléphoner au propriétaire</button> 
   </div>
   <!-- Fin container -->
 </template>
 
 <script>
 import axios from "axios";
+import VueHtml2pdf from 'vue3-html2pdf';
 import userService from '../services/userServices.js';
 
 export default {
@@ -95,14 +116,18 @@ export default {
         var link = 'tel:' + number;
                 console.log(link);
         window.location.href = link;
-      }
+      },
+      generatePDF() {
+        this.$refs.html2Pdf.generatePdf();
+      },
   },
   components: {
-    userService
+    userService,
+    VueHtml2pdf,
   },
   mounted() {
 
-    const singlePet = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert/" + this.$route.params.alertId + "?embed";
+    const singlePet = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert/" + this.$route.params.alertId + "?_embed";
     console.log(singlePet);
 
     axios.get(singlePet)
