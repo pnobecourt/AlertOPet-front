@@ -5,7 +5,7 @@
           <div class="cardAnimal">
 
             <div>
-            <img class="cardAnimal__image" :src= animalData.petPicture  alt="Animal" />
+            <img class="cardAnimal__image" :src= animalData.petPicture  alt="Animal"  @click="onModifyClick(animalData.id)"/>
             </div>
 
             <!-- card__lost -->
@@ -32,14 +32,13 @@
             </div>
             <div class="cardAnimal__describe">
               <p>ID : {{ animalData.id }}</p>
-              <p>Type : {{ animalData.type }}</p>
-              <p>Lieu : {{ animalData.meta["localization"] }}</p>
-              <p>Nom : {{ animalData.meta["petName"] }}</p>
-              <p>Race : {{ animalData.meta["petBreed"]}}</p>
-              <p>Taille : {{ animalData.meta["petSize"] }}</p>
-              <p>Poids : {{ animalData.meta["petWeight"] }}</p>
-              <p>Couleur : {{ animalData.meta["petColor"] }}</p>
-              <p>Âge : {{ animalData.meta["petAge"] }}</p>
+              <p>Type : {{ animalData.title }}</p>
+              <p>Nom : {{ animalData.title }}</p>
+              <p>Race : {{ animalData.breed}}</p>
+              <p>Taille : {{ animalData.size }}</p>
+              <p>Poids : {{ animalData.weight }}</p>
+              <p>Couleur : {{ animalData.color }}</p>
+              <p>Âge : {{ animalData.birth_date }}</p>
             </div>
 
             <div class="cardAnimal__description" v-html="animalData.content.rendered">

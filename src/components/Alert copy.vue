@@ -2,11 +2,12 @@
   <!-- container -->
   <div class="container" v-if="isContentLoaded">
     <section class="title">
-      <h1 class="title__page">Déclencher une alerte pour {{ cardList.title }} ( {{ cardList.species }} )</h1>
+      <h1 class="title__page">Déclencher une alerte pour un animal</h1>
     </section>
 
     <section class="box">
       <!-- picture of animal -->
+
      <img class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
       <form method="POST" id="pictureAnimal">
         <div class="choiceLost">
@@ -14,8 +15,8 @@
             <input
               type="radio"
               id="choiceLost__lost"
+              name="perdu"
               value="perdu"
-             v-model="picked"
             />
             <label for="choiceLost__lost" class="choiceLost__lost"> Perdu</label
             ><br />
@@ -26,21 +27,30 @@
             <input
               type="radio"
               id="choiceLost__found"
-              value="kidnapé"
-             v-model="picked"
+              name="trouver"
+              value="trouver"
             />
             <label for="choiceLost__found" class="choiceLost__found">
-              Kidnapé</label
+              Trouvé</label
             ><br />
           </div>
         </div>
 
-        <button type="submit" class="blueButton"><i class="fa-solid fa-camera"></i>Ajouter une photo</button>
+        <button type="submit" class="blueButton">Ajouter une photo</button>
       </form>
 </section>
 
       <!-- create animal -->
       <form method="POST" id="animal">
+        <div class="choiceAnimal">
+          <select name="type" id="type" class="choiceAnimal__select">
+            <option value="">Sélectionnez un type d'animal</option>
+            <option value="0">Chien</option>
+            <option value="1">Chat</option>
+            <option value="2">Poule</option>
+            <option value="3">Canard</option>
+          </select>
+        </div>
 
         <label for="lieu">Lieu</label>
         <input id="lieu" name="lieu" placeholder="Lieu de la disparition"  v-model="cardList.id" />
@@ -66,7 +76,7 @@
         <label for="info">Votre message / Description</label>
         <textarea id="info" name="info" rows="5" cols="33" v-model="cardList.content.rendered"> </textarea>
 <div class="box">
-        <button class="yellowButton bottom"><i class="fa-solid fa-bullhorn"></i>Déclencher une alerte</button>
+        <button class="blueButton bottom">Enregistrer</button>
         </div>
       </form>
     <br />
@@ -83,7 +93,6 @@ export default {
     return {
       cardList: [],
       isContentLoaded: false,
-      picked: "perdu",
     };
   },
 

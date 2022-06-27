@@ -7,10 +7,10 @@
 
     <section class="box">
       <!-- picture of animal -->
-       <img class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
+       <img class="cardAnimal__image" :src= cardList.picture  alt="Animal" />
       <form method="POST" id="pictureAnimal">
-        <button class="blueButton">Ajouter une photo</button>
-        <button class="yellowButton" @click="onAlertClick(cardList.meta.petId)">Déclencher une alerte</button>
+        <button class="blueButton"><i class="fa-solid fa-camera"></i>Ajouter une photo</button>
+        <button class="yellowButton" @click="onAlertClick(cardList.id)"><i class="fa-solid fa-bullhorn"></i>Déclencher une alerte</button>
       </form>
     </section>
     <section>
@@ -19,28 +19,28 @@
       <form method="POST" id="animal">
 
         <label for="idChip">Identifiant de la puce</label>
-        <input id="idChip" name="idChip" placeholder="Identifiant de la puce" v-model="cardList.meta.petId"/>
+        <input id="idChip" name="idChip" placeholder="Identifiant de la puce" v-model="cardList.identification"/>
 
         <label for="name">Nom de l'animal</label>
-        <input id="name" name="name" placeholder="Nom de l'animal" v-model="cardList.meta.petName"/>
+        <input id="name" name="name" placeholder="Nom de l'animal" v-model="cardList.title"/>
 
         <label for="race">Race de l'animal</label>
-        <input id="race" name="race" placeholder="Race de l'animal" v-model="cardList.meta.petBreed"/>
+        <input id="race" name="race" placeholder="Race de l'animal" v-model="cardList.breed"/>
 
-        <label for="height">Taille de l'animal</label>
-        <input id="height" name="height" placeholder="Taille de l'animal" v-model="cardList.meta.petHeight"/>
+    <label for="height">Taille de l'animal en centimètres</label>
+        <input id="height" name="height" type="number" placeholder="Taille de l'animal" v-model="cardList.size"/>
 
-        <label for="weight">Poids de l'animal</label>
-        <input id="weight" name="weight" placeholder="Poids de l'animal" v-model="cardList.meta.petWeight"/>
+        <label for="weight">Poids de l'animal en kilos</label>
+        <input id="weight" name="weight" type="number" placeholder="Poids de l'animal" v-model="cardList.weight"/>
 
         <label for="color">Couleur de l'animal</label>
-        <input id="color" name="color" placeholder="Couleur de l'animal" v-model="cardList.meta.petColor"/>
+        <input id="color" name="color" placeholder="Couleur de l'animal" v-model="cardList.color"/>
 
         <label for="birthday">Âge</label>
-        <input id="birthday" name="birthday" placeholder="Date de naissance" v-model="cardList.meta.petAge"/>
+        <input id="birthday" name="birthday" placeholder="Date de naissance" v-model="cardList.birth_date"/>
 
         <label for="info">Informations complémentaires</label>
-        <textarea id="info" name="info" rows="5" cols="33" v-model="cardList.content.rendered">
+        <textarea id="info" name="info" rows="5" cols="33" v-model="cardList.content">
           </textarea>
 
         <button class="blueButton bottom"><i class="fa-solid fa-pen"></i>Modifier</button>
@@ -70,11 +70,13 @@ export default {
   props: ["isUserConnected"],
 
   mounted() {
+    const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/" + this.$route.params.petId;
 
-    const singlePet = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert/" + this.$route.params.petId + "?embed";
-    console.log(singlePet);
-
-    axios.get(singlePet)
+    console.log(link);
+    axios.get(link,{
+   headers: {
+      Authorization: 'Bearer ' + localStorage.token,
+    }})
     .then ((response) => {
         console.log(response.data);
       this.cardList = response.data;
@@ -82,7 +84,6 @@ export default {
     }).catch((error) =>{
         console.error(error );
     })
-
 },
   methods:{
         onAlertClick(petId) {

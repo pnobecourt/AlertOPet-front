@@ -47,7 +47,11 @@ export default {
 methods : {
 
   loadCard(){
-    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert?embed').then
+    const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/user/" + localStorage.id;
+        axios.get(link,{
+   headers: {
+      Authorization: 'Bearer ' + localStorage.token,
+    }}).then
     ((response) => {
         console.log(response.data);
       this.cardList = response.data;

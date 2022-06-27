@@ -19,17 +19,14 @@
 
       <!-- animal -->
       <form type="POST" name="myAnimal">
-
-
-        <div class="animalCard" v-for="animal in cardList" :key="animal.id" :animalData="animal">
-          <div class="animalCard__animalName">{{  animal.content }}</div>
+        <div class="animalCard" v-for="animal in cardList" :key="animal.id">
+          <div class="animalCard__animalName" @click="onPetModifyClick(animal.id)">{{  animal.title }}</div> 
 
                 <app-switch classes="is-warning" v-model="value" v-if="animal.content != ''" checked></app-switch>
                 <app-switch classes="is-warning" v-model="value" v-else></app-switch>
 
           <button type="submit" class="animalCard__animalAlertDelete">X</button>
         </div>
-
 
       </form>
     </section>
@@ -70,7 +67,6 @@ export default {
       isContentLoaded: false,
       value: false,
       text: '',
-
     };
   },
   components: {
@@ -96,7 +92,10 @@ export default {
       const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/user/" + localStorage.id;
 
       console.log(link);
-    axios.get(link)
+    axios.get(link,{
+   headers: {
+      Authorization: 'Bearer ' + localStorage.token,
+    }})
     .then ((response) => {
         console.log(response.data);
       this.cardList = response.data;
@@ -113,6 +112,16 @@ export default {
                 name: 'modification-compte',
                 params: {
                     alertId: ownerId
+                }
+            });
+        }
+        ,
+        onPetModifyClick(petId) {
+          console.log(petId);
+            this.$router.push({ 
+                name: 'modification-animal',
+                params: {
+                    petId: petId
                 }
             });
         }

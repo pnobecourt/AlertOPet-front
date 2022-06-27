@@ -10,13 +10,30 @@
       <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />
       <form method="POST" id="pictureAnimal">
         <button class="blueButton">Ajouter une photo</button>
-        <button class="yellowButton">Déclencher une alerte</button>
       </form>
     </section>
     <section>
 
       <!-- create animal -->
       <form method="POST" id="animal">
+        <div class="choiceAnimal">
+          <label for="type">Sélectionnez un type d'animal :</label>
+<span>{{ selected }}</span>
+
+
+          <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="selected">
+<option disabled value="">Sélectionnez un type d'animal</option>
+            <option
+              v-for="specie in specieList" 
+              :key="specie.id" 
+              :value="specie.id">
+              {{ specie.name }}
+            </option>
+
+          </select>
+        </div>
+
+
         <label for="idChip">Identifiant de la puce</label>
         <input id="idChip" name="idChip" placeholder="Identifiant de la puce" />
 
@@ -51,10 +68,35 @@
 </template>
 
 <script>
+import axios from "axios";
+import speciesService from '../services/specieService.js';
+
 export default {
   data() {
-    return {};
+    return {
+      specieList: [],
+      selected: '',
+    };
   },
+  components: {
+    speciesService,
+  },
+  mounted() {
+    this.loadSpecies();
+  },
+methods : {
+  loadSpecies() {
+            // getAllRecipeTypes() renvoie une promesse
+            axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then
+            ((response) => {
+              console.log(response.data);
+                this.specieList = response.data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        }
+}
 };
 </script>
 
