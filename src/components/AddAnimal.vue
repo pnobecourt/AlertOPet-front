@@ -17,9 +17,6 @@
       <!-- create animal -->
       <form method="POST" id="animal">
         <div class="choiceAnimal">
-          <label for="type">Sélectionnez un type d'animal :</label>
-<span>{{ selected }}</span>
-
 
           <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="selected">
 <option disabled value="">Sélectionnez un type d'animal</option>

@@ -8,10 +8,10 @@
       <!-- connexion -->
       <form @submit.prevent="onFormSubmit" id="modifyProfil">
         <label for="name">Votre nom</label>
-        <input id="name" v-model="name" name="name" placeholder="Votre nom" />
+        <input id="name" v-model="cardList.first_name" name="first_name" placeholder="Votre nom"/>
 
         <label for="email">Votre adresse email</label>
-        <input id="email" v-model="email" name="email" placeholder="Votre adresse email" />
+        <input id="email" v-model="cardList.email" name="email" placeholder="Votre adresse email" />
 
         <label for="password">Votre mot de passe</label>
         <input
@@ -44,17 +44,40 @@ import userService from '../services/userServices.js';
 export default {
   data() {
     return {
+      cardList: [],
       errorMessages: "",
       password: "",
-      email: "",
       confirmPassword: "",
-      name: "",
     };
+  },
+    mounted() {
+
+
+    this.loadCard();
+
+     
   },
   components: {
     userService,
   },
   methods: {
+
+    loadCard(){
+      const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/user/" + localStorage.id;
+
+      console.log(link);
+    axios.get(link,{
+   headers: {
+      Authorization: 'Bearer ' + localStorage.token,
+    }})
+    .then ((response) => {
+        console.log(response.data);
+      this.cardList = response.data;
+      this.isContentLoaded = true;
+    }).catch((error) =>{
+        console.error(error );
+    })
+  },
     onFormSubmit() {
       const error = [];
 

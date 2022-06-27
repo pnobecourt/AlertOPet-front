@@ -12,6 +12,7 @@ import LostPassword from "./components/LostPassword.vue";
 import AddAnimal from "./components/AddAnimal.vue";
 import ListCardAnimal from "./components/ListCardAnimal.vue";
 import ModifyAnimal from "./components/ModifyAnimal.vue";
+import Modification from "./components/Modification.vue";
 import Alert from "./components/Alert.vue";
 import Category from "./components/Category.vue";
 import CardPetAlert from "./components/CardPetAlert.vue";
@@ -26,7 +27,7 @@ const routes = [
     { path: '/connection', component: Connexion, name: "connection"},
     { path: '/creation-compte', component: Subscribe, name: "creation-compte"},
     { path: '/mon-compte', component: Account, name: "mon-compte"},
-    { path: '/mon-compte/modification/:ownerId', component: Account, name: "modification-compte"},
+    { path: '/mon-compte/modification/:ownerId', component: Modification, name: "modification-compte"},
     { path: '/mot-de-passe-perdu', component: LostPassword, name: "mot-de-passe-perdu"},
     { path: '/animal', component: AddAnimal, name: "animal"},
     { path: '/animal/tous-les-animaux', component: ListCardAnimal, name: "tous-les-animaux"},

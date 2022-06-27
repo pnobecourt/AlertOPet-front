@@ -20,6 +20,10 @@
 
 }
 
+.required{
+    color:$red;
+    font-size:.7rem;
+  }
 
 @include small {
     .choiceAnimal,
@@ -111,5 +115,3 @@ article {
     line-height:2rem;
     padding-top:3rem;
 }
-
-
