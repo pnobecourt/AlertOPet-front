@@ -84,12 +84,17 @@ export default {
                     password: this.password
                 })
                 .then((response) => {
+                   if (response.data.statusCode === 200) {
                     // si on s'est bien connecté, on navigue vers la home
-                    this.$router.push('/mon-compte');
+                    this.$router.push('/mon-compte'); } else {
+                  // sinon on affiche l'erreur
+                    this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"   
+
+                    }
                 })
                 .catch((error) => {
                     // sinon on affiche l'erreur
-                    this.$router.push('/connection');   
+                    this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"   
                 });
             }
 

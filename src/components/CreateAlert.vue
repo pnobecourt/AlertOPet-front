@@ -2,7 +2,7 @@
   <!-- container -->
   <div class="container" v-if="isContentLoaded">
     <section class="title">
-      <h1 class="title__page">Déclencher une alerte pour {{ cardList.title }} ( {{ cardList.species }} )</h1>
+      <h1 class="title__page">Déclencher une alerte pour {{ cardList.title }} ( {{ cardList.species }} ) - #{{ cardList.id }}</h1>
     </section>
 
     <section class="box">
@@ -77,16 +77,15 @@
         <input
           id="telephon"
           type="telephon"
-          v-model.trim="telephon"
+          v-model.trim="contactPhone"
           placeholder="Votre numéro de téléphone"
         />
 
         <label for="info">Votre message / Description</label>
         <textarea id="info" rows="5" cols="33" v-model="cardList.content"> </textarea>
 <div class="box">
-
         <button class="yellowButton bottom"><i class="fa-solid fa-bullhorn"></i>Déclencher une alerte</button>
-         <button type="submit" class="yellowButton"><i class="fa-solid fa-trash-can"></i>Supprimer l'alerte en cours</button>
+         
         </div>
       </form>
     <br />
@@ -105,9 +104,12 @@ export default {
   data() {
     return {
 
-    title : "",
+    
     content : "",
     post_parent : "",
+    
+    title : "",
+    
     datetime : "",
     localization : "",
     petId : "",
@@ -120,6 +122,7 @@ export default {
     petDescription : "",
     contactPhone : "",
     contactMail : "",
+    petSpecies : "",
 
         specieList: [],
         selectedType: '',
@@ -171,14 +174,13 @@ methods: {
             localization : this.cardList.localization,
             petId : this.cardList.id,
             petBreed : this.cardList.breed,
-            petName : this.cardList.name,
+            petName : this.cardList.title,
             petAge : this.cardList.age,
             petColor : this.cardList.color,
             petSize : this.cardList.size,
             petWeight : this.cardList.weight,
-            petDescription : this.cardList.content.rendered,
-            contactPhone : "",
-            contactMail : "",
+            petDescription : this.cardList.content,
+            contactMail : localStorage.email,
           }
 
 console.log(formData);

@@ -14,6 +14,7 @@ import ListCardAnimal from "./components/ListCardAnimal.vue";
 import ModifyAnimal from "./components/ModifyAnimal.vue";
 import Modification from "./components/Modification.vue";
 import Alert from "./components/Alert.vue";
+import CreateAlert from "./components/CreateAlert.vue";
 import Category from "./components/Category.vue";
 import CardPetAlert from "./components/CardPetAlert.vue";
 import About from "./components/About.vue";
@@ -32,7 +33,7 @@ const routes = [
     { path: '/animal', component: AddAnimal, name: "animal"},
     { path: '/animal/tous-les-animaux', component: ListCardAnimal, name: "tous-les-animaux"},
     { path: '/animal/modification/:petId', component: ModifyAnimal, name: "modification-animal"},
-    { path: '/creation-alerte', component: Alert, name: "creation-alerte"},
+    { path: '/creation-alerte', component: CreateAlert, name: "creation-alerte-pet"},
     { path: '/creation-alerte/:petId', component: Alert, name: "creation-alerte"},
     { path: '/category', component: Category, name: "category"},
     { path: '/alerte/:alertId', component: CardPetAlert, name: "alerte"},

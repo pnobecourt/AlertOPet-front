@@ -39,7 +39,8 @@
       <RouterLink to="/creation-compte" @click="closeNav()" v-if="!isUserConnected">Créer un compte </RouterLink>
       <RouterLink to="/mon-compte" @click="closeNav()" v-if="isUserConnected">Mon compte </RouterLink>
       <RouterLink to="/category" @click="closeNav()">Alertes en cours </RouterLink>
-      <RouterLink to="/creation-alerte" @click="closeNav()">Signaler un animal </RouterLink>
+      <RouterLink to="/creation-alerte" v-if="isUserConnected" @click="closeNav()">Signaler un animal </RouterLink>
+       <RouterLink to="/creation-compte" v-if="!isUserConnected" @click="closeNav()">Signaler un animal </RouterLink>
       <RouterLink to="/a-propos" @click="closeNav()">A propos</RouterLink>
       <RouterLink to="/connection" @click="closeNav()">
         <button class="loginBtn" @click="closeNav()">
