@@ -51,13 +51,11 @@ export default {
         );
     },
 
-    deletePet(animalData) {
+    createPetAlert(animalData) {
 
-console.log(animalData);
-console.log(localStorage.getItem('token'));
-        return axios.delete(
-            
-            baseUrl + "/aop/v1/pet/",
+        return axios.post(
+
+            baseUrl + "/wp/v2/alert",
             animalData, 
             {
                 headers: {
@@ -67,22 +65,15 @@ console.log(localStorage.getItem('token'));
 
         );
     },
+
+    deletePet(animalData) {
+        return axios.delete(baseUrl + "/aop/v1/pet/" + animalData.id, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
+      },
+
+
      
-    upload(animalData, data){
-
-        return axios.post(
-
-            baseUrl + "/wp/v2/media",
-            animalData, 
-            {
-                headers: {
-                    'Content-Type': 'image/png',
-                    "Authorization": "Bearer " + localStorage.getItem('token'),
-                    'Content-Disposition': 'attachment; filename="[Pet]-131.png"'
-                }
-            }
-
-        );
-    }
-
 }

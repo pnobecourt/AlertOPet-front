@@ -78,5 +78,15 @@ export default {
         // on accède au store défini sur index.js avec app.use(store) avec un import du fichier store.js
         // on déclenche la mutation updateUserStatus
         store.commit('updateUserStatus');
-    }
+    },
+
+    deleteAccount(data) {
+        return axios.delete(baseUrl + "/aop/v1/user/" + data.id, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
+      },
+
+
 }

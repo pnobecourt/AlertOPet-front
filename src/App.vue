@@ -27,7 +27,8 @@
       isUserLoggedIn() {
         return this.$store.state.isUserConnected;
       }
-    }
+    },
+    
   };
 </script>
 

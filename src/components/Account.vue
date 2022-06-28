@@ -48,9 +48,12 @@
 
           <!-- create accompte -->
           <form method="POST" id="createAccount">
-            <button class="yellowButton">Supprimer mon compte</button>
+            <button class="yellowButton" @click="deleteAccount(localStorage.id)">Supprimer mon compte</button>
           </form>
         </section>
+                <!-- show errors -->
+        <div v-if="errorMessages" class="allerror" v-html="errorMessages">
+        </div>
       </div>
     </div>
     <span v-if="!isUserConnected">{{ this.$router.push("connection") }}</span>
@@ -109,6 +112,29 @@
               console.log(response);
               if (!response.data.statusCode || response.data.statusCode === 200) {
                 // success - nothing
+                this.loadCard();
+              } else {
+                // error
+                this.errorMessages = error.response.data.message;
+              }
+            })
+            .catch((error) => {
+              // error 
+            
+            });
+       
+      },      
+      
+      deleteAccount(id) {
+
+          // delete card
+          userService.deleteAccount({
+              id: id,
+            })
+            .then((response) => {
+              console.log(response);
+              if (!response.data.statusCode || response.data.statusCode === 200) {
+                // success - nothing
               } else {
                 // error
                 this.errorMessages = error.response.data.message;
@@ -120,7 +146,6 @@
             });
        
       },
-
       onModifyClick() {
         this.$router.push({
           name: "modification-compte",

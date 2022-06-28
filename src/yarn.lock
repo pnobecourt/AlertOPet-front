@@ -668,6 +668,11 @@
     "jsbn" "~0.1.0"
     "safer-buffer" "^2.1.0"
 
+"el-moment@^1.0.0":
+  "integrity" "sha512-VFjJtUU+01Y7L411+4etO2KD15ArC28rTqaWcUvKBugFBtfLe6Rjn7Z+MyuVLUdwq7rxFIAsc6FWTaXlYMO+9A=="
+  "resolved" "https://registry.npmjs.org/el-moment/-/el-moment-1.0.0.tgz"
+  "version" "1.0.0"
+
 "electron-to-chromium@^1.4.118":
   "integrity" "sha512-0Rcpald12O11BUogJagX3HsCN3FE83DSqWjgXoHo5a72KUKMSfI39XBgJpgNNxS9fuGzytaFjE06kZkiVFy2qA=="
   "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.137.tgz"
@@ -1035,6 +1040,11 @@
   "version" "2.1.35"
   dependencies:
     "mime-db" "1.52.0"
+
+"moment@^2", "moment@^2.29.3":
+  "integrity" "sha512-c6YRvhEo//6T2Jz/vVtYzqBzwvPT95JBQ+smCytzf7c50oMZRsR/a4w88aD34I+/QVSfnoAnSBFPJHItlOMJVw=="
+  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.3.tgz"
+  "version" "2.29.3"
 
 "msgpackr-extract-linux-x64@1.1.0":
   "integrity" "sha512-O+XoyNFWpdB8oQL6O/YyzffPpmG5rTNrr1nKLW70HD2ENJUhcITzbV7eZimHPzkn8LAGls1tBaMTHQezTBpFOw=="
