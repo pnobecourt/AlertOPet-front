@@ -28,7 +28,9 @@
           <RouterLink to="/mot-de-passe-perdu" rel="noopener noreferrer"
             >Mot de passe perdu</RouterLink>
         </p>
-<div v-if="errorMessages" class="alert error">{{ errorMessages }} </div>
+        <!-- show errors -->
+        <div v-if="errorMessages" class="allerror" v-html="errorMessages">
+        </div>
 
         <button role="submit" class="blueButton">Connexion</button>
       </form>
@@ -63,16 +65,16 @@ export default {
       const error = [];
 
       if (this.password.length <= 6) {
-        error.push("Le mot de passe est invalide.");
+        error.push("- Le mot de passe est invalide.</br>");
       }
 
       if (!this.username) {
-        error.push('Indiquez votre adresse email.');
+        error.push('- Indiquez votre adresse email.</br>');
       } else if (!this.validEmail(this.username)) {
-        error.push('L\'email n\'est pas valide.');
+        error.push('- L\'email n\'est pas valide.</br>');
       }
 
-      this.errorMessages = error.join(', ');
+      this.errorMessages = error.join('');
 
 // si pas de message d'erreur
             if (!this.errorMessages) {

@@ -61,7 +61,7 @@ export default {
     return {
       cardList: [],
       isContentLoaded: false,
-    };
+      };
   },
 
   components: {
@@ -95,7 +95,8 @@ export default {
                 }
             });
         }
-  }
+  },
+
   
 };
 </script>
