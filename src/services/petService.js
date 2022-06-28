@@ -80,8 +80,7 @@ console.log(localStorage.getItem('token'));
                     "Authorization": "Bearer " + localStorage.getItem('token'),
                     'Content-Disposition': 'attachment; filename="[Pet]-131.png"'
                 }
-            },
-            
+            }
 
         );
     }

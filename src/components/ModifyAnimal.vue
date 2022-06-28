@@ -9,7 +9,8 @@
       <!-- picture of animal -->
        <img class="cardAnimal__image" :src= cardList.picture  alt="Animal" />
       <form method="POST" id="pictureAnimal">
-        <button class="blueButton"><i class="fa-solid fa-camera"></i>Ajouter une photo</button>
+        <input type="file" @change="onFileSelected"/>
+        <button class="blueButton" @click="onUpload">Télécharger l'image</button>
         <button class="yellowButton" @click="onAlertClick(cardList.id)"><i class="fa-solid fa-bullhorn"></i>Déclencher une alerte</button>
       </form>
     </section>
@@ -61,6 +62,7 @@ export default {
     return {
       cardList: [],
       isContentLoaded: false,
+      selectedFile: null,
       };
   },
 
@@ -94,7 +96,29 @@ export default {
                     petId: petId
                 }
             });
-        }
+        },
+  onFileSelected(event){
+this.selectedFile = event.target.files[0];
+console.log(this.selectedFile = event.target.files[0]);
+  },
+  onUpload(){
+    const baseURL = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/media/" + this.cardList.id;
+    const pet = '[Pet]-' + this.cardList.id;
+
+    const fd = new FormData();
+    fd.append(pet, this.selectedFile, this.selectedFile.name)
+    axios.post('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/media', fd, {
+                headers: {
+                    'Content-Type': 'image/png',
+                    "Authorization": "Bearer " + localStorage.getItem('token'),
+                    'Content-Disposition': 'attachment;'
+                }
+            })
+    .then( res => {
+      console.log(res);
+    })
+  }
+
   },
 
   

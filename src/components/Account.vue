@@ -21,7 +21,7 @@
       
             <div class="animalCard" v-for="animal in cardList" :key="animal.id">
               <div class="animalCard__animalName" @click="onPetModifyClick(animal.id)">
-                {{ animal.title }}
+               #{{ animal.id }} {{ animal.title }}
               </div>
               <button class="actifButton" @click="onAlertClick(animal.id)">
                 Activer
@@ -72,6 +72,7 @@
       };
     },
     components: {
+      petService,
       userService,
     },
     mounted() {
