@@ -8,9 +8,11 @@
     <section class="box">
       <!-- picture of animal -->
        <img class="cardAnimal__image" :src= cardList.picture  alt="Animal" />
-      <form method="POST" id="pictureAnimal">
-        <input type="file" @change="onFileSelected"/>
-        <button class="blueButton" @click="onUpload">Télécharger l'image</button>
+      <form method="POST" id="pictureAnimal" @submit.prevent>
+        <!-- <input type="file" @change="onFileSelected"/> -->
+		<input type="file" accept="image/*" ref="file" @change="selectImage" />
+        <!-- <button class="blueButton" @click="onUpload">Télécharger l'image</button> -->
+		<button class="blueButton" :disabled="!currentImage" @click="upload" @submit.prevent >Télécharger l'image</button>
         <button class="yellowButton" @click="onAlertClick(cardList.id)"><i class="fa-solid fa-bullhorn"></i>Déclencher une alerte</button>
       </form>
     </section>
@@ -56,6 +58,7 @@
 <script>
 import axios from "axios";
 import userService from '../services/userServices.js';
+import UploadService from "../services/uploadService.js";
 export default {
 
   data() {
@@ -63,6 +66,11 @@ export default {
       cardList: [],
       isContentLoaded: false,
       selectedFile: null,
+	  currentImage: undefined,
+      previewImage: undefined,
+      progress: 0,
+      message: "",
+      imageInfos: [],
       };
   },
 
@@ -74,10 +82,14 @@ export default {
   mounted() {
     const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/" + this.$route.params.petId;
 
+	UploadService.getFiles().then(response => {
+      this.imageInfos= response.data;
+    });
+
     console.log(link);
     axios.get(link,{
    headers: {
-      Authorization: 'Bearer ' + localStorage.token,
+      "Authorization": "Bearer " + localStorage.token,
     }})
     .then ((response) => {
         console.log(response.data);
@@ -88,6 +100,29 @@ export default {
     })
 },
   methods:{
+	selectImage() {
+      this.currentImage = this.$refs.file.files.item(0);
+      this.previewImage = URL.createObjectURL(this.currentImage);
+      this.progress = 0;
+      this.message = "";
+    },
+	upload() {
+      this.progress = 0;
+      UploadService.upload(this.currentImage, (event) => {
+        this.progress = Math.round((100 * event.loaded) / event.total);
+      })
+        .then((response) => {
+          this.message = response.data.message;
+          return UploadService.getFiles();
+        })
+        .then((images) => {
+          this.imageInfos = images.data;
+        })
+        .catch((err) => {
+          this.progress = 0;
+          this.message = "Could not upload the image! " + err;
+          this.currentImage = undefined;
+        })},
         onAlertClick(petId) {
           console.log(petId);
             this.$router.push({ 
@@ -96,7 +131,8 @@ export default {
                     petId: petId
                 }
             });
-        },
+        }
+	},
   onFileSelected(event){
 this.selectedFile = event.target.files[0];
 console.log(this.selectedFile = event.target.files[0]);
@@ -119,10 +155,7 @@ console.log(this.selectedFile = event.target.files[0]);
     })
   }
 
-  },
-
-  
-};
+  };
 </script>
 
 <style lang="scss" scoped>

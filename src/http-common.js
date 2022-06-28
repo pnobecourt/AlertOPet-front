@@ -1,7 +1,7 @@
 import axios from "axios";
 export default axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json",
   headers: {
-    "Content-type": "application/json"
-  }
+    "Content-type": "application/json",
+  },
 });
