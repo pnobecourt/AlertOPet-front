@@ -115,3 +115,13 @@ article {
     line-height:2rem;
     padding-top:3rem;
 }
+
+.box {
+    max-width:500px;
+    height:100%;
+
+    &__top404{
+        width:100%;
+        max-width:500px;
+    }
+}
