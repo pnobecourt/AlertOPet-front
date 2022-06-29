@@ -17,7 +17,6 @@
         <input
           id="password"
           type="password"
-          name="password"
           v-model="password"
           placeholder="Votre mot de passe"
         />
@@ -26,7 +25,6 @@
         <input
           id="confirmPassword"
           type="confirmPassword"
-          name="confirmPassword"
           v-model="confirmPassword"
           placeholder="Confirmer votre mot de passe"
         />
@@ -112,13 +110,11 @@ export default {
         
       .then((response) => {
 
-console.log(response.data);
-                // success -> redirect to account
                 this.successMessages = "- Vos informations ont été modifiées.<br>"
 
             })
       .catch((error) => {
-              // error -> redirect to subscription page
+              
               this.errorMessages = error.response.data.message;
             }); 
 
@@ -137,15 +133,15 @@ console.log(response.data);
 
       .then((response) => {
             if (!response.data.statusCode || response.data.statusCode === 200) {
-              // success -> redirect to account
+              // success 
                 this.successMessages = "- Vos informations ont été modifiées.<br>"
             } else {
-              // error -> redirect to subscription page
+              // error 
               this.errorMessages = error.response.data.message;
             }
           })
           .catch((error) => {
-            // error -> redirect to subscription page
+            // error 
             this.errorMessages = error.response.data.message;
           }); 
         }

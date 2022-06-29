@@ -55,11 +55,12 @@ export default {
 
         return axios.post(
 
-            baseUrl + "/wp/v2/alert",
+            baseUrl + "/wp/v2/alert?=",
             animalData, 
             {
                 headers: {
-                    "Authorization": "Bearer " + localStorage.getItem('token')
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer" + localStorage.getItem('token'),
                 }
             }
 

@@ -13,11 +13,11 @@
  <!--bell-->
     <div class="navigation__bell">
 
-        <div class="navigation__bell__img" v-if="isUserConnected">
+        <div class="navigation__bell__img">
           <img src="../assets/images/bell.svg" alt="alertes"/>
         </div>
 
-        <div class="navigation__bell__alert" v-if="isUserConnected"></div>
+        <div class="navigation__bell__alert"></div>
 
     </div>
 
@@ -71,9 +71,7 @@ export default {
     };
   },
   computed: {
-  
-  // on utilisera cette méthode comme un propriété
-        // en fait un getter
+
         getUserId() {
             const userId = this.$store.state.id;
             return userId;
@@ -84,8 +82,7 @@ export default {
         }
 
   },
-    
-    // on déclare les props utilisables sur ce composant => on définit quels attributs on pourra utiliser pour passer de la donnée ici depuis le parent
+
     props: ["isUserConnected"],
     methods: {
         onDisconnectClick() {
@@ -102,5 +99,9 @@ export default {
 @import "../assets/scss/abstracts/variables";
 @import "../assets/scss/abstracts/mixins";
 
-
+.navigation__bell__img,
+.navigation__bell__alert {
+  display:none;
+  
+}
 </style>

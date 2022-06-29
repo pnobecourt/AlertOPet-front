@@ -7,7 +7,7 @@
 
     <section class="box">
       <!-- picture of animal -->
-     <img class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
+     <img class="cardAnimal__image" src=""  alt="Animal" />
       <form method="POST" id="pictureAnimal">
         <div class="choiceLost">
           <div class="choiceLost__box">
@@ -43,45 +43,42 @@
       <form @submit.prevent="onFormSubmit">
 
         <div class="choiceAnimal">
-          <select name="type" id="type" class="choiceAnimal__select" v-model="selectedType">
-            <option disabled value="">Sélectionnez un type d'animal<span class="required">*</span></option>
-            <option v-for="specie in specieList" :key="specie.id" :value="specie.name">
-              {{ specie.name }} 
+
+          <select id="type" class="choiceAnimal__select" v-model="selectedType">
+<option disabled value="">Sélectionnez un type d'animal</option>
+            <option
+              v-for="specie in specieList" 
+              :key="specie.id" 
+              :value="specie.name">
+              {{ specie.name }}
             </option>
           </select>
         </div>
 
         <label for="lieu">Lieu</label>
-        <input id="lieu" placeholder="Lieu de la disparition"  v-model="cardList.localization" />
+        <input id="lieu" placeholder="Lieu de la disparition"  v-model="localization" />
 
         <label for="name">Nom de l'animal<span class="required">*</span></label>
-        <input id="name" placeholder="Nom de l'animal"  v-model="cardList.title" />
+        <input id="name" placeholder="Nom de l'animal"  v-model="name" />
 
         <label for="race">Race de l'animal</label>
-        <input id="race" placeholder="Race de l'animal" v-model="cardList.breed"/>
+        <input id="race" placeholder="Race de l'animal" v-model="breed"/>
 
         <label for="height">Taille de l'animal</label>
-        <input id="height" placeholder="Taille de l'animal" v-model="cardList.size"/> 
+        <input id="height" type="number" placeholder="Taille de l'animal" v-model="size"/> 
 
         <label for="weight">Poids de l'animal</label>
-        <input id="weight" placeholder="Poids de l'animal" v-model="cardList.weight"/>
+        <input id="weight" type="number" placeholder="Poids de l'animal" v-model="weight"/>
 
         <label for="color">Couleur de l'animal</label>
-        <input id="color" placeholder="Couleur de l'animal" v-model="cardList.color"/>
+        <input id="color" placeholder="Couleur de l'animal" v-model="color"/>
 
         <label for="birthday">Âge aproximatif</label>
-        <input id="birthday" placeholder="Âge aproximatif" v-model="cardList.birth_date"/>
+        <input id="birthday" type="number" placeholder="Âge aproximatif" v-model="age"/>
 
-        <label for="password">Votre numéro de téléphone</label>
-        <input
-          id="telephon"
-          type="telephon"
-          v-model.trim="contactPhone"
-          placeholder="Votre numéro de téléphone"
-        />
 
         <label for="info">Votre message / Description</label>
-        <textarea id="info" rows="5" cols="33" v-model="cardList.content"> </textarea>
+        <textarea id="info" rows="5" cols="33" v-model="content"> </textarea>
 <div class="box">
         <button class="yellowButton bottom"><i class="fa-solid fa-bullhorn"></i>Déclencher une alerte</button>
          
@@ -93,6 +90,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import userService from '../services/userServices.js';
 import speciesService from '../services/specieService.js';
 import petService from '../services/petService.js';
@@ -101,91 +99,108 @@ export default {
 
   data() {
     return {
-
-    
+    // content
     content : "",
-    post_parent : "",
-    
     title : "",
-    
-    datetime : "",
+    status : "publish",
+    alert_status : "En cours",
+    meta: {
     localization : "",
     petId : "",
     petBreed : "",
     petName : "",
-    petAge : "",
+    petAge : 0,
     petColor : "",
     petSize : "",
     petWeight : "",
     petDescription : "",
-    contactPhone : "",
     contactMail : "",
-    petSpecies : "",
-
-        specieList: [],
-        selectedType: '',
-        errorMessages: "",
-
-      cardList: [],
-      isContentLoaded: false,
-      picked: "perdu",
+    petSpecies : null,
+    },
+    // select
+    specieList: [],
+    selectedType: '',
+    errorMessages: "",
+    // loading
+    isContentLoaded: false,
+    // chacked by default
+    picked: "perdu",
+    name: "",
+    age: 0,
+    size: 0,
+    weight: 0,
+    color: "",
+    content: "",
     };
   },
-
   components: {
     userService,
     speciesService,
     petService,
   },
+  mounted() {
+    this.loadSpecies();
+  },
   props: ["isUserConnected"],
 
-methods: {
+  methods: {
 
-      onFormSubmit() {
+  loadSpecies() {
+            axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species')
+            .then((response) => {
+              console.log("Liste des types d'animaux chargée avec succès.");
+                this.specieList = response.data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        },
 
-
-        // if it's ok
-        if (!this.errorMessages) {
-          const formData = {
-
-            title : this.cardList.title,
-            content : this.cardList.content,
-            post_parent : this.cardList.id,
-            datetime : this.cardList.date,
-            localization : this.cardList.localization,
-            petId : this.cardList.id,
-            petBreed : this.cardList.breed,
-            petName : this.cardList.title,
-            petAge : this.cardList.age,
-            petColor : this.cardList.color,
-            petSize : this.cardList.size,
-            petWeight : this.cardList.weight,
-            petDescription : this.cardList.content,
-            contactMail : localStorage.email,
-          }
-
-console.log(formData);
+  onFormSubmit() {
 
 
-                    // send the informations
+    // if it's ok
+    if (!this.errorMessages) {
+      const formData = {
+
+      "status": "publish",
+      "type": "alert",
+      "title": {
+        "rendered": this.name
+      },
+      "content": {
+        "rendered": this.name
+      },
+      "meta": {
+        "localization": this.localization,
+        "petBreed": this.breed,
+        "petName": this.name,
+        "petAge": this.age,
+        "petColor": this.color,
+        "petSize": this.size,
+        "petWeight": this.weight,
+        "petDescription": this.content,
+      }
+    }
+
+          console.log(formData);
+
+          // send the informations
           petService.createPetAlert(formData)
             .then((response) => {
-              if (!response.data.statusCode || response.data.statusCode === 200) {
                 // success -> redirect to account
                 console.log(title);
-              } else {
-                // error -> redirect to subscription page
-                this.errorMessages = error.response.data.message;
-              }
+
+                this.errorMessages = error.response;
+
             })
             .catch((error) => {
               // error -> redirect to subscription page
-              this.errorMessages = error.response.data.message;
+              this.errorMessages = error.response;
 
             });
         }
       },
-
     },
 
 
