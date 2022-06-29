@@ -33,7 +33,7 @@ const routes = [
     { path: '/animal', component: AddAnimal, name: "animal"},
     { path: '/animal/tous-les-animaux', component: ListCardAnimal, name: "tous-les-animaux"},
     { path: '/animal/modification/:petId', component: ModifyAnimal, name: "modification-animal"},
-    { path: '/creation-alerte', component: CreateAlert, name: "creation-alerte-pet"},
+    { path: '/creation-alerte-animal', component: CreateAlert, name: "creation-alerte-animal"},
     { path: '/creation-alerte/:petId', component: Alert, name: "creation-alerte"},
     { path: '/category', component: Category, name: "category"},
     { path: '/alerte/:alertId', component: CardPetAlert, name: "alerte"},

@@ -8,10 +8,10 @@
       <!-- connexion -->
       <form @submit.prevent="onFormSubmit" id="modifyProfil">
         <label for="name">Votre nom</label>
-        <input id="name" v-model="cardList.first_name" name="first_name" placeholder="Votre nom"/>
+        <input id="name" v-model="cardList.first_name" placeholder="Votre nom"/>
 
-        <label for="email">Votre adresse email</label>
-        <input id="email" v-model="cardList.email" name="email" placeholder="Votre adresse email" />
+        <label for="email">Votre adresse email<span class="required">*</span></label>
+        <input id="email" v-model="cardList.email" placeholder="Votre adresse email" />
 
         <label for="password">Votre mot de passe</label>
         <input
@@ -30,7 +30,10 @@
           v-model="confirmPassword"
           placeholder="Confirmer votre mot de passe"
         />
-
+        <!-- show errors -->
+        <br>
+        <div v-if="errorMessages" class="allerror" v-html="errorMessages">
+        </div>
         <button class="blueButton">Modifier</button>
       </form>
     </section>
@@ -52,9 +55,7 @@ export default {
   },
     mounted() {
 
-
     this.loadCard();
-
      
   },
   components: {
@@ -78,25 +79,78 @@ export default {
         console.error(error );
     })
   },
+
     onFormSubmit() {
       const error = [];
 
-      if (this.password.length <= 6) {
-        error.push("Le mot de passe est invalide.");
-      }
-
-      if (this.password != this.confirmPassword) {
-        error.push("Les mots de passe ne sont pas les mêmes.");
+      if ((this.password != this.confirmPassword) && (this.password != "" || this.confirmPassword != "")){
+        error.push("- Les mots de passe ne sont pas les mêmes.</br>");
       }
 
 
-      if (!this.email) {
-        error.push('Indiquez votre adresse email.');
-      } else if (!this.validEmail(this.email)) {
-        error.push('L\'email n\'est pas valide.');
+      if (!this.cardList.email) {
+        error.push('- Indiquez votre adresse email.<br>');
+      } else if (!this.validEmail(this.cardList.email)) {
+        error.push('- L\'email n\'est pas valide.<br>');
       }
 
       this.errorMessages = error.join(', ');
+
+        // if it's ok
+        if (!this.errorMessages) {
+
+      if (!this.password){
+
+      userService.updateUser({
+      user_login: this.cardList.email,
+      display_name: this.cardList.first_name,
+      user_email: this.cardList.email,
+      first_name: this.cardList.first_name,
+      last_name: this.cardList.first_name,
+   
+        })
+        
+      .then((response) => {
+
+console.log(response.data);
+                // success -> redirect to account
+                this.successMessages = "- Vos informations ont été modifiées.<br>"
+
+            })
+      .catch((error) => {
+              // error -> redirect to subscription page
+              this.errorMessages = error.response.data.message;
+            }); 
+
+      } else {
+
+    userService.updateUser({
+
+    user_pass: this.password,
+    user_login: this.cardList.email,
+    display_name: this.cardList.first_name,
+    user_email: this.cardList.email,
+    first_name: this.cardList.first_name,
+    last_name: this.cardList.first_name,
+  
+      })
+
+      .then((response) => {
+            if (!response.data.statusCode || response.data.statusCode === 200) {
+              // success -> redirect to account
+                this.successMessages = "- Vos informations ont été modifiées.<br>"
+            } else {
+              // error -> redirect to subscription page
+              this.errorMessages = error.response.data.message;
+            }
+          })
+          .catch((error) => {
+            // error -> redirect to subscription page
+            this.errorMessages = error.response.data.message;
+          }); 
+        }
+          
+        }
     },
     validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

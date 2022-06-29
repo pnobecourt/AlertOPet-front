@@ -10,7 +10,7 @@
         <div class="profil__box">
           <div class="profil__card">
             <img
-              src="../assets/images/marc.jpg"
+              src="../assets/images/Photo_profil-min.jpg"
               class="profil__image"
               alt="AlertOpet"
             />

@@ -1,8 +1,8 @@
 <template>
   <!-- container -->
-  <div class="container" v-if="isContentLoaded">
+  <div class="container">
     <section class="title">
-      <h1 class="title__page">Déclencher une alerte pour {{ cardList.title }} ( {{ cardList.species }} ) - #{{ cardList.id }}</h1>
+      <h1 class="title__page">Déclencher une alerte</h1>
     </section>
 
     <section class="box">
@@ -21,16 +21,15 @@
             ><br />
           </div>
 
-
           <div class="choiceLost__box">
             <input
               type="radio"
               id="choiceLost__found"
-              value="kidnapé"
+              value="trouvé"
              v-model="picked"
             />
             <label for="choiceLost__found" class="choiceLost__found">
-              Kidnapé</label
+              Trouvé</label
             ><br />
           </div>
         </div>
@@ -94,7 +93,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import userService from '../services/userServices.js';
 import speciesService from '../services/specieService.js';
 import petService from '../services/petService.js';
@@ -140,23 +138,6 @@ export default {
     petService,
   },
   props: ["isUserConnected"],
-
-  mounted() {
-
-    const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/" + this.$route.params.petId;
-
-axios.get(link,{
-   headers: {
-      Authorization: 'Bearer ' + localStorage.token,
-    }})
-    .then ((response) => {
-      this.cardList = response.data;
-      this.isContentLoaded = true;
-    }).catch((error) =>{
-        console.error(error );
-    })
-
-},
 
 methods: {
 

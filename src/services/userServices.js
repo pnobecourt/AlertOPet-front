@@ -12,18 +12,18 @@ export default {
         // On retourne la promesse de axios.post() pour réagir à la requête côté composant
         // argument 1 => Url (??? => quel endpoint utiliser ??)
         // argument 2 => data (un objet à transmettre au serveur)
-        const registerPromise = axios.post(baseUrl + '/aop/v1/user', userdata);
+        const registerPromise = axios.post(baseUrl + '/aop/v1/user/', userdata);
 
         return registerPromise;
     },
     connectUser(credentials) {
-
+console.log(credentials);
         // faire l'appel à l'API
         // on doit demander un token avec les identifiants fournis
         // on passe les credentials dans le corps de la requête => {username, password}
         const connectionPromise = axios.post(baseUrl + '/jwt-auth/v1/token', credentials)
         .then((response) => {
-
+console.log(response);
             // On trouve le token dans response.data.data.token
             // on enregistre le token dans le localStorage
             // si on utilise sessionStorage, le token est supprimé lorsqu'on ferme le navigateur
@@ -88,5 +88,13 @@ export default {
         });
       },
 
+    updateUser() {
+        return axios.post(baseUrl + "/aop/v1/user/" + localStorage.id, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          data: {}
+        });
+      },
 
 }

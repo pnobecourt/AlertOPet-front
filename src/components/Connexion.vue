@@ -38,8 +38,8 @@
       <hr />
 
       <!-- create accompte -->
-<RouterLink to="/creation-compte" rel="noopener noreferrer"
-             class="createButton" >Créer un compte</RouterLink>
+            <RouterLink to="/creation-compte" rel="noopener noreferrer"
+            class="createButton" >Créer un compte</RouterLink>
     </section>
   </div>
   <!-- End container -->
@@ -84,30 +84,30 @@ export default {
                     password: this.password
                 })
                 .then((response) => {
-                   if (response.data.statusCode === 200) {
-                    // si on s'est bien connecté, on navigue vers la home
-                    this.$router.push('/mon-compte'); } else {
+                   console.lod(response.data);
+                  // si on s'est bien connecté, on navigue vers la home
+                  //this.$router.push('/mon-compte'); } else {
                   // sinon on affiche l'erreur
-                    this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"   
-
-                    }
+                  //this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"   
+                  if(response === "200"){
+                  this.$router.push('/mon-compte');
+                  } else {
+                    this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"
+                  }
+                    
                 })
                 .catch((error) => {
                     // sinon on affiche l'erreur
                     this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"   
+                    
                 });
             }
-
-
-
     },
+
     validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
-
-    
-
   }
 };
 </script>

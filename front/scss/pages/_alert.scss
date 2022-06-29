@@ -2,7 +2,6 @@
 // Alert
 
 #choiceLost__lost,
-#choiceLost__kidanpped,
 #choiceLost__found{
     width:1rem;
     box-shadow:none;
@@ -32,11 +31,5 @@
         color:$blueGreen;
         margin-left:5px;
     }
-
-    &__kidanpped {
-            font-family:$fontTitle;
-            font-size:1.5rem;
-            color:$orange;
-            margin-left:5px;
-    }
+    
 }
