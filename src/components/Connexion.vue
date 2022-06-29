@@ -84,22 +84,16 @@ export default {
                     password: this.password
                 })
                 .then((response) => {
-                   console.lod(response.data);
-                  // si on s'est bien connecté, on navigue vers la home
-                  //this.$router.push('/mon-compte'); } else {
-                  // sinon on affiche l'erreur
-                  //this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"   
-                  if(response === "200"){
-                  this.$router.push('/mon-compte');
-                  } else {
-                    this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"
-                  }
-                    
+                    // si on s'est bien connecté, on navigue vers la home
+                      if(localStorage.token){
+                    this.$router.push('/mon-compte');
+                      } else {
+                        this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.";
+                      }
                 })
                 .catch((error) => {
                     // sinon on affiche l'erreur
-                    this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.<br>"   
-                    
+                    this.errorMessages = error;    
                 });
             }
     },
