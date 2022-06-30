@@ -1,75 +1,68 @@
 <template>
-  <!-- container -->
-  <div class="container" v-if="isUserConnected">
+  <div class="container">
+<div v-if="isUserConnected">
+    <!--title -->
     <section class="title">
-      <h1 class="title__page">Choupette</h1>
+      <h1 class="title__page">Mes Bêbètes</h1>
     </section>
 
-    <section class="box">
-      <!-- Card -->
-      <article>
-        <!-- card__picture -->
-        <div class="cardAnimal">
-          <img class="cardAnimal__image" src="https://source.unsplash.com/random/900×700/?cat" alt="Animal" />
+    <!-- list of Cards -->
+    <section>
+    <!-- Cards -->
+      <div class="boxOfCards">
 
-          <!-- card__lost -->
-          <div class="cardAnimal__lost">
-            <div class="cardAnimal__lost__status">
-              <p>
-                <span class="cardAnimal__lost__lostAnimalStatusPink"
-                  >Perdu</span
-                >
-                <span class="cardAnimal__lost__lostAnimalStatusBlue"
-                  >Trouvé</span
-                >
-              </p>
-            </div>
+        <CardAnimal v-for="animal in cardList" :key="animal.id" :animalData="animal"></CardAnimal>
 
-            <div class="cardAnimal__lost__share">
-              <p class="cardAnimal__lost__share__lostAnimalShare">Partage</p>
-              <i class="fa-solid fa-share-nodes"></i>
-            </div>
-          </div>
 
-          <div class="cardAnimal__describe">
-            <p>Type :</p>
-            <p>Lieu :</p>
-            <p>Nom :</p>
-            <p>Race :</p>
-            <p>Taille :</p>
-            <p>Poids :</p>
-            <p>Couleur :</p>
-            <p>Âge :</p>
-          </div>
-
-          <div class="cardAnimal__description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non ea
-            sequi dolorem iure dolor modi quidem minima eaque officiis laborum
-            repellat quia similique, atque, quis voluptates, asperiores saepe
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum at
-            laudantium beatae accusantium, repellendus perferendis minus
-            cupiditate voluptates, officiis tempore odio aperiam error nostrum
-            consequuntur. Rerum modi aut voluptatem odit!
-          </div>
-        </div>
-      </article>
-
-      <!-- Contacter le propriétaire -->
-      <button class="blueButton bottom"><i class="fa-solid fa-pen"></i>Modifier la fiche</button>
+      </div>
+      <!-- end boxOfcards -->
     </section>
-  </div>
-  <!-- Fin container -->
+
+    <div class="top"></div>
+</div>
+ <span v-if="!isUserConnected">{{ this.$router.push({ name: 'connection' }) }}</span>
+  </div> 
+    <!-- end of container -->
 </template>
 
 <script>
+import axios from "axios";
+import userService from '../services/userServices.js';
+import CardAnimal from "./CardAnimal.vue";
+
 export default {
   data() {
-    return {};
+    return {
+      cardList: [],
+    };
   },
-  props: ["isUserConnected"],
+  components: {
+    CardAnimal,
+    userService,
+  },
+  mounted() {
+    this.loadCard();
+  },
+
+methods : {
+
+  loadCard(){
+    const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/user/" + localStorage.id;
+        axios.get(link,{
+   headers: {
+      Authorization: 'Bearer ' + localStorage.token,
+    }}).then
+    ((response) => {
+        console.log(response.data);
+      this.cardList = response.data;
+    }).catch((error) =>{
+        console.error(error );
+    })
+  }
+},
+    props: ["isUserConnected"],
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>

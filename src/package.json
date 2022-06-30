@@ -9,13 +9,17 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "bootstrap-vue": "^2.22.0",
+    "el-moment": "^1.0.0",
     "html2pdf": "^0.0.11",
+    "moment": "^2.29.3",
     "propper": "^1.0.4",
     "sass": "^1.52.3",
     "vue": "^3.2.37",
     "vue-html2pdf": "^1.8.0",
     "vue-proper": "^0.11.1",
     "vue-router": "^4.0.16",
+    "vue3-html2pdf": "^1.1.2",
+    "vue3-simple-html2pdf": "^0.0.6",
     "vuex": "^4.0.2"
   }
 }

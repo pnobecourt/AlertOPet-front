@@ -32,7 +32,7 @@
             </div>
             <div class="cardAnimal__describe" @click="onPetClick(animalData.id)">
               <p>ID : {{ animalData.id }}</p>
-              <p>Type : {{ animalData.type }}</p>
+              <p>Type : {{ animalData.petSpecies }}</p>
               <p>Lieu : {{ animalData.meta["localization"] }}</p>
               <p>Nom : {{ animalData.meta["petName"] }}</p>
               <p>Race : {{ animalData.meta["petBreed"]}}</p>

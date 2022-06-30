@@ -78,3 +78,13 @@
 #picturAnimal button{
     margin-bottom:1rem;
 } 
+
+.actifButton {
+    display:flex;
+    align-self:center;
+    justify-content:center;
+    background-color:$orange;
+    padding:.5rem;
+    border-radius:.3rem;
+    border:none;
+  }

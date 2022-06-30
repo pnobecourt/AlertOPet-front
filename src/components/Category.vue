@@ -12,29 +12,24 @@
       <!-- Recherche -->
       <section>
         <div class="choiceAnimal">
-          <label for="type">Sélectionnez un type d'animal :</label>
-          <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="specieList">
-
+          <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="selectedType">
+<option disabled value="">Sélectionnez un type d'animal</option>
             <option
               v-for="specie in specieList" 
               :key="specie.id" 
               :value="specie.id">
               {{ specie.name }}
             </option>
-
           </select>
 
-
-        <label for="selectCountry">Sélectionnez un lieu :</label>
-          <select name="type" id="selectCountry" class="choiceAnimal__select" v-model="cardList">
-
+          <select name="type" id="selectCountry" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="selectedCity">
+<option disabled value="">Sélectionnez un lieu</option>
             <option
               v-for="city in cardList" 
               :key="city.id" 
               :value="city.id">
               {{ city.meta["localization"] }}
             </option>
-
           </select>
 
           <button class="blueButton">Rechercher</button>
@@ -71,6 +66,8 @@ export default {
       cardList: [],
       specieList: [],
       specieList : "choice",
+      selectedType: '',
+      selectedCity: '',
     };
   },
   components: {
@@ -84,7 +81,7 @@ export default {
 methods : {
 
   loadCard(){
-    axios.get('http://devback.alertopet.com/wp-json/wp/v2/alert?embed').then
+    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert?embed').then
     ((response) => {
         console.log(response.data);
       this.cardList = response.data;
@@ -100,7 +97,7 @@ methods : {
 
   loadSpecies() {
             // getAllRecipeTypes() renvoie une promesse
-            axios.get('http://devback.alertopet.com/wp-json/wp/v2/species').then
+            axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then
             ((response) => {
               console.log(response.data);
                 this.specieList = response.data;

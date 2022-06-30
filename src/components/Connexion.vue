@@ -28,7 +28,9 @@
           <RouterLink to="/mot-de-passe-perdu" rel="noopener noreferrer"
             >Mot de passe perdu</RouterLink>
         </p>
-<div v-if="errorMessages" class="alert error">{{ errorMessages }} </div>
+        <!-- show errors -->
+        <div v-if="errorMessages" class="allerror" v-html="errorMessages">
+        </div>
 
         <button role="submit" class="blueButton">Connexion</button>
       </form>
@@ -36,8 +38,8 @@
       <hr />
 
       <!-- create accompte -->
-<RouterLink to="/creation-compte" rel="noopener noreferrer"
-             class="createButton" >Créer un compte</RouterLink>
+            <RouterLink to="/creation-compte" rel="noopener noreferrer"
+            class="createButton" >Créer un compte</RouterLink>
     </section>
   </div>
   <!-- End container -->
@@ -63,16 +65,16 @@ export default {
       const error = [];
 
       if (this.password.length <= 6) {
-        error.push("Le mot de passe est invalide.");
+        error.push("- Le mot de passe est invalide.</br>");
       }
 
       if (!this.username) {
-        error.push('Indiquez votre adresse email.');
+        error.push('- Indiquez votre adresse email.</br>');
       } else if (!this.validEmail(this.username)) {
-        error.push('L\'email n\'est pas valide.');
+        error.push('- L\'email n\'est pas valide.</br>');
       }
 
-      this.errorMessages = error.join(', ');
+      this.errorMessages = error.join('');
 
 // si pas de message d'erreur
             if (!this.errorMessages) {
@@ -83,24 +85,23 @@ export default {
                 })
                 .then((response) => {
                     // si on s'est bien connecté, on navigue vers la home
+                      if(localStorage.token){
                     this.$router.push('/mon-compte');
+                      } else {
+                        this.errorMessages = "- Il n'y a pas de compte avec ces identifiants.";
+                      }
                 })
                 .catch((error) => {
                     // sinon on affiche l'erreur
-                    console.log(error);    
+                    this.errorMessages = error;    
                 });
             }
-
-
-
     },
+
     validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
-
-    
-
   }
 };
 </script>
