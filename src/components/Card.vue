@@ -5,9 +5,9 @@
           <div class="cardAnimal">
 
             <div @click="onPetClick(animalData.id)">
-            <img class="cardAnimal__image" :src= animalData.petPicture  alt="Animal" />
+            <img v-if="animalData.petPicture" class="cardAnimal__image" :src= animalData.petPicture  alt="Animal" />
+            <img v-else class="cardAnimal__image" src="../assets/images/sans-image.png"  alt="Animal" />
             </div>
-
             <!-- card__lost -->
 
             <div class="cardAnimal__lost">
@@ -32,7 +32,7 @@
             </div>
             <div class="cardAnimal__describe" @click="onPetClick(animalData.id)">
               <p>ID : {{ animalData.id }}</p>
-              <p>Type : {{ animalData.petSpecies }}</p>
+              <p>Type : {{ animalData.meta["petSpecies"] }}</p>
               <p>Lieu : {{ animalData.meta["localization"] }}</p>
               <p>Nom : {{ animalData.meta["petName"] }}</p>
               <p>Race : {{ animalData.meta["petBreed"]}}</p>
@@ -40,9 +40,6 @@
               <p>Poids : {{ animalData.meta["petWeight"] }}</p>
               <p>Couleur : {{ animalData.meta["petColor"] }}</p>
               <p>Âge : {{ animalData.meta["petAge"] }}</p>
-            </div>
-
-            <div class="cardAnimal__description" v-html="animalData.content.rendered" @click="onPetClick(animalData.id)">
             </div>
 
       <!-- Contacter le propriétaire -->
@@ -58,6 +55,9 @@ export default {
     return {
 
     };
+  },
+  components : {
+    petService,
   },
   methods : {
       contactOwner(email) {

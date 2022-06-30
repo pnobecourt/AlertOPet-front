@@ -53,7 +53,6 @@
               {{ specie.name }}
             </option>
           </select>
-          {{ selectedType }}
         </div>
 
         <label for="lieu">Lieu</label>
@@ -83,6 +82,16 @@
 
         <label for="info">Votre message / Description</label>
         <textarea id="info" rows="5" cols="33" v-model="content"> </textarea>
+
+        <!-- show errors -->
+        <br>
+        <div v-if="errorMessages" class="allerror" v-html="errorMessages">
+        </div>
+        <!-- show errors -->
+        <br>
+        <div v-if="successMessages" class="allsucces" v-html="successMessages">
+        </div>     
+
 <div class="box">
         <button class="yellowButton bottom"><i class="fa-solid fa-bullhorn"></i>Déclencher une alerte</button>
          
@@ -120,12 +129,13 @@ export default {
     petDescription : "",
     contactMail : "",
     contactPhone : "",
-    petSpecies : "chien",
+    petSpecies : "",
     },
     // select
     specieList: [],
     selectedType: '',
     errorMessages: "",
+    successMessages: "",
     // loading
     isContentLoaded: false,
     // chacked by default
@@ -167,7 +177,7 @@ export default {
 
     // if it's ok
     if (!this.errorMessages) {
-      console.log(this.selectedType);
+
       const formData = {
 
       "status": "publish",
@@ -190,30 +200,27 @@ export default {
         "petSpecies": this.selectedType,
         "contactPhone": this.phone,
         "contactMail": localStorage.email,
+        "petSpecies": this.selectedType,
       }
     }
 
-          console.log(formData);
+         
+      console.log("Selectedtype => " + this.selectedType);
 
           // send the informations
           petService.createPetAlert(formData)
             .then((response) => {
                 // success -> redirect to account
-                console.log(this.title);
-
-                this.errorMessages = error.response;
-
+                this.successMesaages = "- fiche créée avec succès.";
             })
             .catch((error) => {
               // error -> redirect to subscription page
               this.errorMessages = error.response;
 
-            });
+            }); 
         }
       },
-    },
-
-
+    }
 
 };
 </script>

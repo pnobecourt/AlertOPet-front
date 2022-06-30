@@ -71,6 +71,8 @@ export default {
     };
   },
   components: {
+    carousel,
+    speciesService,
     Card,
   },
   mounted() {
