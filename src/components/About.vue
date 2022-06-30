@@ -15,11 +15,13 @@
               alt="AlertOpet"
             />
             <h2>Paul Nobécourt</h2>
-            <p class="profil__language">Backend</p>
+            <p class="profil__language">Product Owner / Dev Backend</p>
             <p class="profil__text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem cum nisi laborum amet culpa natus odit voluptas,
-              dolorum laboriosam.
+              dolorum laboriosam.<br/>
+              <a href="https://github.com/pnobecourt">Github</a><br/>
+              <a href="https://www.linkedin.com/in/paul-nobecourt/">Linkedin</a>
             </p>
           </div>
 
@@ -30,7 +32,7 @@
               alt="AlertOpet"
             />
             <h2>Marc Cherier</h2>
-            <p class="profil__language">Frontend</p>
+            <p class="profil__language">Scrum Master / Dev Frontend</p>
             <p class="profil__text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem cum nisi laborum amet culpa natus odit voluptas,
@@ -45,7 +47,7 @@
               alt="AlertOpet"
             />
             <h2>David Baffray</h2>
-            <p class="profil__language">Backend</p>
+            <p class="profil__language">Lead Dev / Dev Backend</p>
             <p class="profil__text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem cum nisi laborum amet culpa natus odit voluptas,
@@ -60,7 +62,7 @@
               alt="AlertOpet"
             />
             <h2>Radhwane Abdallaoui</h2>
-            <p class="profil__language">Frontend</p>
+            <p class="profil__language">Dev Frontend</p>
             <p class="profil__text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem cum nisi laborum amet culpa natus odit voluptas,
