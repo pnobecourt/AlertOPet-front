@@ -53,6 +53,7 @@
               {{ specie.name }}
             </option>
           </select>
+          {{ selectedType }}
         </div>
 
         <label for="lieu">Lieu</label>
@@ -65,16 +66,19 @@
         <input id="race" placeholder="Race de l'animal" v-model="breed"/>
 
         <label for="height">Taille de l'animal</label>
-        <input id="height" type="number" placeholder="Taille de l'animal" v-model="size"/> 
+        <input id="height" placeholder="Taille de l'animal" v-model="size"/> 
 
         <label for="weight">Poids de l'animal</label>
-        <input id="weight" type="number" placeholder="Poids de l'animal" v-model="weight"/>
+        <input id="weight" placeholder="Poids de l'animal" v-model="weight"/>
 
         <label for="color">Couleur de l'animal</label>
         <input id="color" placeholder="Couleur de l'animal" v-model="color"/>
 
         <label for="birthday">Âge aproximatif</label>
         <input id="birthday" type="number" placeholder="Âge aproximatif" v-model="age"/>
+
+       <label for="tel">Votre numéro de téléphone</label>
+        <input id="tel" placeholder="Votre numéro de téléphone" v-model="phone"/>
 
 
         <label for="info">Votre message / Description</label>
@@ -115,7 +119,8 @@ export default {
     petWeight : "",
     petDescription : "",
     contactMail : "",
-    petSpecies : null,
+    contactPhone : "",
+    petSpecies : "chien",
     },
     // select
     specieList: [],
@@ -127,10 +132,11 @@ export default {
     picked: "perdu",
     name: "",
     age: 0,
-    size: 0,
-    weight: 0,
+    size: "",
+    weight: "",
     color: "",
     content: "",
+    phone: "",
     };
   },
   components: {
@@ -161,6 +167,7 @@ export default {
 
     // if it's ok
     if (!this.errorMessages) {
+      console.log(this.selectedType);
       const formData = {
 
       "status": "publish",
@@ -180,6 +187,9 @@ export default {
         "petSize": this.size,
         "petWeight": this.weight,
         "petDescription": this.content,
+        "petSpecies": this.selectedType,
+        "contactPhone": this.phone,
+        "contactMail": localStorage.email,
       }
     }
 
@@ -189,7 +199,7 @@ export default {
           petService.createPetAlert(formData)
             .then((response) => {
                 // success -> redirect to account
-                console.log(title);
+                console.log(this.title);
 
                 this.errorMessages = error.response;
 
