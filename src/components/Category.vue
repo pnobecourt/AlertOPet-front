@@ -16,7 +16,7 @@
           <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()"
             v-model="selectedType">
             <option disabled value="">Sélectionnez un type d'animal</option>
-            <option value="">Pas de filtre</option>
+            <option value="">Réinitialiser le filtre</option>
             <option v-for="specie in specieList" :key="specie.id" :value="specie.id">
               {{ specie.name }}
             </option>
@@ -25,7 +25,7 @@
           <select name="type" id="selectCountry" class="choiceAnimal__select" @change="onLocalizationFilterChange()"
             v-model="selectedCity">
             <option disabled value="">Sélectionnez un lieu</option>
-            <option value="">Pas de filtre</option>
+            <option value="">Réinitialiser le filtre</option>
             <option v-for="alertLocalization in alertLocalizations" :key="alertLocalization.id"
               :value="alertLocalization.id">
               {{ alertLocalization.name }}

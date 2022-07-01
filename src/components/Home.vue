@@ -37,7 +37,7 @@
             v-model="selectedType"
           >
             <option disabled value="">Sélectionnez un type d'animal</option>
-            <option value="">Pas de filtre</option>
+            <option value="">Réinitialiser le filtre</option>
             <option
               v-for="specie in specieList"
               :key="specie.id"
@@ -55,7 +55,7 @@
             v-model="selectedCity"
           >
             <option disabled value="">Sélectionnez un lieu</option>
-            <option value="">Pas de filtre</option>
+            <option value="">Réinitialiser le filtre</option>
             <option
               v-for="alertLocalization in alertLocalizations"
               :key="alertLocalization.id"

@@ -105,7 +105,7 @@
 
     methods: {
       loadCard() {
-        const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/user/" + localStorage.id;
+        const link = baseUrl + "/aop/v1/pet/user/" + localStorage.id;
 
         axios
           .get(link, {
@@ -122,7 +122,7 @@
           });
       },  
       loadCardAlert() {
-        const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert/";
+        const link = baseUrl + "/wp/v2/alert/";
 
         axios
           .get(link, {

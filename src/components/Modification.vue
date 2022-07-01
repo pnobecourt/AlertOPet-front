@@ -62,7 +62,7 @@ export default {
   methods: {
 
     loadCard(){
-      const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/user/" + localStorage.id;
+      const link = baseUrl + "/aop/v1/user/" + localStorage.id;
 
       console.log(link);
     axios.get(link,{

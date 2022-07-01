@@ -168,7 +168,7 @@
 
       this.loadAlertLocalizations();
 
-      const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/" + this.$route
+      const link = baseUrl + "/aop/v1/pet/" + this.$route
         .params.petId + "?alert_type" + this.picked;
 
       axios.get(link, {

@@ -88,7 +88,7 @@
     props: ["isUserConnected"],
 
     mounted() {
-      const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/aop/v1/pet/" + this.$route
+      const link = baseUrl + "/aop/v1/pet/" + this.$route
         .params.petId;
       axios.get(link, {
           headers: {
