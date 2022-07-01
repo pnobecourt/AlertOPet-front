@@ -60,6 +60,7 @@
   import axios from "axios";
   import speciesService from '../services/specieService.js';
   import petService from '../services/petService.js';
+  import { baseUrl } from "../services/apiClientService";
 
   export default {
     data() {
@@ -90,7 +91,7 @@
     methods: {
       loadSpecies() {
         // getAllRecipeTypes() renvoie une promesse
-        axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then((
+        axios.get(baseUrl + '/wp/v2/species').then((
             response) => {
               console.log(response.data);
               this.specieList = response.data;

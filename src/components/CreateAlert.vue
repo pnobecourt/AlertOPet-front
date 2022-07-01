@@ -111,6 +111,7 @@
   import speciesService from '../services/specieService.js';
   import petService from '../services/petService.js';
   import alertLocalizationService from "../services/alertLocalizationService";
+  import { baseUrl } from "../services/apiClientService";
 
   export default {
 
@@ -190,7 +191,7 @@
       },
 
       loadSpecies() {
-        axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species')
+        axios.get(baseUrl + '/wp/v2/species')
           .then((response) => {
             console.log("Liste des types d'animaux chargée avec succès.");
             this.specieList = response.data;

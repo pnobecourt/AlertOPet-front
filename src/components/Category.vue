@@ -16,7 +16,7 @@
           <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()"
             v-model="selectedType">
             <option disabled value="">Sélectionnez un type d'animal</option>
-            <option value="">Pas de filtre</option>
+            <option value="">Réinitialiser le filtre</option>
             <option v-for="specie in specieList" :key="specie.id" :value="specie.id">
               {{ specie.name }}
             </option>
@@ -25,7 +25,7 @@
           <select name="type" id="selectCountry" class="choiceAnimal__select" @change="onLocalizationFilterChange()"
             v-model="selectedCity">
             <option disabled value="">Sélectionnez un lieu</option>
-            <option value="">Pas de filtre</option>
+            <option value="">Réinitialiser le filtre</option>
             <option v-for="alertLocalization in alertLocalizations" :key="alertLocalization.id"
               :value="alertLocalization.id">
               {{ alertLocalization.name }}
@@ -61,9 +61,7 @@
   import petService from "../services/petService.js";
   import speciesService from "../services/specieService.js";
   import alertLocalizationService from "../services/alertLocalizationService";
-  import {
-    baseUrl
-  } from "../services/apiClientService";
+  import { baseUrl } from "../services/apiClientService";
 
   export default {
     data() {
@@ -92,7 +90,7 @@
     methods: {
 
       /* loadCard(){
-        axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert?embed').then
+        axios.get(baseUrl + '/wp/v2/alert?embed').then
         ((response) => {
             console.log(response.data);
           this.cardList = response.data;
@@ -103,7 +101,7 @@
       loadCard(page) {
 
         this.currentPage = page;
-        const baseUrl = 'http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert';
+        const endpoint = baseUrl + '/wp/v2/alert';
 
         petService.getPet(page, this.selectedType, this.selectedCity)
           .then((response) => {
@@ -122,7 +120,7 @@
       },
 
       loadSpecies() {
-        axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then((
+        axios.get(baseUrl + '/wp/v2/species').then((
             response) => {
               console.log(response.data);
               this.specieList = response.data;

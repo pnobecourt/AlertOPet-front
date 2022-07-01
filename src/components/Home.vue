@@ -37,7 +37,7 @@
             v-model="selectedType"
           >
             <option disabled value="">Sélectionnez un type d'animal</option>
-            <option value="">Pas de filtre</option>
+            <option value="">Réinitialiser le filtre</option>
             <option
               v-for="specie in specieList"
               :key="specie.id"
@@ -55,7 +55,7 @@
             v-model="selectedCity"
           >
             <option disabled value="">Sélectionnez un lieu</option>
-            <option value="">Pas de filtre</option>
+            <option value="">Réinitialiser le filtre</option>
             <option
               v-for="alertLocalization in alertLocalizations"
               :key="alertLocalization.id"
@@ -89,6 +89,7 @@
 
 <script>
 import axios from "axios";
+import { baseUrl } from "../services/apiClientService";
 import Card from "./Card.vue";
 import carousel from "../assets/js/carousel.js";
 import petService from "../services/petService.js";
@@ -99,6 +100,7 @@ import userService from '../services/userServices';
 export default {
   data() {
     return {
+      baseUrl: "",
       cardList: [],
       specieList: [],
       alertLocalizations: [],
@@ -140,7 +142,7 @@ methods : {
   loadCard(page) {
             // on met à jour le numéro de la page courante
             this.currentPage = page;
-            const baseUrl = 'http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert';
+            const endpoint = baseUrl + '/wp/v2/alert';
             
             // getRecipes() sur recipeService renvoie la promesse d'axios
             petService.getPet(page, this.selectedType, this.selectedCity)
@@ -163,7 +165,7 @@ methods : {
 
   loadSpecies() {
             // getAllRecipeTypes() renvoie une promesse
-            axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then
+            axios.get(baseUrl + '/wp/v2/species').then
             ((response) => {
               console.log(response.data);
                 this.specieList = response.data;

@@ -3,9 +3,7 @@
 
 import axios from 'axios';
 
-import {
-    baseUrl
-} from './apiClientService';
+import { baseUrl } from './apiClientService';
 
 const endpoint = "/wp/v2/alert_localization";
 

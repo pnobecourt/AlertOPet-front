@@ -76,6 +76,7 @@
 <script>
 import axios from "axios";
 import userService from '../services/userServices.js';
+import { baseUrl } from "../services/apiClientService";
 
 export default {
 
@@ -103,7 +104,7 @@ export default {
   },
   mounted() {
 
-    const singlePet = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert/" + this.$route.params.alertId + "?_embed";
+    const singlePet = baseUrl + "/wp/v2/alert/" + this.$route.params.alertId + "?_embed";
     console.log(singlePet);
 
     axios.get(singlePet)
