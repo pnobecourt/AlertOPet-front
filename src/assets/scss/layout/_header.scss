@@ -1,0 +1,231 @@
+header{
+  width:100%;
+    display:flex;
+    align-items:center;
+    background-color:$white;
+    justify-content:center;
+    -webkit-box-shadow: 0px 9px 15px -10px $shadow; 
+    box-shadow: 0px 9px 15px -10px $shadow;
+  }
+
+  .navigation__bell {
+    position:relative;
+
+  &__alert {
+    position:absolute;
+    background-color:$orange;
+    border-radius:50%;
+    width:1.2rem;
+    height:1.2rem;
+    margin-top:-35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-left:15px;
+  }
+}
+
+  .nav-logo img{
+    margin-left:1rem;
+    width:120px;
+  }
+
+  .navigation__bell__img img {
+    width:22px;
+    height:22px;
+  }
+
+
+  .navbar{
+    display:flex;
+    height: 70px;
+    width: 1199px;
+    padding: 19px 30px;
+    position: relative;
+  }
+  
+  .navbar .nav-header{
+    display: inline;
+  }
+  .navbar .nav-header .nav-logo{
+    display: inline-block;
+    margin-top: -7px;
+  }
+  .navbar .nav-links{
+    display: inline;
+    float: right;
+    font-size: 18px;
+  }
+   
+  .nav-links{
+    min-width:50%;
+    white-space:nowrap;
+  }
+  
+  .navbar .nav-links .loginBtn{
+    display: inline-block;
+    padding: 5px 15px;
+    margin-left: 20px;
+    font-size: 17px;
+    color: $blue;
+  }
+
+  .navbar .nav-links a {
+    padding: 10px 12px;
+    text-decoration: none;
+    font-weight: 550;
+    color:$grey;
+  }
+    
+  /* responsive navbar toggle button */
+  .navbar #nav-check, .navbar .nav-btn{
+    display: none;
+  }
+
+  .nav-btn label{
+    margin-top:0;
+  }
+
+  @media (max-width:1050px) {
+
+    .navigation__bell {
+        width:50%;
+    }
+    .navbar .nav-btn{
+      display: inline-block;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+    .navbar .nav-btn label {
+      display: inline-block;
+      width: 80px;
+      height: 70px;
+      padding: 25px;
+    }
+    .navbar .nav-btn label span {
+      display: block;
+      height: 10px;
+      width: 25px;
+      border-top: 3px solid $darkness; // burger
+    }
+    .navbar label:hover, .navbar .nav-btn label {
+  
+      transition: all 0.5s ease;
+    }
+    .navbar .nav-links{
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color:$white;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 70px;
+      right: 0px;
+      text-align:center;
+    }
+    .navbar .nav-links a {
+      display: block;
+    }
+   
+    .nav-links a:first-child{
+      margin-top:2rem;
+    }
+
+    .nav-links a::after {
+      display:block;
+      content: '_______';
+  }
+
+    /* when nav toggle button not checked */
+    .navbar #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+   
+    /* when nav toggle button is checked */
+    .navbar #nav-check:checked ~ .nav-links {
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .navbar .nav-links .loginBtn {
+      padding: 10px 40px ;
+      margin: 20px;
+      font-size:  18px;
+      font-weight: bold;
+      color:  $blue;
+    }
+    /* Responsive dropdown code */
+    .navbar .nav-links .dropdown, .navbar .nav-links .dropdown2 {
+      float: none;
+      width: 100%;
+    }
+    .navbar .nav-links .drop-content, .navbar .nav-links .drop-content2 {
+      position: relative;
+      background-color: $white;
+      top: 0px;
+      left: 0px;
+    }
+    /* Text color */
+    .navbar .nav-links .drop-content a {
+      color: $blue;
+    }  
+     /* Hover effects */
+  .navbar .nav-links a:hover{
+    background-color: $lightPink;
+  }
+  .nav-links {
+    color: $grey;
+  }
+
+  }
+   
+  /* Dropdown menu CSS code */
+  .dropdown{
+    position: relative;
+    display: inline-block;
+  }
+  .drop-content, .drop-content2 {
+    display: none;
+    position: absolute;
+    background-color:$blue;
+    width: 120px;
+    font-size: 16px;
+    top: 34px;
+    z-index: 1;
+    box-shadow: 0px 10px 25px $shadow;
+  }
+  /* on hover show dropdown */
+  .dropdown:hover .drop-content, .dropdown2:hover .drop-content2 {
+    display: block;
+  }
+  /* drondown links */
+  .drop-content a {
+    padding: 12px 10px;
+    border-bottom: 1px solid rgb(197, 197, 250);
+    display: block;
+    transition: all 0.5s ease !important;
+  }
+  .dropBtn .drop-content a:hover {
+    background-color: rgb(230, 230, 230);
+  }
+  .dropdown:hover .dropBtn, .dropdown2:hover .dropBtn2 {
+    background-color: $shadow;
+  }
+  .dropdown2 .drop-content2 {
+    position: absolute;
+    left: 120px;
+    top: 126px;
+  }
+  .dropBtn2 i {
+    margin-left: 15px;
+  }
+
+  .loginBtn {
+    max-width:250px;
+    border:0;
+    border-radius:.5rem;
+    background-color:$blue;
+    color:$white !important;
+    font-size:.7rem;
+  }

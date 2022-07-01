@@ -1,0 +1,43 @@
+/* Imports */
+
+// bases
+@import './assets/scss/base/reset.scss';
+@import './assets/scss/base/typographie';
+
+// abstract
+@import './assets/scss/abstracts/variables';
+@import './assets/scss/abstracts/mixins';
+
+//layout
+@import './assets/scss/layout/global';
+@import './assets/scss/layout/header';
+@import './assets/scss/layout/navigation';
+@import './assets/scss/layout/footer';
+
+// components
+@import './assets/scss/components/carousel';
+@import './assets/scss/components/switch';
+@import './assets/scss/components/input';
+@import './assets/scss/components/button';
+@import './assets/scss/components/textaera';
+@import './assets/scss/components/card';
+@import './assets/scss/components/bell';
+@import './assets/scss/components/navButton';
+@import './assets/scss/components/checkbox';
+@import './assets/scss/components/select';
+@import './assets/scss/components/error';
+@import './assets/scss/components/success';
+
+//layout
+@import './assets/scss/layout/global';
+@import './assets/scss/layout/header';
+@import './assets/scss/layout/navigation';
+@import './assets/scss/layout/footer';
+
+//Pages
+@import './assets/scss/pages/a-propos';
+@import './assets/scss/pages/alert';
+@import './assets/scss/pages/category';
+@import './assets/scss/pages/connexion';
+@import './assets/scss/pages/addAnimal';
+

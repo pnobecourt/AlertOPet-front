@@ -1,0 +1,108 @@
+//=====================================================
+// général
+
+
+@include medium {
+    .boxOfCards{
+        justify-content:center;
+        display:flex;
+        flex-wrap:wrap;
+    }
+
+    .card {
+        width: 285px;
+        margin:10px;
+    }
+
+}
+
+@include small {
+    .choiceAnimal,
+    .boxSmall,
+    .blueButton,
+    .yellowButton{
+        max-width:500px;
+        margin:3rem auto;
+        display:block;
+    }
+
+    .top404 {
+        margin-top:5rem;
+    }
+}
+
+@include big {
+
+    .bell {
+        margin-right:1rem;
+    }
+}
+
+body{
+background-color:$white;
+font-family:$body;
+font-size:1rem;
+background-image:url('../assets/images/empreintes.svg');
+min-height: 100vh;
+line-height:1.5rem;
+
+@include medium {
+    background-size:cover;
+}
+
+}
+
+.container {
+    padding-left:1rem;
+    padding-right:1rem;
+    max-width:960px;
+    min-height: 82vh;
+}
+
+a {
+    color:$blue;
+}
+
+p {
+    margin-top:1rem;
+}
+
+// space
+.bottom {
+    margin-bottom:5rem;
+}
+
+.top {
+    margin-top:5rem;
+}
+
+.top404{
+    margin-top:0;
+}
+
+article {
+    margin-top:2rem;
+}
+
+// title of current page
+
+.title {
+    width:70%;
+    margin: 0  auto;
+    text-align:center;
+}
+
+.title__page {
+    font-size:28px;
+    font-family:$fontTitle;
+    color:$darkPink;
+    line-height:2rem;
+    padding-top:3rem;
+}
+
+.dog {
+    @extend .choiceAnimal__select;
+    background-color:$white;
+    margin-top:0rem;
+}
+

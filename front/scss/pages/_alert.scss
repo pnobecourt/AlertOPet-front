@@ -1,0 +1,35 @@
+// ====================================================
+// Alert
+
+#choiceLost__lost,
+#choiceLost__found{
+    width:1rem;
+    box-shadow:none;
+    text-align:left;
+}
+
+.choiceLost {
+
+    display:flex;
+    justify-content:space-between;
+
+    &__lost{
+        font-family:$fontTitle;
+        font-size:1.5rem;
+        color:$darkPink;
+        margin-left:5px;
+    }
+
+    &__box
+    {
+        display:flex;
+    }
+
+    &__found{
+        font-family:$fontTitle;
+        font-size:1.5rem;
+        color:$blueGreen;
+        margin-left:5px;
+    }
+    
+}

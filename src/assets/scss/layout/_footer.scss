@@ -1,0 +1,22 @@
+//=====================================================
+// footer
+footer {
+    display:flex;
+    justify-content:space-around;
+    border-top: 1px solid $ultraGrey;
+    align-items:center;
+    background-color:$white;
+    height:5rem;
+    width:100%;
+    margin-top:2.5rem;
+}
+
+.social img{
+    width:2rem;
+    margin-right:1rem;
+}
+
+.contact a{
+    text-decoration:none;
+    font-size:.8rem;
+}

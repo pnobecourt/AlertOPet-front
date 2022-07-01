@@ -1,0 +1,57 @@
+// ====================================================
+// Switch button
+
+label.switch {
+  input[type="checkbox"] {
+      display: none;
+      &:checked {
+          + span {
+              &:before {
+                  background-color: rgba($darkPink, 0.5);
+              }
+              &:after {
+                  background-color: $darkPink;
+                  transform: translate(80%, -50%);
+              }
+          }
+      }
+      + span {
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+          font-weight: 500;
+          text-align: left;
+          margin: 0px;
+          padding: 0px 44px;
+          &:before,
+          &:after {
+              content: '';
+              cursor: pointer;
+              position: absolute;
+              margin: 0;
+              outline: 0;
+              top: 50%;
+              transform: translate(0, -50%);
+              transition: all 200ms ease-out;
+          }
+          &:before {
+              left: 1px;
+              width: 34px;
+              height: 14px;
+              background-color: $grey;
+              border-radius: 8px;
+          }
+          &:after {
+              left: 0;
+              width: 20px;
+              height: 20px;
+              background-color: $mediumGrey;
+              border-radius: 50%;
+              box-shadow: 0 3px 1px -2px $mediumGrey;
+          }
+      }
+      &:checked + span &:after {
+          transform: translate(80%, -50%);
+      }
+  }
+}

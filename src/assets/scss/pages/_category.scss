@@ -1,0 +1,28 @@
+//=====================================================
+// category
+
+.cardAnimal {
+    border:1px solid $lightWhite;
+    padding:1rem;
+    -webkit-box-shadow: 0px 9px 12px -7px rgba(0,0,0,0.54); 
+    box-shadow: 0px 9px 12px -7px rgba(0,0,0,0.54);
+    background-color:$white;
+    border-radius:.3rem;
+    margin-top:1.5rem;
+
+}
+.card {
+    border:none;
+}
+
+.choiceAnimal {
+    margin-top:3rem;
+}
+
+.choiceAnimal__select {
+    padding:1rem;
+}
+
+.choiceCity__select {
+    margin-top:1rem;
+}

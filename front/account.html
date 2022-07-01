@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="./main.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <a href="#">
+                        <img src="./assets/images/Logo.svg" width="150px" height="50px" alt="Alert O'Pet">
+                    </a>
+                </div>
+
+
+                <div class="bell">
+                    <div class="bell__img"><img src="./assets/images/bell.svg" height="22px" width="22px"
+                            alt="Il y a 1 nouvelle(s) recherche(s)"></div>
+                    <div class="bell__alert">1</div>
+                </div>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Créer un compte</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Alertes en cours</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Signaler un animal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Se connecter</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- container -->
+    <div class="container">
+
+        <section class="title">
+            <h1 class="title__page">Mon compte</h1>
+        </section>
+
+        <!-- label animal -->
+        <section class="listAnimal">
+
+            <div class="animal">
+
+                <div class="animal__animalName">Le nom de l'animal</div>
+
+                <div class="animal__animalAlert">
+                    Activer l'alerte
+                </div>
+
+                <div class="animal__animalAlert">
+                    Supprimer l'alerte
+                </div>
+
+            </div>
+
+            <!-- animal -->
+            <form type="POST" name="myAnimal">
+
+                <div class="animalCard">
+                    <div class="animalCard__animalName">Choupette</div>
+
+                    <div class="animalCard__animalAlert">
+                        <label class="animalCard__switch">
+                            <input type="checkbox">
+                            <span class="animalCard__slider round"></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="animalCard__animalAlertDelete">X</button>
+                </div>
+
+                <!-- animal -->
+                <div class="animalCard">
+                    <div class="animalCard__animalName">Pepette</div>
+
+                    <div class="animalCard__animalAlert">
+                        <label class="animalCard__switch">
+                            <input type="checkbox">
+                            <span class="animalCard__slider round"></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="animalCard__animalAlertDelete">X</button>
+                </div>
+
+                <!-- animal -->
+                <div class="animalCard">
+                    <div class="animalCard__animalName">Pupuce</div>
+
+                    <div class="animalCard__animalAlert">
+                        <label class="animalCard__switch">
+                            <input type="checkbox">
+                            <span class="animalCard__slider round"></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="animalCard__animalAlertDelete">X</button>
+                </div>
+
+            </form>
+        </section>
+
+
+        <!-- options -->
+        <section>
+
+            <form method="POST" id="account">
+                <button class="blueButton">Voir mes animaux</button>
+                <button class="blueButton">Ajouter un animal</button>
+                <button class="blueButton">Modifier mon profil</button>
+            </form>
+
+            <hr>
+
+            <!-- create accompte -->
+            <form method="POST" id="createAccount">
+            <button class="yellowButton">Supprimer mon compte</button>
+            </form>
+
+        </section>
+    </div> <!-- Fin container -->
+
+    <!-- Footer -->
+    <footer class="top">
+        <div class="social">
+            <a href="" target="_blank" title="Facebook"><img src="./assets/images/Facebook.svg" alt="Facebook"></a>
+            <a href="" target="_blank" title="Instagram"><img src="./assets/images/Instagram.svg" alt="Instagram"></a>
+            <a href="" target="_blank" title="Twitter"><img src="./assets/images/Twitter.svg" alt="Twitter"></a>
+            <a href="" target="_blank" title="YouTube"><img src="./assets/images/YouTube.svg" alt="YouTube"></a>
+        </div>
+
+        <div class="contact">
+            <a href="mailto:contact@alertOpet.com" title="Contact">Contact</a> -
+            <a href="" title="Contact">Mentions légales</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

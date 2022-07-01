@@ -1,0 +1,35 @@
+/* Imports */
+
+// baes
+@import '~/scss/base/reset.scss';
+@import '~/scss/base/typographie';
+
+// abstract
+@import '~/scss/abstracts/variables';
+@import '~/scss/abstracts/mixins';
+
+// components
+@import '~/scss/components/carousel';
+@import '~/scss/components/switch';
+@import '~/scss/components/input';
+@import '~/scss/components/button';
+@import '~/scss/components/textaera';
+@import '~/scss/components/card';
+@import '~/scss/components/bell';
+@import '~/scss/components/navButton';
+@import '~/scss/components/checkbox';
+@import '~/scss/components/select';
+
+//layout
+@import '~/scss/layout/global';
+@import '~/scss/layout/header';
+@import '~/scss/layout/navigation';
+@import '~/scss/layout/footer';
+
+//Pages
+@import '~/scss/pages/a-propos';
+@import '~/scss/pages/alert';
+@import '~/scss/pages/category';
+@import '~/scss/pages/connexion';
+@import '~/scss/pages/addAnimal';
+

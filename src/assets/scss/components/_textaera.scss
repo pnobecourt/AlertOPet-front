@@ -1,0 +1,9 @@
+// ====================================================
+// Textaera
+
+textarea {
+    @extend input;
+    height:150px;
+    text-align:left;
+    padding:.5rem;
+}

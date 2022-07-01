@@ -1,0 +1,19 @@
+//=====================================================
+// select
+
+.choiceAnimal__select {
+    display:block;
+    border: 1px solid $mediumGrey;
+    border-radius:.3rem;
+    margin:0 0 1rem;
+    width:100%;
+    -webkit-box-shadow: 0px 9px 12px -7px $shadow; 
+    box-shadow: 0px 9px 12px -7px $shadow;
+    padding:0;
+}
+
+.choiceCity__select {
+    @extend .choiceAnimal__select;
+ 
+}
+
