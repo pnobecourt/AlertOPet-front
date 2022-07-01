@@ -15,6 +15,7 @@
       <form method="POST" id="pictureAnimal">
         <div class="choiceLost">
 
+
           <div class="choiceLost__box">
             <input type="radio" id="choiceLost__lost" value="9" v-model="picked" />
             <label for="choiceLost__lost" class="choiceLost__lost"> Perdu</label><br />
@@ -47,7 +48,7 @@
         
         <select name="type" id="type" class="choiceAnimal__select" v-model="selectedType">
           <option disabled value="">Sélectionnez un type d'animal<span class="required">*</span></option>
-          <option v-for="specie in specieList" :key="specie.id" :value="specie.name">
+          <option v-for="specie in specieList" :key="specie.id" :value="specie.id">
             {{ specie.name }}
           </option>
         </select>
@@ -56,7 +57,7 @@
       <select v-if="downloadCity" id="selectCountry" class="choiceCity__select" v-model="selectedCity">
         <option disabled value="">Sélectionnez le lieu</option>
         <option v-for="alertLocalization in alertLocalizations" :key="alertLocalization.id"
-          :value="alertLocalization.name">
+          :value="alertLocalization.id">
           {{ alertLocalization.name }}
         </option>
 
@@ -80,11 +81,11 @@
       <label for="birthday">Âge aproximatif</label>
       <input id="birthday" placeholder="Âge aproximatif" v-model="age" />
 
-      <label for="password">Votre numéro de téléphone</label>
-      <input id="telephon" type="telephon" v-model.trim="contactPhone" placeholder="Votre numéro de téléphone" />
+      <label for="telephon">Votre numéro de téléphone</label>
+      <input id="telephon" type="telephon" v-model.trim="contactPhone" placeholder="Votre numéro de téléphone" />      
 
       <label for="info">Votre message / Description</label>
-      <textarea id="info" rows="5" cols="33" v-model="cardList.content"> </textarea>
+      <textarea id="info" rows="5" cols="33" v-model.trim="cardList.content"> </textarea>
       <div class="box">
 
         <!-- show errors -->
@@ -127,7 +128,7 @@
         status: "publish",
         alert_status: "En cours",
         meta: {
-          localization: "",
+          address: "",
           petId: "",
           petBreed: "",
           petName: "",
@@ -152,6 +153,7 @@
         downloadCity: false,
         // checked by default
         picked: "perdu",
+        contactPhone: "",
         age: 0,
       };
     },
@@ -215,7 +217,7 @@
               "rendered": this.cardList.content
             },
             "meta": {
-              "localization": this.selectedCity,
+              "address": this.selectedCity,
               "petBreed": this.cardList.breed,
               "petId": localStorage.id,
               "petName": this.cardList.title,
@@ -231,11 +233,14 @@
 
           }
 
-          console.log(formData);
+          console.log("localization:"+this.selectedCity);
+  
+            console.log("picked:"+this.picked);
+      
 
 
           // send the informations
-          petService.createPetAlert(formData)
+          petService.createPetAlert(formData, this.picked, this.selectedCity)
             .then((response) => {
               console.log(formData);
               if (!response.data.statusCode || response.data.statusCode === 200) {

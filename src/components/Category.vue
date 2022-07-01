@@ -103,7 +103,7 @@
         this.currentPage = page;
         const endpoint = baseUrl + '/wp/v2/alert';
 
-        petService.getPet(page, this.selectedType, this.selectedCity)
+        petService.getFilteredPet(page, this.selectedType, this.selectedCity)
           .then((response) => {
             this.cardList = response.data;
             this.pagesCount = parseInt(response.headers["x-wp-totalpages"]);
