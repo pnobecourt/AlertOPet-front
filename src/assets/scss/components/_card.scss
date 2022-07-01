@@ -50,10 +50,13 @@
 }
 
 .listAnimal {
-    border:1px solid $grey;
+    background-color:$white;
+    border:1px solid $lightWhite;
     border-radius:.3rem;
     padding:1rem;
     margin-top:5rem;
+    -webkit-box-shadow: 0px 9px 12px -7px $shadow; 
+    box-shadow: 0px 9px 12px -7px $shadow;
 }
 
 .animal {

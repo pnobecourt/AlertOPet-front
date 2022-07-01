@@ -8,7 +8,8 @@
 
       <!-- label animal -->
       <div class="box">
-        <section class="listAnimal" v-if="cardList">
+        <section class="listAnimal" v-if="cardList || cardListAlert">
+          <div><p class="alertInProgress">Mes animaux</p></div>
           <div class="animal">
             <div class="animal__animalName">Le nom de l'animal</div>
 
@@ -31,6 +32,23 @@
               </button>
             </div>
 
+
+              <div><hr><p class="alertInProgress">Alertes en cours</p></div>
+
+
+                        <div class="animal">
+            <div class="animal__animalName">Le nom de l'animal</div>
+
+            <div class="animal__animalAlert">Effacer l'alerte</div>
+          </div>
+            <div class="animalCard" v-for="animalAlert in cardListAlert" :key="animalAlert.id">
+              <div class="animalCard__animalName" @click="alertDetailClick(animalAlert.id)">
+               #{{ animalAlert.id }} {{ animalAlert.meta.petName }}
+              </div>
+              <button class="animalCard__animalAlertDelete" @click="deleteMyPet(animalAlert.id)">
+                X
+              </button>
+            </div>
         </section>
 
         <!-- options -->
@@ -70,6 +88,7 @@
     data() {
       return {
         cardList: [],
+        cardListAlert: [],
         isContentLoaded: false,
         alert_status : "Archivé",
       };
@@ -80,6 +99,7 @@
     },
     mounted() {
       this.loadCard();
+      this.loadCardAlert();
     },
     props: ["isUserConnected"],
 
@@ -100,7 +120,24 @@
           .catch((error) => {
             console.error(error);
           });
-      },      
+      },  
+      loadCardAlert() {
+        const link = "http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert/";
+
+        axios
+          .get(link, {
+            headers: {
+              Authorization: "Bearer " + localStorage.token,
+            },
+          })
+          .then((response) => {
+            console.log(response);
+            this.cardListAlert = response.data;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      },  
       
       deleteMyPet(id) {
 
@@ -113,6 +150,7 @@
               if (!response.data.statusCode || response.data.statusCode === 200) {
                 // success - nothing
                 this.loadCard();
+                this.loadCardAlert();
               } else {
                 // error
                 this.errorMessages = error.response.data.message;
@@ -134,7 +172,8 @@
             .then((response) => {
               console.log(response);
               if (!response.data.statusCode || response.data.statusCode === 200) {
-                // success - nothing
+                // success - redirect to homepage
+
               } else {
                 // error
                 this.errorMessages = error.response.data.message;
@@ -146,6 +185,7 @@
             });
        
       },
+
       onModifyClick() {
         this.$router.push({
           name: "modification-compte",
@@ -160,6 +200,15 @@
           name: "modification-animal",
           params: {
             petId: petId,
+          },
+        });
+      },
+
+      alertDetailClick(alertId) {
+        this.$router.push({
+          name: "alerte",
+          params: {
+            alertId: alertId,
           },
         });
       },

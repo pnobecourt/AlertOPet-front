@@ -22,7 +22,8 @@
         <!-- card__picture -->
         <div class="cardAnimal">
 
-            <img class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
+            <img v-if="cardList.petPicture" class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
+            <img v-else class="cardAnimal__image" src="../assets/images/sans-image.png"  alt="Animal" />
 
 
           <!-- card__lost -->
@@ -49,7 +50,7 @@
 
             <div class="cardAnimal__describe" @click="onPetClick(cardList.id)">
               <p>ID : {{ cardList.id }}</p>
-              <p>Type : {{ cardList.type }}</p>
+              <p>Type : {{ cardList.meta.petSpecies }}</p>
               <p>Lieu : {{ cardList.meta.localization }}</p>
               <p>Nom : {{ cardList.meta.petName }}</p>
               <p>Race : {{ cardList.meta.petBreed}}</p>
@@ -59,7 +60,7 @@
               <p>Âge : {{ cardList.meta.petAge }}</p>
             </div>
 
- <div class="cardAnimal__description" v-html="cardList.content.rendered">
+ <div class="cardAnimal__description" v-html="cardList.meta.petDescription">
             </div>
         </div>
       </article>
