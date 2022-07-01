@@ -10,7 +10,7 @@
         2004-575 du 21 juin 2004 pour la Confiance dans l’économie numérique,
         dite L.C.E.N., nous portons à la connaissance des utilisateurs et
         visiteurs du site :
-        <a href="https://alertopet.com">alertOpet.com</a> les informations
+        <a href="https://app.alertopet.com">alertOpet.com</a> les informations
         suivantes :
       </p>
 
@@ -19,7 +19,7 @@
       <p>
         Le site
         <a
-          href="https://alertopet.com/"
+          href="http://app.alertopet.com/"
           target="_blank"
           rel="noreferrer noopener"
           >alertOpet.com</a
@@ -27,7 +27,7 @@
         est la propriété exclusive de alertOpet, qui l’édite.
       </p>
 
-      <p>Le site est hébergé par <strong>Oclock Paris</strong></p>
+      <p>Le site est hébergé par <strong>SCALEWAY SAS BP 438 75366 PARIS CEDEX 08 FRANCE</strong></p>
 
       <p>
         <strong>CREDITS :</strong> les mentions légales ont étés générées par
@@ -43,7 +43,7 @@
       <p>
         Est désigné ci-après : <strong>Utilisateur</strong>, tout internaute se
         connectant et utilisant le site susnommé :
-        <a href="https://alertopet.com/">alertOpet.com.</a>
+        <a href="http://app.alertopet.com/">alertOpet.com.</a>
       </p>
 
       <p>
@@ -232,7 +232,7 @@
 
       <p>
         Le site www.alertOpet.com est en conformité avec le RGPD voir notre
-        politique RGPD https://alertopet.com/politique-de-confidentialite/.
+        politique RGPD http://app.alertopet.com/politique-de-confidentialite/.
       </p>
 
       <p>

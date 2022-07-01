@@ -17,9 +17,9 @@
             <h2>Paul Nobécourt</h2>
             <p class="profil__language">Product Owner / Dev Backend</p>
             <p class="profil__text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem cum nisi laborum amet culpa natus odit voluptas,
-              dolorum laboriosam.<br/>
+              dolorum laboriosam. --><br/>
               <a href="https://github.com/pnobecourt" target="_blank">Github</a><br/>
               <a href="https://www.linkedin.com/in/pnobecourt/" target="_blank">Linkedin</a>
             </p>
@@ -30,9 +30,9 @@
             <h2>Marc Cherier</h2>
             <p class="profil__language">Scrum Master / Dev Frontend</p>
             <p class="profil__text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem cum nisi laborum amet culpa natus odit voluptas,
-              dolorum laboriosam.
+              dolorum laboriosam. -->
             </p>
           </div>
 
@@ -45,9 +45,9 @@
             <h2>David Baffray</h2>
             <p class="profil__language">Lead Dev / Dev Backend</p>
             <p class="profil__text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem cum nisi laborum amet culpa natus odit voluptas,
-              dolorum laboriosam.
+              dolorum laboriosam. -->
             </p>
           </div>
 
@@ -60,9 +60,9 @@
             <h2>Radhwane Abdallaoui</h2>
             <p class="profil__language">Dev Frontend</p>
             <p class="profil__text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem cum nisi laborum amet culpa natus odit voluptas,
-              dolorum laboriosam.
+              dolorum laboriosam. -->
             </p>
           </div>
         </div>
