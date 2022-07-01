@@ -126,7 +126,7 @@
         status: "publish",
         alert_status: "En cours",
         meta: {
-          localization: "",
+          address: "",
           petId: "",
           petBreed: "",
           petName: "",
@@ -217,7 +217,7 @@
               "rendered": this.name
             },
             "meta": {
-              "localization": this.selectedCity,
+              "address": this.selectedCity,
               "petBreed": this.breed,
               "petName": this.name,
               "petAge": this.age,

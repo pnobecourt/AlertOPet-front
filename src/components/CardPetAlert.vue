@@ -51,7 +51,7 @@
             <div class="cardAnimal__describe" @click="onPetClick(cardList.id)">
               <p>ID : {{ cardList.id }}</p>
               <p>Type : {{ cardList.meta.petSpecies }}</p>
-              <p>Lieu : {{ cardList.meta.localization }}</p>
+              <p>Lieu : {{ cardList.meta.address }}</p>
               <p>Nom : {{ cardList.meta.petName }}</p>
               <p>Race : {{ cardList.meta.petBreed}}</p>
               <p>Taille : {{ cardList.meta.petSize }}</p>

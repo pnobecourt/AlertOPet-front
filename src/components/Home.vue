@@ -145,7 +145,7 @@ methods : {
             const endpoint = baseUrl + '/wp/v2/alert';
             
             // getRecipes() sur recipeService renvoie la promesse d'axios
-            petService.getPet(page, this.selectedType, this.selectedCity)
+            petService.getFilteredPet(page, this.selectedType, this.selectedCity)
             .then((response) => {
                 this.cardList = response.data;
                 // on utilise la même syntaxe qu'un array associatif php pour récupérer dans un objet une valeur dont la clé doit être protégée entre "", ici x-wp-totalpages de l'objet response.header

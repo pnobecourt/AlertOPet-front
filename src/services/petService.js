@@ -12,6 +12,23 @@ const petsPerPage = '5';
 export default {
 
 
+    getFilteredPet(page, selectedSpecies, selectedCity) {
+
+        let queryString = '?per_page=' + petsPerPage + '&page=' + page;
+
+        if (selectedSpecies) {
+
+            queryString += '&species=' + selectedSpecies
+        }
+
+        if (selectedCity) {
+
+            queryString += '&alert_localization=' + selectedCity
+        }
+
+        return axios.get(baseUrl + endpoint + queryString);
+    },
+
     getPet(page, selectedType, selectedCity) {
 
         let queryString = '?per_page=' + petsPerPage + '&page=' + page;
@@ -35,11 +52,11 @@ export default {
     },
 
 
-    createPet(animalData) {
+    createPet(animalData,selectedType) {
 
         return axios.post(
 
-            baseUrl + "/aop/v1/pet",
+            baseUrl + "/aop/v1/pet?alert_type="+ selectedType,
             animalData, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('token')
@@ -49,11 +66,11 @@ export default {
         );
     },
 
-    createPetAlert(animalData) {
+    createPetAlert(animalData, picked, selectedCity) {
 
         return axios.post(
 
-            baseUrl + "/wp/v2/alert?=",
+            baseUrl + "/wp/v2/alert?alert_type="+picked+"&alert_localization=" + selectedCity,
             animalData, {
                 headers: {
                     "Content-Type": "application/json",

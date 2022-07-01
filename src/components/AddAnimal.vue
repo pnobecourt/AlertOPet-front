@@ -14,7 +14,7 @@
         <div class="choiceAnimal">
           <select name="type" id="type" class="choiceAnimal__select" v-model="selectedType">
             <option disabled value="">Sélectionnez un type d'animal<span class="required">*</span></option>
-            <option v-for="specie in specieList" :key="specie.id" :value="specie.name">
+            <option v-for="specie in specieList" :key="specie.id" :value="specie.id">
               {{ specie.name }} 
             </option>
           </select>
@@ -136,7 +136,7 @@
               color: this.color,
               size: this.size,
               weight: this.weight,
-            })
+            },this.selectedType)
             .then((response) => {
               if (!response.data.statusCode || response.data.statusCode === 200) {
                 // success -> redirect to account
