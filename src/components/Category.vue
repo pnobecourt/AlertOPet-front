@@ -120,7 +120,7 @@
       },
 
       loadSpecies() {
-        axios.get(baseUrl + '/wp/v2/species').then((
+        axios.get(baseUrl + '/wp/v2/species?per_page=99').then((
             response) => {
               console.log(response.data);
               this.specieList = response.data;
