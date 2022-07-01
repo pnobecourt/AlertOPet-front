@@ -92,7 +92,7 @@
     methods: {
 
       /* loadCard(){
-        axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert?embed').then
+        axios.get(baseUrl + '/wp/v2/alert?embed').then
         ((response) => {
             console.log(response.data);
           this.cardList = response.data;
@@ -103,7 +103,7 @@
       loadCard(page) {
 
         this.currentPage = page;
-        const baseUrl = 'http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert';
+        const baseUrl = baseUrl + '/wp/v2/alert';
 
         petService.getPet(page, this.selectedType, this.selectedCity)
           .then((response) => {
@@ -122,7 +122,7 @@
       },
 
       loadSpecies() {
-        axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then((
+        axios.get(baseUrl + '/wp/v2/species').then((
             response) => {
               console.log(response.data);
               this.specieList = response.data;

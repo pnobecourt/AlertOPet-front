@@ -140,7 +140,7 @@ methods : {
   loadCard(page) {
             // on met à jour le numéro de la page courante
             this.currentPage = page;
-            const baseUrl = 'http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert';
+            const baseUrl = baseUrl + '/wp/v2/alert';
             
             // getRecipes() sur recipeService renvoie la promesse d'axios
             petService.getPet(page, this.selectedType, this.selectedCity)
@@ -163,7 +163,7 @@ methods : {
 
   loadSpecies() {
             // getAllRecipeTypes() renvoie une promesse
-            axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then
+            axios.get(baseUrl + '/wp/v2/species').then
             ((response) => {
               console.log(response.data);
                 this.specieList = response.data;
