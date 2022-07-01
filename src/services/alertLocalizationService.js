@@ -11,6 +11,6 @@ export default {
 
   getAllAlertLocalizations() {
 
-    return axios.get(baseUrl + endpoint + '?per_page=250');
+    return axios.get(baseUrl + endpoint + '?per_page=99');
   },
 };
