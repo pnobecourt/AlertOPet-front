@@ -2,7 +2,8 @@
 // Alert
 
 #choiceLost__lost,
-#choiceLost__found{
+#choiceLost__found,
+#choiceLost__kidnapped{
     width:1rem;
     box-shadow:none;
     text-align:left;
@@ -31,4 +32,12 @@
         color:$blueGreen;
         margin-left:5px;
     }
+
+    &__kidnapped {
+        font-family:$fontTitle;
+        font-size:1.5rem;
+        color:$orange;
+        margin-left:5px;
+    }
 }
+

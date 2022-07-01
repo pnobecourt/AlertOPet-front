@@ -78,4 +78,5 @@ const carousel = {
       currentSlideButton.classList.add("active");
 },
   };
+  
   document.addEventListener("DOMContentLoaded", carousel.init);

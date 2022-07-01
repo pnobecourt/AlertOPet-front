@@ -22,7 +22,8 @@
         <!-- card__picture -->
         <div class="cardAnimal">
 
-            <img class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
+            <img v-if="cardList.petPicture" class="cardAnimal__image" :src= cardList.petPicture  alt="Animal" />
+            <img v-else class="cardAnimal__image" src="../assets/images/sans-image.png"  alt="Animal" />
 
 
           <!-- card__lost -->

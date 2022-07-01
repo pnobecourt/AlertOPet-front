@@ -1,6 +1,8 @@
 <template v-if="animalData.alert_status == 'En cours'">
         <!-- Card -->
+       
         <article class="card">
+        
           <!-- card__picture -->
           <div class="cardAnimal">
 
@@ -83,7 +85,7 @@ export default {
         }
 
   },
-  props: ["animalData"]
+  props: ["animalData","selectedType"]
 }
 </script>
 

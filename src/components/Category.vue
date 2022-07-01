@@ -9,26 +9,26 @@
     <!-- Carousel -->
     <section class="box">
 
-      <!-- Recherche -->
+      <!-- Search -->
       <section>
         <div class="choiceAnimal">
-          <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="selectedType">
-<option disabled value="">Sélectionnez un type d'animal</option>
-            <option
-              v-for="specie in specieList" 
-              :key="specie.id" 
-              :value="specie.id">
+
+          <select name="type" id="type" class="choiceAnimal__select" @change="onSpeciesFilterChange()"
+            v-model="selectedType">
+            <option disabled value="">Sélectionnez un type d'animal</option>
+            <option value="">Pas de filtre</option>
+            <option v-for="specie in specieList" :key="specie.id" :value="specie.id">
               {{ specie.name }}
             </option>
           </select>
 
-          <select name="type" id="selectCountry" class="choiceAnimal__select" @change="onSpeciesFilterChange()" v-model="selectedCity">
-<option disabled value="">Sélectionnez un lieu</option>
-            <option
-              v-for="city in cardList" 
-              :key="city.id" 
-              :value="city.id">
-              {{ city.meta["localization"] }}
+          <select name="type" id="selectCountry" class="choiceAnimal__select" @change="onLocalizationFilterChange()"
+            v-model="selectedCity">
+            <option disabled value="">Sélectionnez un lieu</option>
+            <option value="">Pas de filtre</option>
+            <option v-for="alertLocalization in alertLocalizations" :key="alertLocalization.id"
+              :value="alertLocalization.id">
+              {{ alertLocalization.name }}
             </option>
           </select>
 
@@ -39,7 +39,7 @@
 
     <!-- list of Cards -->
     <section>
-    <!-- Cards -->
+      <!-- Cards -->
       <div class="boxOfCards">
 
         <Card v-for="animal in cardList" :key="animal.id" :animalData="animal"></Card>
@@ -51,70 +51,109 @@
 
     <!-- end of container -->
     <div class="top"></div>
-  </div> 
+  </div>
 </template>
 
 <script>
-import axios from "axios";
-import Card from "./Card.vue";
-import carousel from "../assets/js/carousel.js";
-import speciesService from '../services/specieService.js';
+  import axios from "axios";
+  import Card from "./Card.vue";
+  import carousel from "../assets/js/carousel.js";
+  import petService from "../services/petService.js";
+  import speciesService from "../services/specieService.js";
+  import alertLocalizationService from "../services/alertLocalizationService";
+  import {
+    baseUrl
+  } from "../services/apiClientService";
 
-export default {
-  data() {
-    return {
-      cardList: [],
-      specieList: [],
-      specieList : "choice",
-      selectedType: '',
-      selectedCity: '',
-    };
-  },
-  components: {
-    carousel,
-    speciesService,
-    Card,
-  },
-  mounted() {
-    this.loadCard();
-    this.loadSpecies();
-  },
+  export default {
+    data() {
+      return {
+        cardList: [],
+        specieList: [],
+        alertLocalizations: [],
+        specieList: "choice",
+        selectedType: "",
+        selectedCity: "",
+        pagesCount: 1,
+        currentPage: 1
+      };
+    },
+    components: {
+      carousel,
+      speciesService,
+      Card,
+    },
+    mounted() {
+      this.loadCard(1);
+      this.loadSpecies();
+      this.loadAlertLocalizations();
+    },
 
-methods : {
+    methods: {
 
-  loadCard(){
-    axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert?embed').then
-    ((response) => {
-        console.log(response.data);
-      this.cardList = response.data;
-    }).catch((error) =>{
-        console.error(error );
-    })
-  },
-  
-  contactOwner(email) {
-       var link = 'mailto:' + email;
-       window.location.href = link;
+      /* loadCard(){
+        axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert?embed').then
+        ((response) => {
+            console.log(response.data);
+          this.cardList = response.data;
+        }).catch((error) =>{
+            console.error(error );
+        })
+      }, */
+      loadCard(page) {
+
+        this.currentPage = page;
+        const baseUrl = 'http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/alert';
+
+        petService.getPet(page, this.selectedType, this.selectedCity)
+          .then((response) => {
+            this.cardList = response.data;
+            this.pagesCount = parseInt(response.headers["x-wp-totalpages"]);
+            console.log(response);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       },
 
-  loadSpecies() {
-            // getAllRecipeTypes() renvoie une promesse
-            axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then
-            ((response) => {
-              console.log(response.data);
-                this.specieList = response.data;
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        },
+      contactOwner(email) {
+        var link = 'mailto:' + email;
+        window.location.href = link;
+      },
 
-onSpeciesFilterChange() {
-            // on relance la récupération des données
-            this.loadPets(1);
-        }
-},
-};
+      loadSpecies() {
+        axios.get('http://paul-nobecourt.vpnuser.lan/Apo/projet-alert-pet-back/wp-json/wp/v2/species').then((
+            response) => {
+              console.log(response.data);
+              this.specieList = response.data;
+            })
+          .catch((error) => {
+            console.error(error);
+          });
+      },
+
+      loadAlertLocalizations() {
+        // getAllAlertLocalizations() renvoie une promesse
+        alertLocalizationService
+          .getAllAlertLocalizations()
+          .then((response) => {
+            this.alertLocalizations = response.data;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      },
+
+      onSpeciesFilterChange() {
+        // on relance la récupération des données
+        this.loadCard(1);
+      },
+      onLocalizationFilterChange() {
+        // on relance la récupération des données
+        this.loadCard(1);
+      }
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
