@@ -60,6 +60,7 @@
   import axios from "axios";
   import speciesService from '../services/specieService.js';
   import petService from '../services/petService.js';
+  import { baseUrl } from "../services/apiClientService";
 
   export default {
     data() {

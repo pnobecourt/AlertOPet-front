@@ -111,6 +111,7 @@
   import speciesService from '../services/specieService.js';
   import petService from '../services/petService.js';
   import alertLocalizationService from "../services/alertLocalizationService";
+  import { baseUrl } from "../services/apiClientService";
 
   export default {
 

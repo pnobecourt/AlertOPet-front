@@ -29,6 +29,7 @@
 import axios from "axios";
 import userService from '../services/userServices.js';
 import CardAnimal from "./CardAnimal.vue";
+import { baseUrl } from "../services/apiClientService";
 
 export default {
   data() {

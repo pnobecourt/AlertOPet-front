@@ -3,9 +3,7 @@
 
 import axios from 'axios';
 
-import {
-  baseUrl
-} from './apiClientService';
+import { baseUrl } from './apiClientService';
 
 import store from '../store.js';
 

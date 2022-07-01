@@ -89,6 +89,7 @@
 
 <script>
 import axios from "axios";
+import { baseUrl } from "../services/apiClientService";
 import Card from "./Card.vue";
 import carousel from "../assets/js/carousel.js";
 import petService from "../services/petService.js";
@@ -99,6 +100,7 @@ import userService from '../services/userServices';
 export default {
   data() {
     return {
+      baseUrl: "",
       cardList: [],
       specieList: [],
       alertLocalizations: [],
@@ -140,7 +142,7 @@ methods : {
   loadCard(page) {
             // on met à jour le numéro de la page courante
             this.currentPage = page;
-            const baseUrl = baseUrl + '/wp/v2/alert';
+            const endpoint = baseUrl + '/wp/v2/alert';
             
             // getRecipes() sur recipeService renvoie la promesse d'axios
             petService.getPet(page, this.selectedType, this.selectedCity)

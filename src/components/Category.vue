@@ -61,9 +61,7 @@
   import petService from "../services/petService.js";
   import speciesService from "../services/specieService.js";
   import alertLocalizationService from "../services/alertLocalizationService";
-  import {
-    baseUrl
-  } from "../services/apiClientService";
+  import { baseUrl } from "../services/apiClientService";
 
   export default {
     data() {
@@ -103,7 +101,7 @@
       loadCard(page) {
 
         this.currentPage = page;
-        const baseUrl = baseUrl + '/wp/v2/alert';
+        const endpoint = baseUrl + '/wp/v2/alert';
 
         petService.getPet(page, this.selectedType, this.selectedCity)
           .then((response) => {
