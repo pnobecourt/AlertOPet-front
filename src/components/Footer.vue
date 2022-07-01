@@ -18,7 +18,8 @@
 
       <div class="contact">
         <a href="mailto:contact@alertOpet.com" title="Contact">Contact</a> -
-        <a href="/mentions-legales" title="Contact">Mentions légales</a>
+        <!-- <a href="/mentions-legales" title="Contact">Mentions légales</a> -->
+        <RouterLink to="/mentions-legales">Mentions légales</RouterLink>
       </div>
     </footer>
 </template>
